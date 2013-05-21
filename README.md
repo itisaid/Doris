@@ -7,7 +7,7 @@
 
 ## Doris's Features ##
 - Scalable like HBase. Support large scale data storage and visit with scalable server deployment.
-- High available than HBase. Neither lost data nor reject app¡¯s access when any server is crashed.
+- High available than HBase. Neither lost data nor reject app's access when any server is crashed.
 - High performance. Less 4 ms for commonly data access.
 - Easy operation. Auto failover and data recover when server is crashed. Easy add servers to Doris cluster with web interface.
 - Optimized consistence hash algorithm. More balance on distributed data than traditional consistence hash algorithm.
