@@ -1,11 +1,11 @@
 # Doris #
-## a large scale distributed KV storage system ##
+## A large scale distributed KV storage system ##
 
 - Release date: 2013/5/21
 - Doris is one of Alibaba technology products
 - The version can't be installed, because it is dependent on Alibaba's internal repository. But it not be must, if you have interesting on it, contact me(itisaid@gmail.com)
 
-## Doris's feature ##
+## Doris's Features ##
 - Scalable like HBase. Support large scale data storage and visit with scalable server deployment.
 - High available than HBase. Neither lost data nor reject app¡¯s access when any server is crashed.
 - High performance. Less 4 ms for commonly data access.
