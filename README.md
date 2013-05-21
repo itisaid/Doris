@@ -2,7 +2,7 @@
 ## a large scale distributed KV storage system ##
 
 - Release date: 2013/5/21
-- Doris is one of Alibaba technology product
+- Doris is one of Alibaba technology products
 - The version can't be installed, because it is dependent on Alibaba's internal repository. But it not be must, if you have interesting on it, contact me(itisaid@gmail.com)
 
 ## Doris's feature ##
