@@ -1,0 +1,19 @@
+<form  method="post" name="webconsole" id="webconsoleForm">
+	$csrfToken.hiddenField
+
+   #if($!errorResult)
+    <div class="setting_box">
+			<div style="color:red">$!errorResult</div>
+	</div>	
+	#end
+	<div class="title"><h2>Web控制台</h2></div>
+   <div class="num_o">
+    <textarea class="webconsole"  name="command"></textarea>
+    <div class="btn_webconsole"><a href="#" onclick="document.getElementById('webconsoleForm').submit()">发送命令</a></div>
+	读:get namespace:key<br>
+	写:set namespace:key<span style="color:red"><回车></span>	value<br>
+    <div class="area">$!result</div>
+   </div>    
+   <input type="hidden" name="action" value="WebConsoleAction"/>
+    <input type="hidden" name="event_submit_do_send_command" value="true" />
+</form>

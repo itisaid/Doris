@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="PhysicalNode">
+
+	<typeAlias alias="PhysicalNodeDO" type="com.alibaba.doris.admin.dataobject.PhysicalNodeDO" />
+	<resultMap id="PhysicalNodeResult" class="PhysicalNodeDO">
+		<result column="ID" property="id" jdbcType="INTEGER" />
+		<result column="LOGICAL_ID" property="logicalId" jdbcType="INTEGER" />
+		<result column="PHYSICAL_ID" property="physicalId" jdbcType="VARCHAR" />
+		<result column="SERIAL_ID" property="serialId" jdbcType="INT" />
+		<result column="MACHINE_ID" property="machineId" jdbcType="VARCHAR" />
+		<result column="IP" property="ip" jdbcType="VARCHAR" />
+		<result column="PORT" property="port" jdbcType="INTEGER" />
+		<result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="GMT_CREATE" property="gmtCreate" jdbcType="DATETIME" />
+    <result column="GMT_MODIFIED" property="gmtModified" jdbcType="DATETIME" />
+	</resultMap>
+
+	<select id="listPhysicalNodes" resultMap="PhysicalNodeResult">
+		<![CDATA[
+		SELECT ID, LOGICAL_ID, PHYSICAL_ID, SERIAL_ID, MACHINE_ID, IP,PORT, STATUS, GMT_CREATE, GMT_MODIFIED 
+		FROM PHYSICAL_NODES
+		]]>
+	</select>
+	
+	<select id="queryAllUsablePhysicalNodes" resultMap="PhysicalNodeResult">
+		<![CDATA[
+		SELECT ID, LOGICAL_ID, PHYSICAL_ID, SERIAL_ID, MACHINE_ID, IP,PORT, STATUS, GMT_CREATE, GMT_MODIFIED 
+		FROM PHYSICAL_NODES WHERE  SERIAL_ID <> '-1'  
+		]]>
+	</select>
+	
+	<select id="queryUnUsablePhysicalNodes" resultMap="PhysicalNodeResult">
+		<![CDATA[
+		SELECT ID, LOGICAL_ID, PHYSICAL_ID, SERIAL_ID, MACHINE_ID, IP,PORT, STATUS, GMT_CREATE, GMT_MODIFIED 
+		FROM PHYSICAL_NODES WHERE LOGICAL_ID = -1 OR  SERIAL_ID = '-1'  
+		]]>
+	</select>
+	
+	<select id="queryPhysicalNodesBySerialId" resultMap="PhysicalNodeResult" parameterClass="java.lang.String">
+		<![CDATA[
+		SELECT ID, LOGICAL_ID, PHYSICAL_ID, SERIAL_ID, MACHINE_ID, IP,PORT, STATUS, GMT_CREATE, GMT_MODIFIED 
+		FROM PHYSICAL_NODES WHERE  SERIAL_ID = #serialId:INTEGER# 
+		]]>
+	</select>
+	
+	<select id="queryNomalPhysicalNodesByIP" resultMap="PhysicalNodeResult" parameterClass="java.lang.String">
+		<![CDATA[
+		SELECT ID, LOGICAL_ID, PHYSICAL_ID, SERIAL_ID, MACHINE_ID, IP,PORT, STATUS, GMT_CREATE, GMT_MODIFIED 
+		FROM PHYSICAL_NODES WHERE  IP = #ip:VARCHAR# AND SERIAL_ID >0 AND SERIAL_ID <9
+		]]>
+	</select>
+	
+	<select id="queryPhysicalNodeById" resultMap="PhysicalNodeResult" parameterClass="java.lang.Integer">
+		<![CDATA[
+		SELECT ID, LOGICAL_ID, PHYSICAL_ID, SERIAL_ID, MACHINE_ID, IP,PORT, STATUS, GMT_CREATE, GMT_MODIFIED 
+		FROM PHYSICAL_NODES WHERE  ID = #id:INTEGER#  
+		]]>
+	</select>
+	
+	<select id="queryPhysicalNodeByPhysicalId" resultMap="PhysicalNodeResult" parameterClass="java.lang.String">
+		<![CDATA[
+		SELECT ID, LOGICAL_ID, PHYSICAL_ID, SERIAL_ID, MACHINE_ID, IP,PORT, STATUS, GMT_CREATE, GMT_MODIFIED 
+		FROM PHYSICAL_NODES WHERE  PHYSICAL_ID = #physicalId:INTEGER#  
+		]]>
+	</select>
+	
+	<select id="queryPhysicalNodesByConditions" resultMap="PhysicalNodeResult" parameterClass="PhysicalNodeDO">
+		<![CDATA[
+		SELECT ID, LOGICAL_ID, PHYSICAL_ID, SERIAL_ID, MACHINE_ID, IP,PORT, STATUS, GMT_CREATE, GMT_MODIFIED 
+		FROM PHYSICAL_NODES WHERE  PHYSICAL_ID = #physicalId:VARCHAR#  OR (IP=#ip:VARCHAR# AND PORT=#port:INTEGER#) 
+		]]>
+	</select>
+	
+	<select id="queryDuplicateNodesForEdit" resultMap="PhysicalNodeResult" parameterClass="PhysicalNodeDO">
+		<![CDATA[
+		SELECT ID, LOGICAL_ID, PHYSICAL_ID, SERIAL_ID, MACHINE_ID, IP,PORT, STATUS, GMT_CREATE, GMT_MODIFIED 
+		FROM PHYSICAL_NODES WHERE ID  <> #id:INTEGER#  AND (PHYSICAL_ID = #physicalId:VARCHAR#  OR (IP=#ip:VARCHAR# AND PORT=#port:INTEGER#))
+		]]>
+	</select>	
+	
+	<insert id="addPhysicalNode" parameterClass="PhysicalNodeDO">  
+    	<![CDATA[insert into PHYSICAL_NODES( LOGICAL_ID, PHYSICAL_ID, SERIAL_ID, MACHINE_ID, IP,PORT, STATUS, GMT_CREATE, GMT_MODIFIED) 
+    		values
+    		(#logicalId:INTEGER#,#physicalId:VARCHAR#,#serialId:INTEGER#,#machineId:VARCHAR#, #ip:VARCHAR#,#port:INTEGER#,#status:INTEGER#,NOW(), NOW())]]>   
+	    	<selectKey resultClass="int" keyProperty="id">  
+		        <![CDATA[SELECT LAST_INSERT_ID() AS ID ]]>   
+		        <!-- 该方法LAST_INSERT_ID()与数据库连接绑定，同属统一会话级别。 -->  
+	    	</selectKey>  
+	</insert>
+	
+	<update id="updatePhysicalNodeStatus" parameterClass="java.util.Map">
+		<![CDATA[
+		UPDATE PHYSICAL_NODES SET STATUS = #status:INTEGER#, GMT_MODIFIED =NOW() WHERE  PHYSICAL_ID= #physicalId:VARCHAR#  
+		]]>
+	</update>
+	
+	<update id="updatePhysicalNode" parameterClass="PhysicalNodeDO">
+		<![CDATA[
+		UPDATE PHYSICAL_NODES SET STATUS = #status:INTEGER#,LOGICAL_ID = #logicalId:INTEGER#,SERIAL_ID = #serialId:INTEGER#,  GMT_MODIFIED =NOW() WHERE  PHYSICAL_ID= #physicalId:VARCHAR#  
+		]]>
+	</update>
+	
+	<update id="updatePhysicalNodeByNodeId" parameterClass="PhysicalNodeDO">
+		<![CDATA[
+		UPDATE PHYSICAL_NODES SET PHYSICAL_ID = #physicalId:VARCHAR# ,MACHINE_ID = #machineId:VARCHAR#,
+		IP = #ip:VARCHAR# ,GMT_MODIFIED = NOW(),PORT = #port:INTEGER# WHERE ID = #id:INTEGER#
+		]]>
+	</update>
+	
+	<delete id="deletePhysicalNodeByPhysicalId" parameterClass="java.lang.String">
+		<![CDATA[
+		DELETE FROM PHYSICAL_NODES  WHERE  PHYSICAL_ID= #physicalId:VARCHAR#  
+		]]>
+	</delete>
+
+</sqlMap>

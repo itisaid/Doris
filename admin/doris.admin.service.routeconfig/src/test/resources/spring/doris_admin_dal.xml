@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<bean id="doris_core_jdbc"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:spring/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="minPoolSize" value="5" />
+		<property name="maxPoolSize" value="15" />
+		<property name="maxIdleTime" value="1800" />
+		<property name="acquireIncrement" value="2" />
+		<property name="maxStatements" value="0" />
+		<property name="initialPoolSize" value="2" />
+		<property name="idleConnectionTestPeriod" value="60" />
+		<property name="acquireRetryAttempts" value="30" />
+		<property name="breakAfterAcquireFailure" value="false" />
+		<property name="jdbcUrl" value="${jdbc.main.url}" />
+		<property name="user" value="${jdbc.main.username}" />
+		<property name="password" value="${jdbc.main.password}" />
+	</bean>
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:META-INF/ibatis/sql-map-config.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="sqlDaoBaseSupport" abstract="true">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+
+	<!-- 配置信息的DAO -->
+	<bean name="configInstanceDao"
+		class="com.alibaba.doris.admin.dao.impl.ConfigInstanceDaoImpl"
+		parent="sqlDaoBaseSupport" />
+
+	<bean name="physicalNodeDao"
+		class="com.alibaba.doris.admin.dao.impl.PhysicalNodeDaoImpl"
+		parent="sqlDaoBaseSupport" />
+
+	<bean name="namespaceDao"
+		class="com.alibaba.doris.admin.dao.impl.NamespaceDaoImpl"
+		parent="sqlDaoBaseSupport" />
+
+	<!-- Transaction manager for a single JDBC DataSource -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="create*" />
+			<tx:method name="insert*" />
+			<tx:method name="save*" />
+			<tx:method name="add*" />
+			<tx:method name="write*" />
+
+			<tx:method name="update*" />
+			<tx:method name="set*" />
+
+			<tx:method name="delete*" />
+			<tx:method name="remove*" />
+
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:advisor
+			pointcut="execution(public * com.alibaba.doris.common.adminservice.doris.admin.dao.impl.*DaoImpl.*(..))"
+			advice-ref="txAdvice" />
+	</aop:config>
+</beans>

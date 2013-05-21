@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.alibaba.platform.app</groupId>
+		<artifactId>doris.admin.parent</artifactId>
+		<version>0.1.4</version>
+	    <relativePath>../pom.xml</relativePath>
+	</parent>	
+	<groupId>com.alibaba.platform.app</groupId>
+	<artifactId>doris.admin.service.expansion</artifactId>
+	
+	<packaging>jar</packaging>
+
+	<name>doris.admin.service.expansion</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+	  <dependency>
+	      <groupId>com.alibaba.platform.app</groupId>
+		  <artifactId>doris.admin.service.common</artifactId>
+		  <version>${project.version}</version>
+	   </dependency>
+	   
+	   
+	   	  <dependency>
+	      <groupId>com.alibaba.platform.app</groupId>
+		  <artifactId>doris.admin.service.failover</artifactId>
+		  <version>${project.version}</version>
+	   </dependency>
+	</dependencies>
+</project>

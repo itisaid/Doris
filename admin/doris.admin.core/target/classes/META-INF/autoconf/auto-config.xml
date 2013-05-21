@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config description="自动配置">
+
+	<group name="doris database">
+		<property name="doris.database.server.ip" defaultValue="10.20.157.182" description="doris 配置监控数据库 ip" />
+		<property name="doris.database.server.port" defaultValue="3306" description="doris 配置监控数据库服务器端口" />
+		<property name="doris.database.server.schema" defaultValue="doris_config" description="doris的主数据库的名称（schema name）" />
+		<property name="doris.database.server.username" defaultValue="doris" description="doris数据库的用户名" />
+		<property name="doris.database.server.password" defaultValue="doris" description="doris数据库的密码" />
+	</group>
+
+	<group name="doris admin service">
+		<property name="doris.admin.service.forever.fail.time" defaultValue="7200000" description="永久失效等待时间" />
+		<property name="doris.admin.service.node.check.timeout" defaultValue="10000" description="data server心跳检测超时时间" />
+		<property name="doris.admin.service.node.check.retries" defaultValue="3" description="data server心跳检测重试次数" />
+		<property name="doris.admin.service.node.reload.interval" defaultValue="3000" description="管理中心重复加载节点的频次" />
+		<property name="doris.admin.service.route.config.scan.interval" defaultValue="3000" description="管理中心扫描节点路由变更的频次" />
+		<property name="doris.admin.service.node.check.interval" defaultValue="5000" description="管理中心心跳检查data server的频次" />
+		<property name="doris.admin.master.ip" description="主admin机器IP" />
+	</group>
+
+	<script>
+		<generate template="jdbc.properties.vm" destfile="jdbc.properties" charset="UTF-8" />
+		<generate template="doris_admin_service.properties.vm" destfile="doris_admin_service.properties" charset="UTF-8" />
+		<generate template="webconsole.properties.vm" destfile="webconsole.properties" charset="UTF-8" />
+	</script>
+</config>

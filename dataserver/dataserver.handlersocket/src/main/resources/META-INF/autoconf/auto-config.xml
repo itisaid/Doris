@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config description="自动配置">
+	<group name="doris handlersocket">
+	    <property name="host" defaultValue="127.0.0.1" description="handlersocket host name" />
+	    <property name="port" defaultValue="9999" description="handlersocket write and read port" />
+		<property name="databaseName" defaultValue="test" description="dabaseName" />
+	</group>
+	<script>
+		<generate template="default_handlersocket.properties.vm" destfile="default_handlersocket.properties" charset="utf-8" />
+	</script>
+</config>

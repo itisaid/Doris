@@ -1,0 +1,8 @@
+log.storage.path=$!{doris_dataserver_store_path}
+#1M
+log.storage.read.buffer.size=1048576
+#512k
+log.storage.write.buffer.size=1048576
+log.storage.write.direct=true
+#Default max file size is 100M
+log.storage.max.file.size=

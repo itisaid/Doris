@@ -1,0 +1,7 @@
+|connect|
+
+|query|select * from PHYSICAL_NODES where PHYSICAL_ID = 'physical_id'|
+|LOGICAL_ID|PHYSICAL_ID|SERIAL_ID|MACHINE_ID|IP|STATUS|PORT|
+|1|physical_id|1|machineid|127.0.0.1|1|8080|
+
+

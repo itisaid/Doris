@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.alibaba.platform.app</groupId>
+		<artifactId>doris.dataserver.parent</artifactId>		
+		<version>0.1.4</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+  <groupId>com.alibaba.platform.app</groupId>
+  <artifactId>doris.dataserver.core</artifactId>
+
+  <packaging>jar</packaging>
+
+  <name>doris.dataserver.core</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+		<dependency>
+				<groupId>com.alibaba.external</groupId>
+				<artifactId>jakarta.commons.logging</artifactId>
+	  </dependency>
+	  <dependency>
+				<groupId>com.alibaba.external</groupId>
+				<artifactId>xml.dom4j</artifactId>
+	  </dependency>
+	  <dependency>
+			<groupId>com.alibaba.platform.shared</groupId>
+			<artifactId>doris.common</artifactId>
+			<version>${doris_common_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.platform.shared</groupId>
+			<artifactId>doris.common.model</artifactId>
+			<version>${doris_common_version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.platform.shared</groupId>
+			<artifactId>doris.common.route</artifactId>
+			<version>${doris_common_version}</version>
+		</dependency>
+  </dependencies>
+</project>

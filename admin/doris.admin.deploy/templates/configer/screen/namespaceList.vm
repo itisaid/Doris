@@ -1,0 +1,79 @@
+	<script  type="text/javascript">
+	function doRemoveNamespace(name){
+		if(confirm("确认要删除吗？")){
+    		document.getElementById('name').value=name;
+    		document.getElementById('namespaceForm').submit();
+		}
+	}
+    </script>
+	<div class="title"><h2>配置管理&nbsp;>&nbsp;Namespace管理列表</h2></div>
+   ##<div class="crumbs">配置管理&nbsp;>&nbsp;Node管理列表 </div> 
+   
+   #if($isMasterAdmin!="true")
+	<div class="setting_box">
+			<div style="color:red">此Admin为备用机，不提供删除Namespace服务，请等待主Admin服务恢复正常后再行操作</div>
+   </div>
+   #end
+   
+	<div class="num_o">
+	 <div style="color:red">$!message</div>
+     <div class="exceptionDiv">
+	 <form  method="post" name="namespaceForm" id="namespaceForm">
+		$csrfToken.hiddenField
+		
+	<table  border="0" cellspacing="0" cellpadding="0" class="list" name="table_o">
+      <tr>
+		<th scope="col">ID</th>
+        <th scope="col">名称</th>
+        <th scope="col">节点个数</th>
+        <th scope="col">压缩方式</th>
+        <th scope="col">压缩阀值(Byte)</th>
+        <th scope="col">序列化方式</th>
+		 <th scope="col">第一负责人</th>
+        <th scope="col">第二负责人</th>
+        <th scope="col">状态</th>
+        <th scope="col">是否多读</th>
+        <th scope="col">备注</th>
+		#if($isMasterAdmin=="true")
+        <th scope="col">操作</th>
+		#end
+      </tr>
+	  
+	  #foreach($namespace in $namespaceList)
+      <tr>
+		<td >$!namespace.getId()</td>
+        <td >$!namespace.getName()</td>
+        <td >$!namespace.getCopyCount()</td>
+        <td >$!namespace.getCompressMode()</td>
+        <td >$!namespace.getCompressThreshold()</td>
+        <td >
+        #if($!namespace.getSerializeMode()=="com.alibaba.doris.common.serialize.StringSerializer")
+                String
+        #elseif($!namespace.getSerializeMode()=="com.alibaba.doris.common.serialize.JsonSerializer")
+                JSON
+        #else
+                在Doris外自定义序列化方式
+        #end
+        </td>
+		 <td >$!namespace.getFirstOwner()</td>
+        <td >$!namespace.getSecondOwner()</td>
+        <td >$!namespace.getStatus()</td>
+	<td >
+	#if($!namespace.getMultiRead()=="Y")
+		是
+	#else
+		否
+        #end
+	</td>
+        <td >$!namespace.getRemark()</td>
+		#if($isMasterAdmin=="true")
+        <td ><a href="#" onclick="javascript:doRemoveNamespace('$!namespace.getName()')">删除</a></td>
+		#end
+      </tr>
+	  #end
+    </table>
+	<input type="hidden" name="name" id="name" value=""/>
+	<input type="hidden" name="action" id="action" value="NamespaceAction"/>
+	<input type="hidden" name="event_submit_do_remove_namespace" id="event_submit_do_remove_namespace" value="true"  />
+     </form>
+    </div></div>

@@ -1,0 +1,102 @@
+#** -------------------------------------------
+ * 显示所有headers
+ * -------------------------------------------- *#
+#macro (showHead $defaultTitle)
+
+#showTitle ($defaultTitle)
+#showMetaTags ()
+#showHttpEquiv ()
+#showStylesheets ()
+#showJavascripts ()
+
+#end
+
+#** -------------------------------------------
+ * 显示标题，如果未提供标题，则使用默认值
+ * -------------------------------------------- *#
+#macro (showTitle $defaultTitle)
+
+#if( $page.title != "" )
+<title>$page.title</title>
+#else
+<title>$!defaultTitle</title>
+#end
+
+#end
+
+#** -------------------------------------------
+ * 显示meta tags
+ * -------------------------------------------- *#
+#macro (showMetaTags)
+
+#foreach($metaTag in $page.metaTags.keySet())
+<meta name="$metaTag" content="$page.metaTags.get($metaTag)">
+#end
+
+#end
+
+#** -------------------------------------------
+ * 显示meta http-equiv
+ * -------------------------------------------- *#
+#macro (showHttpEquiv)
+
+#foreach($httpEquiv in $page.httpEquivs.keySet())
+<meta http-equiv="$httpEquiv" content="$page.httpEquivs.get($httpEquiv)">
+#end
+
+#end
+
+#** -------------------------------------------
+ * 显示stylesheets
+ * -------------------------------------------- *#
+#macro (showStylesheets)
+
+#foreach( $styleSheet in $page.styleSheets )
+<link rel="stylesheet" href="$styleSheet.Url"
+  #if($styleSheet.Type != "" ) type="$styleSheet.Type" #end
+  #if($styleSheet.Media != "") media="$styleSheet.Media" #end
+  #if($styleSheet.Title != "") title="$styleSheet.Title" #end>
+#end
+
+#end
+
+#** -------------------------------------------
+ * 显示javascripts
+ * -------------------------------------------- *#
+#macro (showJavascripts)
+
+#foreach( $script in $page.scripts )
+<script type="text/javascript" src="$script" language="JavaScript"></script>
+#end
+
+#end
+
+
+#** -------------------------------------------
+ * 显示body attributes
+ * -------------------------------------------- *#
+#macro (bodyAttributes)
+
+#foreach( $attributeName in $page.bodyAttributes.keySet() )
+    $attributeName="$page.bodyAttributes.get($attributeName)"
+#end
+
+#end
+
+#** -------------------------------------------
+ * 显示select box
+ * -------------------------------------------- *#
+#macro (select $name $map $selected $hint)
+
+#set ($_map = $map)
+#set ($_selected = $selected)
+<select name="$name">
+  <option value="">$hint</option>
+
+#foreach ($_key in $_map.keySet())
+  <option value="$_key" #if ($_key == $_selected) selected #end>$_map.get($_key)</option>
+#end
+
+</select>
+
+#end

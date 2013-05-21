@@ -1,0 +1,37 @@
+#!/bin/bash
+
+exit_root () {
+    echo
+    echo "ERROR! root (the superuser) can't run this script."
+    echo
+    exit 1
+}
+
+if [ `id -u` = 0 ] 
+then
+    exit_root
+fi
+
+# preserve current working directory
+cd `dirname $0`/..
+BASE=`pwd`
+#SYSTEM_ROOT=/usr/ali
+#export JAVA_HOME=$SYSTEM_ROOT/java
+LIBCLASSPATH=`echo $BASE/lib/*.jar | tr ' ' ':'`
+
+export CLASSPATH=$LIBCLASSPATH:$BASE/conf
+#echo $CLASSPATH
+echo $BASE
+
+if [ "$LOG_CONFIG" = "" ]; then
+	LOG_CONFIG="$BASE/conf/log4j.xml"
+fi
+
+[ -n "$LOGROOT"] && LOGROOT="log"
+
+#if($doris_dataserver_deploy_type=="release")
+	JAVA_OPTS="-server -Xmx$doris_dataserver_release_memory_size -Xms$doris_dataserver_release_memory_size -XX:PermSize=128m -Xss256k -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=73 -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -Dlog4j.config=$LOG_CONFIG -DlogRoot=log"
+#else
+	JAVA_OPTS="-server -Xms1024m -Xmx1024m -XX:PermSize=128m -XX:+UseConcMarkSweepGC -XX:-DisableExplicitGC -XX:CMSInitiatingOccupancyFraction=55 -Dlog4j.config=$LOG_CONFIG -DlogRoot=log"
+#end
+java $JAVA_OPTS com.alibaba.doris.dataserver.DataServerApp $* 1>stdout 2>stderr &

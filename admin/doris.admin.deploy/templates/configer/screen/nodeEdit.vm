@@ -1,0 +1,49 @@
+ #macro (nodeValidtor $field)
+    #if (!$field.valid) $field.message #end
+ #end
+ <form  method="post" name="physicalNode" id="physicalNodeForm">
+	$csrfToken.hiddenField
+ 	#set ($group = $form.physicalNode.defaultInstance)
+<div class="title"><h2>配置管理&nbsp;&nbsp;>&nbsp;&nbsp;编辑Node</h2></div>
+   ##<div class="crumbs">配置管理&nbsp;&nbsp;>&nbsp;&nbsp;编辑Node</div>  
+   
+   <div class="setting_box">
+	#if($isMasterAdmin!="true")
+		<div style="color:red">此Admin为备用机，不提供编辑节点服务，请等待主Admin服务恢复正常后再行操作</div>
+	#else
+			
+	<table  cellpadding="0" cellspacing="0" class="setting">
+		<tr>
+            <td colspan="3">#nodeValidtor ($group.physicalIdError)</td>
+		</tr>
+		<tr>
+            <td colspan="3">#nodeValidtor ($group.ipAndPortError)</td>
+		</tr>
+		<tr>
+			<th>MACHINE_ID<span style="color:red">*</span></th><td><input name="$group.machineId.key" value="$!node.machineId" class="setting_input" type="text" />#groupError($group.machineId)</td>	
+		</tr>
+		<tr>
+			<th>IP<span style="color:red">*</span></th><td><input name="$group.ip.key" value="$!node.ip" class="setting_input" type="text" />#groupError($group.ip)</td>	
+		</tr>
+		<tr>
+			<th>PORT<span style="color:red">*</span></th><td><input name="$group.port.key" value="$!node.port" class="setting_input" type="text" />#groupError($group.port)</td>	
+		</tr>
+		<tr>
+			<td colspan="3">
+				<input name="$group.physicalId.key" value="$group.ip.value:$group.port.value" type="hidden" />
+				<input type="hidden" name="$group.serialId.key" value="$!node.serialId"/>
+				<input type="hidden" name="nodeId" value="$!node.id"/>
+				<input type="hidden" name="action" value="NodeAddAction"/>
+				<input type="hidden" name="event_submit_do_edit_node" value="true"/>
+			</td>
+		</tr>
+	</table>
+	
+#end
+	</div>
+#if($isMasterAdmin=="true")
+  <div class="btn"><a href="#" onclick="document.getElementById('physicalNodeForm').submit()">确认</a></div><div class="btn"><a href="/configer/node_manage.htm">取消</a></div>
+#end
+</div>
+
+</form>

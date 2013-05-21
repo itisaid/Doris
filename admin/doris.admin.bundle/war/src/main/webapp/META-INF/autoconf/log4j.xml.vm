@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://toolkit.alibaba-inc.com/dtd/log4j/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+    	<param name="target" value="System.out" />
+        <param name="encoding" value="GBK"/>
+        <param name="append" value="true"/> 
+        <param name="threshold" value="debug"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="STDERR" class="org.apache.log4j.ConsoleAppender">
+        <param name="target" value="System.err" />
+        <param name="encoding" value="GBK"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%C %5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="SECURITY" class="org.apache.log4j.ConsoleAppender">
+        <param name="encoding" value="GBK"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-4r [%d{yyyy-MM-dd HH:mm:ss}] %t - %X{req.remoteAddr} %X{req.uri} %X{req.referer} %X{req.userAgent} - %m%n" />
+        </layout>
+    </appender>
+    
+    <appender name="AdminOutLog" class="org.apache.log4j.DailyRollingFileAppender">
+         <param name="file" value="${doris_admin_output}/logs/admin.out.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="debug"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>
+    
+
+    <appender name="AdminServiceLog" class="org.apache.log4j.DailyRollingFileAppender">
+         <param name="file" value="${doris_admin_output}/logs/admin.service.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="debug"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="AdminWebLog" class="org.apache.log4j.DailyRollingFileAppender">
+         <param name="file" value="${doris_admin_output}/logs/admin.web.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="debug"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>    
+    
+    <appender name="DorisCommonLog" class="org.apache.log4j.DailyRollingFileAppender">
+         <param name="file" value="${doris_admin_output}/logs/doris.common.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="debug"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>       
+    
+    <appender name="DorisClientLog" class="org.apache.log4j.DailyRollingFileAppender">
+         <param name="file" value="${doris_admin_output}/logs/doris.client.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="UTF-8"/>
+         <param name="threshold" value="debug"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>       
+    
+   <appender name="AdminErrorLog" class="org.apache.log4j.DailyRollingFileAppender">
+         <param name="file" value="${doris_admin_output}/logs/admin.error.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="error"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>
+    
+	<appender name="DorisMonitorLog" class="org.apache.log4j.DailyRollingFileAppender">
+	   <param name="file" value="${doris_admin_output}/logs/monitor.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="error"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+	</appender>
+
+	<appender name="NodeCheckLog" class="org.apache.log4j.DailyRollingFileAppender">
+	   <param name="file" value="${doris_admin_output}/logs/nodecheck.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="debug"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+	</appender>	
+	
+   <appender name="MigrationLog" class="org.apache.log4j.DailyRollingFileAppender">
+	   <param name="file" value="${doris_admin_output}/logs/migrate.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="debug"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+	</appender>	
+	
+	<appender name="DragoonErrorLog" class="com.alibaba.dragoon.patrol.log4j.PatrolLog4jAppender">
+	   <param name="Threshold" value="ERROR"/>
+	</appender>
+	
+    <logger name="org.apache">
+        <level value="ERROR"/>
+        <appender-ref ref="AdminErrorLog"/>
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="ERROR"/>
+        <appender-ref ref="AdminErrorLog"/>
+    </logger>
+
+
+    <logger name="com.alibaba.doris.common">
+	     #if(${doris_admin_basic_setting_mode} == 'dev')
+	           <level value="DEBUG"/>
+         #elseif (${doris_admin_basic_setting_mode} == 'test')
+	           <level value="INFO"/>
+         #else
+        	   <level value="WARN"/>
+		 #end	
+        <appender-ref ref="DorisCommonLog"/>
+    </logger>
+    
+    <logger name="com.alibaba.doris.client">
+	     #if(${doris_admin_basic_setting_mode} == 'dev')
+	           <level value="DEBUG"/>
+         #elseif (${doris_admin_basic_setting_mode} == 'test')
+	           <level value="INFO"/>
+         #else
+        	   <level value="WARN"/>
+		 #end	
+        <appender-ref ref="DorisClientLog"/>
+    </logger>    
+         
+        
+    <logger name="com.alibaba.doris.admin.service">
+	     #if(${doris_admin_basic_setting_mode} == 'dev')
+	           <level value="DEBUG"/>
+         #elseif (${doris_admin_basic_setting_mode} == 'test')
+	           <level value="INFO"/>
+         #else
+        	   <level value="WARN"/>
+		 #end	
+        <appender-ref ref="AdminServiceLog"/>
+    </logger>
+    
+    <logger name="com.alibaba.doris.admin.web">
+	     #if(${doris_admin_basic_setting_mode} == 'dev')
+	           <level value="DEBUG"/>
+         #elseif (${doris_admin_basic_setting_mode} == 'test')
+	           <level value="INFO"/>
+         #else
+        	   <level value="WARN"/>
+		 #end	
+        <appender-ref ref="AdminWebLog"/>
+    </logger>
+    
+    <logger name="com.alibaba.doris.admin.monitor.SystemLogMonitor">
+        <level value="ERROR"/>
+        <appender-ref ref="DragoonErrorLog"/>
+        <appender-ref ref="DorisMonitorLog"/>
+    </logger>
+
+    <logger name="com.alibaba.doris.admin.service.failover.node.check">
+	     #if(${doris_admin_basic_setting_mode} == 'dev')
+	           <level value="DEBUG"/>
+         #elseif (${doris_admin_basic_setting_mode} == 'test')
+	           <level value="INFO"/>
+         #else
+        	   <level value="WARN"/>
+		 #end	
+        
+        <appender-ref ref="NodeCheckLog"/>
+    </logger>
+    
+    <logger name="com.alibaba.doris.admin.service.failover.processor">
+	     #if(${doris_admin_basic_setting_mode} == 'dev')
+	           <level value="DEBUG"/>
+         #elseif (${doris_admin_basic_setting_mode} == 'test')
+	           <level value="INFO"/>
+         #else
+        	   <level value="WARN"/>
+		 #end	
+        <appender-ref ref="MigrationLog"/>
+    </logger>
+
+    <logger name="com.alibaba.doris.admin.service.failover.migrate">
+	     #if(${doris_admin_basic_setting_mode} == 'dev')
+	           <level value="DEBUG"/>
+         #elseif (${doris_admin_basic_setting_mode} == 'test')
+	           <level value="INFO"/>
+         #else
+        	   <level value="WARN"/>
+		 #end	
+        <appender-ref ref="MigrationLog"/>
+    </logger>  
+    
+    <logger name="com.alibaba.doris.admin.service.expansion">
+	     #if(${doris_admin_basic_setting_mode} == 'dev')
+	           <level value="DEBUG"/>
+         #elseif (${doris_admin_basic_setting_mode} == 'test')
+	           <level value="INFO"/>
+         #else
+        	   <level value="WARN"/>
+		 #end	
+        <appender-ref ref="MigrationLog"/>
+    </logger>       
+        
+    <root>
+	     #if(${doris_admin_basic_setting_mode} != 'run')
+	           <level value="INFO"/>
+         #else
+        	   <level value="ERROR"/>
+		 #end	
+        <appender-ref ref="STDOUT"/>
+    </root>
+    </log4j:configuration>

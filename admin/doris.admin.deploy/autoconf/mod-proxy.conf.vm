@@ -1,0 +1,10 @@
+# Load mod_proxy module
+<IfModule mod_proxy.c>
+   ProxyRequests Off
+   ProxyPreserveHost On
+   <Directory proxy:*>
+        Order deny,allow
+        Allow from all
+   </Directory>
+   ProxyPassMatch ^/((.*).htm|css/(.*)|images/(.*)|js/(.*)|)$ http://localhost:${doris_admin_appserver_port} min=5 smax=16 ttl=600 timeout=300
+</IfModule>

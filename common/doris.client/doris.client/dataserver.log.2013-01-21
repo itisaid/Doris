@@ -1,0 +1,431 @@
+2013-01-21 13:06:57,758 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:06:57,892 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:06:57,900 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:06:57,969 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:07:00,155 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 13:07:00,175 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 13:07:00,235 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 13:08:08,519 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:08:08,647 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:08:08,654 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:08:08,710 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:08:09,590 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 13:08:09,609 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 13:08:09,671 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 13:08:17,289 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:1989
+2013-01-21 13:08:20,425 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:77
+2013-01-21 13:08:20,513 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:63
+2013-01-21 13:08:21,344 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:69
+2013-01-21 13:09:53,582 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:174
+2013-01-21 13:09:53,736 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:150
+2013-01-21 13:10:03,836 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:77
+2013-01-21 13:10:14,088 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:152
+2013-01-21 13:10:24,120 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:18
+2013-01-21 13:10:28,586 [New I/O client worker #1-5] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x0031bcc8, /10.18.216.99:65412 => /10.20.153.85:6003] buffer.readableBytes:8
+2013-01-21 13:10:34,149 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:12
+2013-01-21 13:10:44,170 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:8
+2013-01-21 13:10:44,186 [main] [ERROR](operation.AbstractOperation,183) - LogicFailoverCallbackHandler could not process.
+com.alibaba.doris.client.AccessException: LogicFailoverCallbackHandler could not process.
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.doLogicExecute(LogicFailoverCallbackHandler.java:107)
+	at com.alibaba.doris.client.operation.AbstractOperation.doLogicExecute(AbstractOperation.java:113)
+	at com.alibaba.doris.client.operation.impl.PutOperation$$EnhancerByCGLIB$$e08e19fb.CGLIB$doLogicExecute$10(<generated>)
+	at com.alibaba.doris.client.operation.impl.PutOperation$$EnhancerByCGLIB$$e08e19fb$$FastClassByCGLIB$$ea9432a.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.PutOperation$$EnhancerByCGLIB$$e08e19fb.doLogicExecute(<generated>)
+	at com.alibaba.doris.client.operation.AbstractOperation.execute(AbstractOperation.java:169)
+	at com.alibaba.doris.client.operation.impl.PutOperation.execute(PutOperation.java:54)
+	at com.alibaba.doris.client.operation.impl.PutOperation$$EnhancerByCGLIB$$e08e19fb.CGLIB$execute$1(<generated>)
+	at com.alibaba.doris.client.operation.impl.PutOperation$$EnhancerByCGLIB$$e08e19fb$$FastClassByCGLIB$$ea9432a.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.PutOperation$$EnhancerByCGLIB$$e08e19fb.execute(<generated>)
+	at com.alibaba.doris.client.DataStoreImpl.put(DataStoreImpl.java:89)
+	at com.alibaba.doris.client.MainTestPutsGets.main(MainTestPutsGets.java:24)
+2013-01-21 13:11:27,852 [New I/O client worker #1-6] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x01d6e3d2, /10.18.216.99:65417 => /10.20.153.84:6003] buffer.readableBytes:8
+2013-01-21 13:12:58,308 [New I/O client worker #1-7] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x001d2b8e, /10.18.216.99:65420 => /10.20.153.85:6003] buffer.readableBytes:8
+2013-01-21 13:14:02,896 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:14:02,962 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:14:02,963 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:14:03,004 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:14:03,309 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 13:14:03,317 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 13:14:03,344 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 13:14:04,110 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:240
+2013-01-21 13:14:15,081 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:125
+2013-01-21 13:14:15,190 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:74
+2013-01-21 13:14:25,328 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:128
+2013-01-21 13:14:42,847 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:88
+2013-01-21 13:14:52,957 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:84
+2013-01-21 13:15:03,130 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:167
+2013-01-21 13:15:13,225 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:89
+2013-01-21 13:15:23,246 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:14
+2013-01-21 13:15:33,294 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:11
+2013-01-21 13:15:33,326 [main] [ERROR](operation.AbstractOperation,183) - LogicFailoverCallbackHandler could not process.
+com.alibaba.doris.client.AccessException: LogicFailoverCallbackHandler could not process.
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.doLogicExecute(LogicFailoverCallbackHandler.java:107)
+	at com.alibaba.doris.client.operation.AbstractOperation.doLogicExecute(AbstractOperation.java:113)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$b27eef2f.CGLIB$doLogicExecute$10(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$b27eef2f$$FastClassByCGLIB$$19032528.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$b27eef2f.doLogicExecute(<generated>)
+	at com.alibaba.doris.client.operation.AbstractOperation.execute(AbstractOperation.java:169)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$b27eef2f.CGLIB$execute$6(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$b27eef2f$$FastClassByCGLIB$$19032528.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$b27eef2f.execute(<generated>)
+	at com.alibaba.doris.client.DataStoreImpl.get(DataStoreImpl.java:132)
+	at com.alibaba.doris.client.MainTestPutsGets.main(MainTestPutsGets.java:17)
+2013-01-21 13:15:37,026 [New I/O client worker #1-5] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x011a700a, /10.18.216.99:65473 => /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 13:18:05,530 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:18:05,625 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:18:05,627 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:18:05,674 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:18:06,084 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 13:18:06,093 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 13:18:06,122 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 13:18:07,453 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:384
+2013-01-21 13:18:11,536 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:91
+2013-01-21 13:18:11,629 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:67
+2013-01-21 13:18:49,920 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:71
+2013-01-21 13:19:00,061 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:137
+2013-01-21 13:19:10,153 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:83
+2013-01-21 13:19:20,241 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:83
+2013-01-21 13:19:30,371 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:116
+2013-01-21 13:19:40,400 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:15
+2013-01-21 13:19:52,633 [main] [ERROR](operation.AbstractOperation,183) - LogicFailoverCallbackHandler could not process.
+com.alibaba.doris.client.AccessException: LogicFailoverCallbackHandler could not process.
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.doLogicExecute(LogicFailoverCallbackHandler.java:107)
+	at com.alibaba.doris.client.operation.AbstractOperation.doLogicExecute(AbstractOperation.java:113)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$35b5482e.CGLIB$doLogicExecute$10(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$35b5482e$$FastClassByCGLIB$$ec03a1a1.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$35b5482e.doLogicExecute(<generated>)
+	at com.alibaba.doris.client.operation.AbstractOperation.execute(AbstractOperation.java:169)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$35b5482e.CGLIB$execute$6(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$35b5482e$$FastClassByCGLIB$$ec03a1a1.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$35b5482e.execute(<generated>)
+	at com.alibaba.doris.client.DataStoreImpl.get(DataStoreImpl.java:132)
+	at com.alibaba.doris.client.MainTestPutsGets.main(MainTestPutsGets.java:17)
+2013-01-21 13:21:33,350 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:21:33,448 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:21:33,450 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:21:33,504 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:21:33,913 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 13:21:34,978 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 13:21:35,006 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 13:21:36,475 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:497
+2013-01-21 13:21:46,009 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:65
+2013-01-21 13:22:23,967 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:111
+2013-01-21 13:23:32,354 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:140
+2013-01-21 13:24:03,605 [New I/O client worker #1-4] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x006c137c, /10.18.216.99:49222 => /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 13:25:35,442 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:126
+2013-01-21 13:26:17,438 [New I/O client worker #1-5] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x00d0005e, /10.18.216.99:49233 => /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 13:29:14,521 [New I/O client worker #1-5] [ERROR](netty.DorisClientEncodeAndDecodeHandler,241) - To notify send CheckQueueCommand.
+2013-01-21 13:30:11,170 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:136
+2013-01-21 13:31:55,122 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:187
+2013-01-21 13:39:03,830 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:39:04,032 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:39:04,040 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:39:04,237 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:39:05,252 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 13:39:05,265 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 13:39:05,311 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 13:39:28,756 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:714
+2013-01-21 13:39:43,900 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:69
+2013-01-21 13:39:43,988 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:54
+2013-01-21 13:41:08,667 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x0170a650, /10.18.216.99:49385 => /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 13:41:08,669 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,243) - To notify send CheckQueueCommand.
+2013-01-21 13:41:28,161 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,65) - Send CheckQueueCommand.
+2013-01-21 13:46:08,018 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:46:08,120 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:46:08,121 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:46:08,177 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:46:08,642 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 13:46:08,653 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 13:46:08,680 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 13:46:12,411 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:939
+2013-01-21 13:46:13,589 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:97
+2013-01-21 13:46:13,678 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:58
+2013-01-21 13:56:14,384 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x01c160cb, /10.18.216.99:49434 => /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 13:56:14,385 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,243) - To notify send CheckQueueCommand.
+2013-01-21 13:56:40,941 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,65) - Send CheckQueueCommand.
+2013-01-21 13:57:49,567 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,198) - Check Queue command: from [id: 0x01c160cb, /10.18.216.99:49434 => /10.20.153.85:6003]queue size:1, skip bytes:
+2013-01-21 13:58:52,374 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:58:52,464 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:58:52,466 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 13:58:52,523 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 13:58:52,929 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 13:58:53,107 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 13:58:53,134 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 13:58:58,620 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:798
+2013-01-21 13:58:59,764 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:67
+2013-01-21 13:58:59,849 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:59
+2013-01-21 13:59:50,306 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x007b4ed7, /10.18.216.99:49480 => /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 13:59:50,307 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,243) - To notify send CheckQueueCommand.
+2013-01-21 14:01:00,336 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,117) - Couldn't sent command to:[id: 0x007b4ed7, /10.18.216.99:49480 => /10.20.153.85:6003]; close channel;
+2013-01-21 14:01:04,526 [New I/O client worker #1-2] [ERROR](netty.DorisClientHandler,44) - org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext@9bad4f
+java.lang.NullPointerException
+	at com.alibaba.doris.client.net.netty.DorisClientEncodeAndDecodeHandler.decode(DorisClientEncodeAndDecodeHandler.java:184)
+	at org.jboss.netty.handler.codec.frame.FrameDecoder.callDecode(FrameDecoder.java:282)
+	at org.jboss.netty.handler.codec.frame.FrameDecoder.messageReceived(FrameDecoder.java:214)
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:274)
+	at org.jboss.netty.channel.Channels.fireMessageReceived(Channels.java:261)
+	at org.jboss.netty.channel.socket.nio.NioWorker.read(NioWorker.java:350)
+	at org.jboss.netty.channel.socket.nio.NioWorker.processSelectedKeys(NioWorker.java:281)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:201)
+	at org.jboss.netty.util.internal.IoWorkerRunnable.run(IoWorkerRunnable.java:46)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:619)
+2013-01-21 14:01:04,530 [New I/O client worker #1-2] [ERROR](netty.DorisClientHandler,44) - org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext@9bad4f
+java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.ensureWriteOpen(SocketChannelImpl.java:126)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:324)
+	at org.jboss.netty.channel.socket.nio.SocketSendBufferPool$PooledSendBuffer.transferTo(SocketSendBufferPool.java:243)
+	at org.jboss.netty.channel.socket.nio.NioWorker.write0(NioWorker.java:470)
+	at org.jboss.netty.channel.socket.nio.NioWorker.writeFromTaskLoop(NioWorker.java:393)
+	at org.jboss.netty.channel.socket.nio.NioSocketChannel$WriteTask.run(NioSocketChannel.java:268)
+	at org.jboss.netty.channel.socket.nio.NioWorker.processWriteTaskQueue(NioWorker.java:269)
+	at org.jboss.netty.channel.socket.nio.NioWorker.run(NioWorker.java:200)
+	at org.jboss.netty.util.internal.IoWorkerRunnable.run(IoWorkerRunnable.java:46)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:619)
+2013-01-21 14:02:06,801 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x007b4ed7, /10.18.216.99:49480 :> /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 14:02:22,217 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,243) - To notify send CheckQueueCommand.
+2013-01-21 14:45:03,276 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,179) - Received NULL_COMMAND: from channel:[id: 0x007b4ed7, /10.18.216.99:49480 :> /10.20.153.85:6003]
+2013-01-21 14:45:12,226 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,65) - Send CheckQueueCommand.
+2013-01-21 14:45:12,229 [main] [ERROR](netty.DorisClientHandler,44) - org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext@9bad4f
+java.nio.channels.ClosedChannelException
+	at org.jboss.netty.channel.socket.nio.NioWorker.cleanUpWriteBuffer(NioWorker.java:649)
+	at org.jboss.netty.channel.socket.nio.NioWorker.writeFromUserCode(NioWorker.java:370)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.eventSunk(NioClientSocketPipelineSink.java:117)
+	at org.jboss.netty.channel.Channels.write(Channels.java:632)
+	at com.alibaba.doris.client.net.netty.DorisClientEncodeAndDecodeHandler.writeCommand(DorisClientEncodeAndDecodeHandler.java:80)
+	at com.alibaba.doris.client.net.netty.DorisClientEncodeAndDecodeHandler.handleDownstream(DorisClientEncodeAndDecodeHandler.java:68)
+	at org.jboss.netty.channel.Channels.write(Channels.java:611)
+	at org.jboss.netty.channel.Channels.write(Channels.java:578)
+	at org.jboss.netty.channel.AbstractChannel.write(AbstractChannel.java:259)
+	at com.alibaba.doris.client.net.netty.DorisClientHandler.get(DorisClientHandler.java:86)
+	at com.alibaba.doris.client.net.netty.NettyConnectionImpl.get(NettyConnectionImpl.java:86)
+	at com.alibaba.doris.client.operation.impl.GetOperation$1.execute(GetOperation.java:73)
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.processCallbackExecute(LogicFailoverCallbackHandler.java:216)
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.processClientConnectionException(LogicFailoverCallbackHandler.java:209)
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.doLogicExecute(LogicFailoverCallbackHandler.java:101)
+	at com.alibaba.doris.client.operation.AbstractOperation.doLogicExecute(AbstractOperation.java:113)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.CGLIB$doLogicExecute$10(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b$$FastClassByCGLIB$$4f1de125.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.doLogicExecute(<generated>)
+	at com.alibaba.doris.client.operation.AbstractOperation.execute(AbstractOperation.java:169)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.CGLIB$execute$6(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b$$FastClassByCGLIB$$4f1de125.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.execute(<generated>)
+	at com.alibaba.doris.client.DataStoreImpl.get(DataStoreImpl.java:132)
+	at com.alibaba.doris.client.MainTestPutsGets.main(MainTestPutsGets.java:17)
+2013-01-21 14:45:18,930 [main] [ERROR](pool.ConnectionPool,89) - Open connection failed. 
+com.alibaba.doris.client.net.exception.ClientConnectionException: Connecting remote server failed. The connection has openned before. Ip address:/10.20.153.85:6003
+	at com.alibaba.doris.client.net.netty.NettyConnectionImpl.open(NettyConnectionImpl.java:70)
+	at com.alibaba.doris.client.pool.ConnectionPool.openConnection(ConnectionPool.java:87)
+	at com.alibaba.doris.client.pool.ConnectionPool.checkConnection(ConnectionPool.java:75)
+	at com.alibaba.doris.client.pool.ConnectionPool.getConnection(ConnectionPool.java:44)
+	at com.alibaba.doris.client.DefaultDataSourceImpl.getConnection(DefaultDataSourceImpl.java:17)
+	at com.alibaba.doris.client.operation.impl.GetOperation$1.execute(GetOperation.java:71)
+	at com.alibaba.doris.client.operation.failover.impl.PeerFailoverCallbackHandler.doPeerExecute(PeerFailoverCallbackHandler.java:49)
+	at com.alibaba.doris.client.operation.AbstractOperation.doPeerExecute(AbstractOperation.java:136)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.CGLIB$doPeerExecute$11(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b$$FastClassByCGLIB$$4f1de125.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.doPeerExecute(<generated>)
+	at com.alibaba.doris.client.operation.AbstractOperation$1.execute(AbstractOperation.java:100)
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.doLogicExecute(LogicFailoverCallbackHandler.java:64)
+	at com.alibaba.doris.client.operation.AbstractOperation.doLogicExecute(AbstractOperation.java:113)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.CGLIB$doLogicExecute$10(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b$$FastClassByCGLIB$$4f1de125.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.doLogicExecute(<generated>)
+	at com.alibaba.doris.client.operation.AbstractOperation.execute(AbstractOperation.java:169)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.CGLIB$execute$6(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b$$FastClassByCGLIB$$4f1de125.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.execute(<generated>)
+	at com.alibaba.doris.client.DataStoreImpl.get(DataStoreImpl.java:132)
+	at com.alibaba.doris.client.MainTestPutsGets.main(MainTestPutsGets.java:18)
+2013-01-21 14:45:18,971 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6003
+2013-01-21 14:45:19,161 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:188
+2013-01-21 14:46:29,177 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,117) - Couldn't sent command to:[id: 0x00d8978c, /10.18.216.99:49840 => /10.20.153.85:6003]; close channel;
+2013-01-21 14:46:29,184 [main] [ERROR](netty.DorisClientHandler,44) - org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext@d38c3d
+java.nio.channels.ClosedChannelException
+	at org.jboss.netty.channel.socket.nio.NioWorker.cleanUpWriteBuffer(NioWorker.java:649)
+	at org.jboss.netty.channel.socket.nio.NioWorker.close(NioWorker.java:605)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.eventSunk(NioClientSocketPipelineSink.java:91)
+	at com.alibaba.doris.client.net.netty.DorisClientEncodeAndDecodeHandler.handleDownstream(DorisClientEncodeAndDecodeHandler.java:53)
+	at org.jboss.netty.channel.Channels.close(Channels.java:720)
+	at com.alibaba.doris.client.net.netty.DorisClientEncodeAndDecodeHandler.writeCommand(DorisClientEncodeAndDecodeHandler.java:119)
+	at com.alibaba.doris.client.net.netty.DorisClientEncodeAndDecodeHandler.handleDownstream(DorisClientEncodeAndDecodeHandler.java:68)
+	at org.jboss.netty.channel.Channels.write(Channels.java:611)
+	at org.jboss.netty.channel.Channels.write(Channels.java:578)
+	at org.jboss.netty.channel.AbstractChannel.write(AbstractChannel.java:259)
+	at com.alibaba.doris.client.net.netty.DorisClientHandler.get(DorisClientHandler.java:86)
+	at com.alibaba.doris.client.net.netty.NettyConnectionImpl.get(NettyConnectionImpl.java:86)
+	at com.alibaba.doris.client.operation.impl.GetOperation$1.execute(GetOperation.java:73)
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.processCallbackExecute(LogicFailoverCallbackHandler.java:216)
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.processClientConnectionException(LogicFailoverCallbackHandler.java:209)
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.doLogicExecute(LogicFailoverCallbackHandler.java:101)
+	at com.alibaba.doris.client.operation.AbstractOperation.doLogicExecute(AbstractOperation.java:113)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.CGLIB$doLogicExecute$10(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b$$FastClassByCGLIB$$4f1de125.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.doLogicExecute(<generated>)
+	at com.alibaba.doris.client.operation.AbstractOperation.execute(AbstractOperation.java:169)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.CGLIB$execute$6(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b$$FastClassByCGLIB$$4f1de125.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$c64b542b.execute(<generated>)
+	at com.alibaba.doris.client.DataStoreImpl.get(DataStoreImpl.java:132)
+	at com.alibaba.doris.client.MainTestPutsGets.main(MainTestPutsGets.java:18)
+2013-01-21 14:48:54,285 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 14:48:54,391 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 14:48:54,392 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 14:48:54,442 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 14:48:54,827 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 14:48:55,104 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 14:48:55,130 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 14:49:01,376 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:807
+2013-01-21 14:49:02,589 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:70
+2013-01-21 14:49:02,686 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:66
+2013-01-21 14:50:06,457 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x0134ae32, /10.18.216.99:49863 => /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 14:50:06,459 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,243) - To notify send CheckQueueCommand.
+2013-01-21 14:50:31,879 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,65) - Send CheckQueueCommand.
+2013-01-21 14:53:24,711 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,198) - Check Queue command: from [id: 0x0134ae32, /10.18.216.99:49863 => /10.20.153.85:6003]queue size:1, skip bytes:
+2013-01-21 14:55:48,096 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,117) - Couldn't sent command to:[id: 0x0134ae32, /10.18.216.99:49863 => /10.20.153.85:6003]; close channel;
+2013-01-21 14:55:48,136 [main] [ERROR](netty.DorisClientHandler,44) - org.jboss.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext@bafda6
+java.nio.channels.ClosedChannelException
+	at org.jboss.netty.channel.socket.nio.NioWorker.cleanUpWriteBuffer(NioWorker.java:649)
+	at org.jboss.netty.channel.socket.nio.NioWorker.close(NioWorker.java:605)
+	at org.jboss.netty.channel.socket.nio.NioClientSocketPipelineSink.eventSunk(NioClientSocketPipelineSink.java:91)
+	at com.alibaba.doris.client.net.netty.DorisClientEncodeAndDecodeHandler.handleDownstream(DorisClientEncodeAndDecodeHandler.java:53)
+	at org.jboss.netty.channel.Channels.close(Channels.java:720)
+	at com.alibaba.doris.client.net.netty.DorisClientEncodeAndDecodeHandler.writeCommand(DorisClientEncodeAndDecodeHandler.java:119)
+	at com.alibaba.doris.client.net.netty.DorisClientEncodeAndDecodeHandler.handleDownstream(DorisClientEncodeAndDecodeHandler.java:68)
+	at org.jboss.netty.channel.Channels.write(Channels.java:611)
+	at org.jboss.netty.channel.Channels.write(Channels.java:578)
+	at org.jboss.netty.channel.AbstractChannel.write(AbstractChannel.java:259)
+	at com.alibaba.doris.client.net.netty.DorisClientHandler.get(DorisClientHandler.java:86)
+	at com.alibaba.doris.client.net.netty.NettyConnectionImpl.get(NettyConnectionImpl.java:86)
+	at com.alibaba.doris.client.operation.impl.GetOperation$1.execute(GetOperation.java:73)
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.processCallbackExecute(LogicFailoverCallbackHandler.java:216)
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.processClientConnectionException(LogicFailoverCallbackHandler.java:209)
+	at com.alibaba.doris.client.operation.failover.impl.LogicFailoverCallbackHandler.doLogicExecute(LogicFailoverCallbackHandler.java:101)
+	at com.alibaba.doris.client.operation.AbstractOperation.doLogicExecute(AbstractOperation.java:113)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$2fea8bd1.CGLIB$doLogicExecute$10(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$2fea8bd1$$FastClassByCGLIB$$abc0d53c.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$2fea8bd1.doLogicExecute(<generated>)
+	at com.alibaba.doris.client.operation.AbstractOperation.execute(AbstractOperation.java:169)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$2fea8bd1.CGLIB$execute$6(<generated>)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$2fea8bd1$$FastClassByCGLIB$$abc0d53c.invoke(<generated>)
+	at net.sf.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:167)
+	at com.alibaba.doris.dproxy.InterceptorGroup.intercept(InterceptorGroup.java:92)
+	at com.alibaba.doris.client.operation.impl.GetOperation$$EnhancerByCGLIB$$2fea8bd1.execute(<generated>)
+	at com.alibaba.doris.client.DataStoreImpl.get(DataStoreImpl.java:132)
+	at com.alibaba.doris.client.MainTestPutsGets.main(MainTestPutsGets.java:19)
+2013-01-21 14:55:50,331 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x0134ae32, /10.18.216.99:49863 :> /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 14:55:50,332 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,243) - To notify send CheckQueueCommand.
+2013-01-21 14:58:33,126 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 14:58:33,234 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 14:58:33,235 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 14:58:33,301 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 14:58:33,723 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 14:58:33,732 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 14:58:33,764 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 14:58:44,147 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:1041
+2013-01-21 14:59:03,228 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:57
+2013-01-21 14:59:03,307 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:54
+2013-01-21 15:00:38,247 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x017e53c9, /10.18.216.99:49908 => /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 15:00:38,248 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,243) - To notify send CheckQueueCommand.
+2013-01-21 15:04:59,228 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 15:04:59,333 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 15:04:59,334 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 15:04:59,377 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 15:04:59,671 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 15:04:59,677 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 15:04:59,693 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 15:05:05,262 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:865
+2013-01-21 15:05:06,597 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:62
+2013-01-21 15:05:06,670 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:52
+2013-01-21 15:06:17,400 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x0037a04c, /10.18.216.99:49954 => /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 15:06:17,401 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,243) - To notify send CheckQueueCommand.
+2013-01-21 15:06:31,148 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,65) - Send CheckQueueCommand.
+2013-01-21 15:07:10,994 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,198) - Check Queue command: from [id: 0x0037a04c, /10.18.216.99:49954 => /10.20.153.85:6003]queue size:1, skip bytes:
+2013-01-21 15:11:56,047 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 15:11:56,141 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 15:11:56,143 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 15:11:56,201 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 15:11:56,538 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 15:11:56,546 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 15:11:56,569 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 15:12:03,528 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:962
+2013-01-21 15:12:04,882 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:83
+2013-01-21 15:12:04,968 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:59
+2013-01-21 15:12:39,122 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x003b3757, /10.18.216.99:49987 => /10.20.153.85:6003] buffer.readableBytes:49
+2013-01-21 15:13:21,412 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,172) - Failed to receive command from queue. (The queue size is 0.) channel:[id: 0x003b3757, /10.18.216.99:49987 => /10.20.153.85:6003] buffer.readableBytes:98
+2013-01-21 15:13:47,726 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,243) - To notify send CheckQueueCommand.
+2013-01-21 15:14:33,870 [main] [ERROR](netty.DorisClientEncodeAndDecodeHandler,65) - Send CheckQueueCommand. to channel:[id: 0x003b3757, /10.18.216.99:49987 => /10.20.153.85:6003]
+2013-01-21 15:16:35,463 [New I/O client worker #1-2] [ERROR](netty.DorisClientEncodeAndDecodeHandler,198) - Received checkQueueCommand: from [id: 0x003b3757, /10.18.216.99:49987 => /10.20.153.85:6003]queue size:1, skip bytes:
+2013-01-21 15:18:25,394 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6001 time:325
+2013-01-21 15:18:25,489 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6001 time:87
+2013-01-21 15:18:25,561 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6002 time:57
+2013-01-21 15:18:25,644 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6004 time:69
+2013-01-21 15:18:25,716 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6004 time:68
+2013-01-21 15:18:25,759 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6005 time:7
+2013-01-21 15:18:26,604 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6005 time:6
+2013-01-21 15:18:28,324 [main] [INFO ](client.DataSourceManagerImpl,127) - Try to close all datasources.
+2013-01-21 15:18:28,407 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6005
+2013-01-21 15:18:28,408 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.0, ip=10.20.153.85, port=6005]
+2013-01-21 15:18:28,419 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6004
+2013-01-21 15:18:28,429 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.1, ip=10.20.153.85, port=6004]
+2013-01-21 15:18:28,430 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6003
+2013-01-21 15:18:28,432 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.2, ip=10.20.153.85, port=6003]
+2013-01-21 15:18:28,440 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6002
+2013-01-21 15:18:28,444 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.3, ip=10.20.153.85, port=6002]
+2013-01-21 15:18:28,449 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6001
+2013-01-21 15:18:28,468 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.4, ip=10.20.153.85, port=6001]
+2013-01-21 15:18:28,471 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6005
+2013-01-21 15:18:28,471 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.0, ip=10.20.153.84, port=6005]
+2013-01-21 15:18:28,474 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6004
+2013-01-21 15:18:28,477 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.1, ip=10.20.153.84, port=6004]
+2013-01-21 15:18:28,479 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6003
+2013-01-21 15:18:28,480 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.2, ip=10.20.153.84, port=6003]
+2013-01-21 15:18:28,483 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6002
+2013-01-21 15:18:28,484 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.3, ip=10.20.153.84, port=6002]
+2013-01-21 15:18:28,486 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6001
+2013-01-21 15:18:28,487 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.4, ip=10.20.153.84, port=6001]
+2013-01-21 15:18:28,488 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  0.0, ip=10.20.153.85, port=8001]
+2013-01-21 15:18:28,489 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  0.1, ip=10.20.153.84, port=8001]
+2013-01-21 15:18:28,489 [main] [INFO ](client.DataSourceManagerImpl,148) - Finish close all datasources. Total count: 12
+2013-01-21 15:20:58,147 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 15:20:58,221 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 15:20:58,222 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-01-21 15:20:58,265 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-01-21 15:20:58,520 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-01-21 15:20:58,527 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-01-21 15:20:58,549 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-01-21 15:21:09,032 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:888
+2013-01-21 15:21:10,283 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:63
+2013-01-21 15:21:10,412 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:101

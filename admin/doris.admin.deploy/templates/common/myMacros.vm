@@ -1,0 +1,15 @@
+#macro(groupError $field)
+	#if(!$field.valid)
+		<span class="error">$field.message</span>
+	#elseif($field.value != "")
+		<span class="right">&nbsp;</span>
+	#end
+#end
+
+#macro(error $field $value)
+	#if($field && !$field.valid)
+		<span class="error">$field.message</span>
+	#elseif($value && $value != "")
+		<span class="right">&nbsp;</span>
+	#end
+#end

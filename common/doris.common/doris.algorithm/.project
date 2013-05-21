@@ -1,0 +1,13 @@
+<projectDescription>
+  <name>doris.algorithm-0.1.6.1</name>
+  <comment>Super POM for Pampas Projects</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

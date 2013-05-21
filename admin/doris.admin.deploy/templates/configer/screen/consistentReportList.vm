@@ -1,0 +1,180 @@
+<div class="title"><h2>一致性问题报告列表</h2></div>
+
+ #if($isMasterAdmin!="true")
+	<div class="setting_box">
+			<div style="color:red">此Admin为备用机，不提供删除一致性问题报告的服务，请等待主Admin服务恢复正常后再行操作</div>
+   </div>
+ #end
+ 
+ #if($!deleteRows)
+		<div class="setting_box">
+			<div style="color:green">已成功删除$!{deleteRows}条记录</div>
+		</div>
+ #end
+ 
+ <div class="setting_box">    
+ <div class="search_list">
+     <form id="consistentReportQueryForm" name="consistentReportQueryForm" method="post">
+	 <input type="hidden" name="currentpage" id="currentpage"/>
+	 <table cellpadding="0" cellspacing="0">
+       <tr>
+         <th>开始时间:</th><td><input class="DatePicker"  tabIndex="1" id="startTime" name="startTime" value="$!startTime" type="text" onchanged="javascript:alert('changed');" /></td>
+        <th>结束时间:</th><td><input class="DatePicker"  tabIndex="1" id="endTime" name="endTime" value="$!endTime" type="text" /></td>
+      
+		<th>报告类型:</th>
+		<td><select   name="errorType" id="errorType" >
+				<option value="">All</option>
+				<option #if($errorType == 'read') SELECTED #end value="read">read</option>
+				<option #if($errorType == 'write') SELECTED #end value="write">write</option>
+        </select>
+			
+		</td>
+		 <td>
+			<div class="btn"><a href="#"  onclick="javascript:resetForm()">清空</a></div>
+			<div class="btn"><a href="#"  onclick="javascript:document.getElementById('consistentReportQueryForm').submit()">提交查询</a></div>
+			#if($isMasterAdmin == "true")
+				<a href="#" title="删除所选时间段内所有的一致性问题报告" onclick="javascript:doDeleteByDate();">按该时间段批量删除</a>
+			#end
+		 </td>
+       </tr>
+     </table>
+     </form>
+   </div>   
+   
+    #if($isMasterAdmin == "true")
+       <div>
+    	<a href="#" onclick="javascript:doBatchDelete()">删除选中</a>
+    	<a href="#" onclick="javascript:doSelectAll();">全选</a>
+    	<a href="#" onclick="javascript:doCancelAll();">取消全选</a>
+       </div>
+   #end
+   
+	<div class="num_o">
+        <table  border="0" cellspacing="0" cellpadding="0" class="list" name="table_o">
+          <tr>
+			#if($isMasterAdmin == "true")
+			<th scope="col"></th>
+			#end
+        	<th scope="col">ID</th>
+            <th scope="col">报告时间</th>
+            <th scope="col">报告类型</th>
+            <th scope="col">NamespaceId</th>
+            <th scope="col">key</th>
+            <th scope="col">时间戳</th>
+            <th scope="col">物理节点ip</th>
+            <th scope="col">客户端ip</th>
+            <th scope="col">异常信息</th>
+        	#if($isMasterAdmin=="true")
+            <th scope="col">操作</th>
+        	#end
+          </tr>
+          
+		  <form  method="post" name="consistentReportForm" id="consistentReportForm">
+            	$csrfToken.hiddenField
+            	<input type="hidden" name="action" id="action" value="ConsistentReportAction"/>
+            	<input type="hidden" name="event_submit_do_remove_consistent_report" value="nothing"  />
+            	<input type="hidden" id="consistentReportIds" name="consistentReportIds" value="" />
+            
+              #foreach($consistentReport in $consistentReportList)
+              <tr>
+				#if($isMasterAdmin == "true")
+					<td > <input type="checkbox" id="$!consistentReport.getId()" name="selectedCheckbox"/> </td>
+				#end
+            	<td >$!consistentReport.getId()</td>
+                <td >$!consistentReport.getGmtCreate()</td>
+                <td >$!consistentReport.getErrorType()</td>
+                <td >$!consistentReport.getNamespaceId()</td>
+                <td >$!consistentReport.getKeyStr()</td>
+                <td >$!consistentReport.getTimestamp()</td>
+                <td >$!consistentReport.getPhisicalNodeIps()</td>
+                <td >$!consistentReport.getClientIp()</td>
+                <td >$!consistentReport.getExceptionMsg()</td>
+            	#if($isMasterAdmin=="true")
+                <td ><a href="#" onclick="javascript:doRemoveConsistentReport('$!consistentReport.getId()')">删除</a></td>
+            	#end
+              </tr>
+              #end
+		  </form>
+        </table>
+    </div>
+	
+	$control.setTemplate("pagination.vm").setParameter("pageView",$!pageView).setParameter("queryForm","consistentReportQueryForm")
+ </div>
+	
+<script  type="text/javascript">
+	function doRemoveConsistentReport(id){
+		if(!confirm("确认要删除吗？")){
+			return false;
+		}
+		
+		document.getElementById('consistentReportIds').value=id;
+		document.getElementById('consistentReportForm').submit();
+	}
+	
+    function resetForm(){
+    	document.getElementById('startTime').value='';
+    	document.getElementById('endTime').value='';
+    	document.getElementById('errorType').value='';
+    }
+	
+	function doSelectAll(){
+		var eles = document.getElementsByName("selectedCheckbox");
+		for(var i=0; i<eles.length;i++){
+			eles[i].checked=true;
+		}
+	}
+	function doCancelAll(){
+		var eles = document.getElementsByName("selectedCheckbox");
+		for(var i=0; i<eles.length;i++){
+			eles[i].checked=false;
+		}
+	}
+	function doBatchDelete(){
+		var eles = document.getElementsByName("selectedCheckbox");
+		var selectedIds = "";
+		for(var i=0; i<eles.length;i++){
+			if(eles[i].checked == true){
+				selectedIds = selectedIds + eles[i].id + ",";
+			}
+		}
+		
+		if(selectedIds.length <= 0){
+			alert("请选择要删除的行！");
+			return false;
+		}
+		
+		
+		if(!confirm("确认要删除吗？")){
+			return false;
+		}
+		
+		document.getElementById('consistentReportIds').value=selectedIds;
+		document.getElementById('consistentReportForm').submit();
+		
+	}
+	
+	function doDeleteByDate(){
+		document.getElementById('deleteStartTime').value = document.getElementById('startTime').value;
+		document.getElementById('deleteEndTime').value = document.getElementById('endTime').value;
+		
+		if(document.getElementById('deleteStartTime').value.length == 0 || document.getElementById('deleteEndTime').value.length == 0){
+			alert("请选择开始时间和结束时间！");
+			return false;
+		}
+
+		var tipMsg = "确认要删除从" + document.getElementById('deleteStartTime').value + "到" + document.getElementById('deleteEndTime').value + "的所有记录吗?";
+		if(!confirm(tipMsg)){
+			return false;
+		}
+		
+		document.getElementById('batchDeleteForm').submit();
+	}
+</script>
+
+<form id="batchDeleteForm" name="batchDeleteForm" method="post">
+	$csrfToken.hiddenField
+	<input type="hidden" id="deleteStartTime" name="deleteStartTime" value="$!startTime" />
+    <input type="hidden" id="deleteEndTime" name="deleteEndTime" value="$!endTime" />
+	<input type="hidden" name="action" value="ConsistentReportAction"/>
+	<input type="hidden" name="event_submit_do_batch_delete" value="nothing"  />
+</form>

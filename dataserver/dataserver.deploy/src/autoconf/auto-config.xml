@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config description="自动配置">
+	<group name="doris dataServer">
+		<property name="doris.config.adminserver.main.url" description="doris admin 主服务器连接，例如：http://doris-test.alibaba-inc.com:8087/doris.admin" />
+		<property name="doris.config.adminserver.backup.url" description="doris admin 备用服务器连接，例如：http://doris-test.alibaba-inc.com:8087/doris.admin" />
+		<property name="doris.dataserver.port" defaultValue="9000" description="doris 配置监控数据库服务器端口" />
+		<property name="doris.dataserver.threads" defaultValue="48" description="配置DataServer服务线程数" />
+		<property name="doris.dataserver.store.type" defaultValue="bdb" description="dataserver 存储类型，可选项(bdb，log ,mysql)(如果该dataserver为临时节点，必须使用log类型)" />
+		<property name="doris.dataserver.release.memory.size" defaultValue="6g" description="设置 dataserver release版本的jvm内存大小。默认为6G " />
+		
+		<property name="doris.dataserver.store.db.driverclassname" defaultValue="com.mysql.jdbc.Driver" description="配置Mysql存储层的JDBC驱动" />
+		<property name="doris.dataserver.store.db.url" defaultValue="jdbc:mysql://10.20.157.183:3306/dorisstore" description="配置Mysql存储层的db url" />
+		<property name="doris.dataserver.store.db.username"  defaultValue="dorisstore" description="配置Mysql存储层连接数据库的用户名"  />
+		<property name="doris.dataserver.store.db.password" defaultValue="dorisstore" description="配置Mysql存储层连接数据库的密码"/>
+		<property name="doris.dataserver.deploy.type" defaultValue="debug" description="配置DataServer的发布版本，设置不同的启动参数；(debug/release)"  />
+	    <property name="doris.dataserver.monitor.dragoon.appname" defaultValue="doris_dataserver_monitor" description="配置doris dataserver的dragoon配置监控应用名"  />
+        <property name="doris.dataserver.pref.report.interval" defaultValue="15" description="性能数据 上报时间间隔 可选值 5,6,12,10,15,20,30"  />
+	</group>
+
+	<script>
+		<generate template="doris_adminserver_config.properties.vm" destfile="conf/doris_adminserver_config.properties" charset="ISO-8859-1" />
+		<generate template="mysql.properties.vm" destfile="conf/mysql.properties" charset="ISO-8859-1" />
+		<generate template="dataserver.xml.vm" destfile="conf/dataserver.xml" charset="ISO-8859-1" />
+		<generate template="startApp.sh.vm" destfile="bin/startApp.sh" charset="ISO-8859-1" />
+	</script>
+</config>

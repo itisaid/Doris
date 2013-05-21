@@ -1,0 +1,53 @@
+$rundata.setLayoutEnabled(false)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Doris</title>
+<link type="text/css" href="/css/common.css" rel="stylesheet"/>
+<link type="text/css" href="/css/skin.css" rel="stylesheet"/>
+<link type="text/css" href="/css/doris.css" rel="stylesheet"/>
+</head>
+<body class="login">
+#macro (loginMessage $field)
+    #if (!$field.valid) $field.message #end
+#end
+
+<form  method="post" name="loginForm" id="loginForm">
+  $csrfToken.hiddenField
+  <input type="hidden" name="action" value="LoginAction"/>
+  <input type="hidden" name="event_submit_do_login" value="true"/>
+
+  #set ($group = $form.loginForm.defaultInstance)
+
+   <div class="login_container">
+      <div class="login_box">
+         <div class="logo"></div>
+         <div class="user">
+         <table border="0" cellspacing="0" cellpadding="0">
+			<tr>
+            <td colspan="3">#loginMessage($group.nameIsNotExsitError)</td>
+		</tr>
+		<tr>
+            <td colspan="3">#loginMessage($group.passwdError)</td>
+		</tr>
+            <tr>
+               <td align="right">用户名：</td>
+               <td><input name="$group.name.key"  type="text" class="login_input"/></td>
+			   <td class="errorMessage">#groupError($group.name)</td>
+            </tr>
+            <tr>
+               <td align="right">密码：</td>
+              <td><input name="$group.password.key"  type="password" class="login_input"/></td>
+			   <td class="errorMessage">#groupError($group.password)</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><div class="login_btn"><a href="#"  onclick="document.getElementById('loginForm').submit()">登&nbsp;&nbsp;&nbsp;录</a></div></td>
+            </tr>
+         </table>
+         </div></div>
+   </div>
+  </form>
+  </body>
+</html>

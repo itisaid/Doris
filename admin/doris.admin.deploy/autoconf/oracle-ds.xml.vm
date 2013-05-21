@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources>
+    <local-tx-datasource>
+        <jndi-name>DatabaseDS</jndi-name>
+        <connection-url>jdbc:alibaba:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=${doris_admin_db_server})(PORT=1521))(CONNECT_DATA=(SID=${doris_admin_db_sid})))</connection-url>
+        <connection-property name="SetBigStringTryClob">true</connection-property>
+        <connection-property name="defaultRowPrefetch">50</connection-property>
+        <driver-class>com.alibaba.jdbc.AlibabaDriver</driver-class>
+        <min-pool-size>2</min-pool-size>
+        <max-pool-size>15</max-pool-size>
+        <prepared-statement-cache-size>20</prepared-statement-cache-size>
+        <metadata>
+            <type-mapping>Oracle9i</type-mapping>
+        </metadata>
+        <exception-sorter-class-name>org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter</exception-sorter-class-name>
+        <new-connection-sql>{ call dbms_application_info.set_module('username','${doris_admin_deploy}') }</new-connection-sql>
+        <user-name>${doris_admin_db_username}</user-name>
+        <password>${doris_admin_db_password}</password>
+    </local-tx-datasource>
+</datasources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop>
+	<interceptorGroups>	
+		<interceptorGroup name="PutOperationInterceptorGroup" methods="execute" description="for PutOperation">				
+				<interceptor class="com.alibaba.doris.client.interceptor.SerializeInterceptor" />
+				<interceptor class="com.alibaba.doris.client.compress.CompressInterceptor" />
+				<interceptor class="com.alibaba.doris.client.interceptor.ValueValidateInterceptor"/>
+		</interceptorGroup>
+		
+		<interceptorGroup name="GetOperationInterceptorGroup" methods="execute"  description="for GetOperation">	
+				<interceptor class="com.alibaba.doris.client.compress.DecompressInterceptor"/>
+				<interceptor class="com.alibaba.doris.client.interceptor.DeserializeInterceptor"/>
+				
+		</interceptorGroup>	
+		
+		<interceptorGroup name="GetsOperationInterceptorGroup" methods="execute"  description="for GetsOperation">	
+				<interceptor class="com.alibaba.doris.client.compress.ListDecompressInterceptor"/>
+				<interceptor class="com.alibaba.doris.client.interceptor.ListDeserializeInterceptor"/>
+		</interceptorGroup>
+		
+		<interceptorGroup name="PutsOperationInterceptorGroup" methods="execute" description="for PutsOperation">				
+				<interceptor class="com.alibaba.doris.client.interceptor.MapSerializeInterceptor" />
+				<interceptor class="com.alibaba.doris.client.compress.MapCompressInterceptor" />
+				<interceptor class="com.alibaba.doris.client.interceptor.MapValueValidateInterceptor"/>
+		</interceptorGroup>
+		
+		<interceptorGroup name="DeleteOperationInterceptorGroup" methods="execute"  description="for DeleteOperation">	
+		</interceptorGroup>	
+	</interceptorGroups>	
+</aop>

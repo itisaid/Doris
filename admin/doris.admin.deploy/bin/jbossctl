@@ -1,0 +1,146 @@
+#!/bin/bash
+
+BASE_BIN_DIR=`dirname $0`
+. $BASE_BIN_DIR/env
+
+PROG_NAME=$0
+ACTION=$1
+
+usage() {
+    echo "Usage: $PROG_NAME {start|stop|restart}"
+    exit 1;
+}
+
+if [ $# -lt 1 ]; then
+    usage
+fi
+export JBOSS_SERVER_HOME=$WEB_APP_HOME/jbossdomain
+export JBOSS_SERVER_DIR=" -Djboss.server.home.dir=$JBOSS_SERVER_HOME -Djboss.server.home.url=file:$JBOSS_SERVER_HOME "
+export JAVA_OPTS=" $JAVA_OPTS $JBOSS_SERVER_DIR"
+
+SERVER_HOME=$WEB_APP_HOME/../.myjboss
+JBOSS_CONF_PATH=$WEB_APP_HOME/jboss-conf
+STDOUT_LOG=$OUTPUT_HOME/logs/jboss_stdout.log
+CUSTOM_PATH="-Djboss.server.home.dir=$SERVER_HOME -Djboss.server.home.url=file:$SERVER_HOME"
+
+# Define you own war name
+WAR_NAME="doris-admin.war"
+
+start()
+{
+    STR=`ps -C java -f --width 1500 | grep " $CUSTOM_PATH"`
+    if [ ! -z "$STR" ]; then
+        echo "warn: Java process is already run, please check."
+        exit;
+    fi
+
+    STR=`netstat -an | grep ' $APP_PORT'| grep LISTEN`
+    if [ ! -z "$STR" ]; then
+        echo "warn: JBoss port is already used, please check."
+        exit;
+    fi
+
+    if [ ! -d "$WEB_APP_HOME/target/$WAR_NAME" ]; then
+        echo "warn: $WEB_APP_HOME/target/$WAR_NAME is not exist, please check."
+        exit;
+    fi
+    
+    if [ ! -d "$OUTPUT_HOME/logs" ]; then
+        mkdir -p $OUTPUT_HOME/logs
+    fi
+
+    echo -n "Start server copy ...... "
+    rm -rf $SERVER_HOME
+    cp -rf $WEB_APP_HOME/jbossdomain $SERVER_HOME
+    echo "OK!"
+
+    echo -n "Start JBoss configuration copy ...... "
+    cp -r $JBOSS_CONF_PATH/* $SERVER_HOME/conf/
+
+    # According to your needs, modify the configuration file move
+    mv $SERVER_HOME/conf/tomcat-server.xml $SERVER_HOME/deploy/jbossweb-tomcat55.sar/server.xml
+    mv $SERVER_HOME/conf/tomcat-jboss-service.xml $SERVER_HOME/deploy/jbossweb-tomcat55.sar/META-INF/jboss-service.xml
+    mv $SERVER_HOME/conf/oracle-ds.xml $SERVER_HOME/deploy
+    echo "OK!"
+
+    if [ -f "$STDOUT_LOG.1" ]; then
+        mv -f $STDOUT_LOG.1 $STDOUT_LOG.2
+    fi
+
+    if [ -f "$STDOUT_LOG" ]; then
+        mv -f $STDOUT_LOG $STDOUT_LOG.1
+    fi
+
+    if [ -f "$OUTPUT_HOME/logs/error_log" ]; then
+        mv -f $OUTPUT_HOME/logs/error_log $OUTPUT_HOME/logs/error_log.1
+    fi
+
+    if [ -f "$BASE_HOME/logs/mod_jk.log" ]; then
+        mv -f $OUTPUT_HOME/logs/mod_jk.log $OUTPUT_HOME/logs/mod_jk.log.1
+    fi
+
+    $JBOSS_HOME/bin/run.sh $CUSTOM_PATH >$STDOUT_LOG 2>&1 &
+    starthttpd
+}
+
+stop()
+{
+    $WEB_APP_HOME/bin/apachectl stop
+
+    TIMESTAMP=`date +%Y_%m_%d_%H:%M`
+    KILL_LOG=$OUTPUT_HOME/logs/kill_log
+
+    echo "`hostname` was stopted at $TIMESTAMP" >>$KILL_LOG
+
+    ps axfww | grep -v jbossctl | grep " $CUSTOM_PATH" | grep -v grep | awk '{print $1}' | xargs kill -9
+    
+    num=`ipcs -s | grep 0x | awk '{print $2}'`
+    ipcrm sem $num 2 >/dev/null
+    
+    num=`ipcs -m | grep 0x | awk '{print $2}'`
+    ipcrm shm $num 2 >/dev/null
+    
+    num=`ipcs -q | grep 0x | awk '{print $2}'`
+    ipcrm msg $num 2 >/dev/null
+
+    rm -rf $SERVER_HOME
+}
+
+starthttpd()
+{
+    STARTTIME=`date +"%s"`
+    COUNT=0
+    sleep 5
+    while true
+    do
+        COUNT=`curl --connect-timeout 1 -s $CHECK_STARTUP_URL | grep -c "$STARTUP_SUCCESS_MSG"`
+        ENDTIME=`date +"%s"`
+        COSTTIME=$(($ENDTIME - $STARTTIME))
+        if [ $COUNT -lt 1 ]; then
+            sleep 1
+            echo -n -e "\rWait JBoss Start: $COSTTIME seconds"
+        else
+            echo ""
+            $WEB_APP_HOME/bin/apachectl start
+            echo "HTTP Start in $COSTTIME seconds."
+            return
+        fi
+    done
+}
+
+case "$ACTION" in
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    restart)
+        stop
+        sleep 5
+        start
+    ;;
+    *)
+        usage
+    ;;
+esac

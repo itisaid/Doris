@@ -1,0 +1,5 @@
+--pre=${doris_admin_deploy}/jetty-server/conf/jetty-logging.xml
+OPTIONS=Server,jsp,jta
+${doris_admin_deploy}/jetty-server/conf/jetty.xml
+lib=${doris_admin_deploy}/jetty-server/ext
+path=${doris_admin_deploy}/jetty-server/ext

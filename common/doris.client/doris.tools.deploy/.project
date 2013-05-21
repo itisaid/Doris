@@ -1,0 +1,26 @@
+<projectDescription>
+  <name>doris.tools.deploy-0.1.6.1</name>
+  <comment>Super POM for Pampas Projects</comment>
+  <projects>
+    <project>doris.algorithm-0.1.6.1</project>
+    <project>doris.aop-0.1.6.1</project>
+    <project>doris.client-0.1.6.1</project>
+    <project>doris.client.api-0.1.6.1</project>
+    <project>doris.client.net-0.1.6.1</project>
+    <project>doris.common-0.1.6.1</project>
+    <project>doris.common.adminservice-0.1.6.1</project>
+    <project>doris.common.config-0.1.6.1</project>
+    <project>doris.common.model-0.1.6.1</project>
+    <project>doris.common.route-0.1.6.1</project>
+    <project>doris.common.tools-0.1.6.1</project>
+    <project>doris.tools-0.1.6.1</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>

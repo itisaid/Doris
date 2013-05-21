@@ -1,0 +1,92 @@
+#macro (namespaceValidtor $field)
+    #if (!$field.valid) $field.message #end
+#end
+ <form  method="post" name="namespaceForm" id="namespaceForm">
+	$csrfToken.hiddenField
+ 	#set ($group = $form.namespaceForm.defaultInstance)
+	<div class="title"><h2>配置管理&nbsp;&nbsp;>&nbsp;&nbsp;添加Namespace</h2></div>
+  ##<div class="crumbs">配置管理&nbsp;&nbsp;>&nbsp;&nbsp;添加Namespace</div>  
+   
+   <div class="setting_box">
+	#if($isMasterAdmin!="true")
+		<div style="color:red">此Admin为备用机，不提供新增Namespace服务，请等待主Admin服务恢复正常后再行新增Namespace</div>
+	#else	
+     <table cellpadding="0" cellspacing="0" class="setting">
+		<tr>
+            <td colspan="2">#namespaceValidtor ($group.nameRepeatedError)</td>
+		</tr>
+      <tr>
+        <th>名称<span style="color:red">*</span></th><td><input name="$group.name.key" value="$group.name.value" type="text" class="setting_input" />#groupError($group.name)</td>	
+      </tr>
+      <tr>
+        <th>节点个数<span style="color:red">*</span></th><td>
+        <select name="$group.copyCount.key"  class="setting_select">
+        <option value="">--</option>
+        <option #if($group.copyCount.value == '1') SELECTED #end  value="1">1</option>
+        <option #if($group.copyCount.value == '2') SELECTED #end  value="2">2</option>
+        </select>
+        
+        #groupError($group.copyCount)</td>	
+      </tr>
+      <tr>
+        <th>第一负责人<span style="color:red">*</span></th><td><input name="$group.firstOwner.key" value="$group.firstOwner.value" type="text" class="setting_input" />#groupError($group.firstOwner)</td>	
+      </tr>
+	  <tr>
+        <th>第二负责人<span style="color:red">*</span></th><td><input name="$group.secondOwner.key" value="$group.secondOwner.value" type="text" class="setting_input" />#groupError($group.secondOwner)</td>	
+      </tr>
+      <tr>
+        <th>压缩方式<span style="color:red">*</span></th>
+        <td>
+        <select name="$group.compressMode.key" class="setting_select">
+            <option value="">--</option>
+            <option #if($group.compressMode.value == 'gzip') SELECTED #end value="gzip">GZIP</option>
+        </select> #groupError($group.compressMode)
+        </td>
+      </tr>
+	  <tr>
+    	  <th>压缩阀值<span style="color:red">*</span></th>
+    	  <td><input name="$group.compressThreshold.key" value="$group.compressThreshold.value" type="text" class="setting_input" />(单位：Byte) #groupError($group.compressThreshold)</td>
+	  </tr>
+      <tr>
+        <th>序列化方式<span style="color:red">*</span></th>
+        <td>
+        <select name="$group.serializeMode.key" class="setting_select">
+            <option value="">--</option>
+            <option #if($group.serializeMode.value == 'com.alibaba.doris.common.serialize.StringSerializer') SELECTED #end value="com.alibaba.doris.common.serialize.StringSerializer">String</option>
+			<option #if($group.serializeMode.value == 'com.alibaba.doris.common.serialize.JsonSerializer') SELECTED #end value="com.alibaba.doris.common.serialize.JsonSerializer">JSON</option>
+			<option #if($group.serializeMode.value == 'com.alibaba.doris.common.serialize.NoneSerializer') SELECTED #end value="com.alibaba.doris.common.serialize.NoneSerializer">在Doris外自定义序列化方式</option>
+        </select> #groupError($group.serializeMode)
+        </td>
+      </tr>
+	  <tr>
+        <th>Class Name:</th><td><input name="$group.className.key" value="$group.className.value" type="text" class="setting_input" />#groupError($group.className)</td>	
+      </tr>
+	  <tr>
+        <th>是否多读<span style="color:red">*</span></th>
+        <td>
+        <select name="$group.multiRead.key" class="setting_select">
+            <option value="">--</option>
+            <option #if($group.multiRead.value == 'Y') SELECTED #end value="Y">Y</option>
+            <option #if($group.multiRead.value == 'N') SELECTED #end value="N">N</option>
+        </select> #groupError($group.multiRead)
+        </td>
+      </tr>
+      <tr>
+        <th>备注:</th>
+        <td><textarea name="$group.remark.key" class="setting_textarea"></textarea></td>
+      </tr>
+  
+		<tr>
+			<td>
+				<input type="hidden" name="action" value="NamespaceAction"/>
+    			<input type="hidden" name="event_submit_do_add_namespace" value="true" />
+			</td>
+		</tr>
+	</table>
+	#end
+	</div>
+	#if($isMasterAdmin=="true")
+		<div class="btn"><a href="#" onclick="document.getElementById('namespaceForm').submit()">添加</a></div><div class="btn"><a href="/configer/node_manage.htm">取消</a></div>
+	#end
+</div>
+</form>

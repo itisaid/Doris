@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataserver>
+	<modules>
+		<!-- Module的启动顺序：配置在前面的Module先初始化并启动，卸载时顺序相反。AdminServerConfigModule需要配置最先启动 -->
+		<module>
+			<name>configModule</name>
+			<class>com.alibaba.doris.dataserver.adminserver.config.AdminServerConfigModule</class>
+			<description>Configuration manager module.</description>
+			<params>
+				<param>
+					<name>adminserver.configuration.location</name>
+					<value>doris_adminserver_config.properties</value>
+				</param>
+			</params>
+		</module>
+
+		<module>
+			<name>storageModule</name>
+			<class>com.alibaba.doris.dataserver.store.StorageModule</class>
+			<description>Data server storage module.</description>
+			<params>
+				<param>
+					<name>driver</name>
+					#if($doris_dataserver_store_type=="log")
+						<value>com.alibaba.doris.dataserver.store.log.LogStorageDriver</value>
+					#elseif($doris_dataserver_store_type=="mysql")
+					    <value>com.alibaba.doris.dataserver.store.mysql.MysqlStorageDriver</value>
+					#else
+						<value>com.alibaba.doris.dataserver.store.bdb.BDBStorageDriver</value>
+					#end
+				</param>
+				<param>
+					<name>size</name>
+					<value>100</value>
+				</param>
+				<param>
+					<name>configFile</name>
+					#if($doris_dataserver_store_type=="log")
+						<value>log_storage.properties</value>
+					#elseif($doris_dataserver_store_type=="mysql")
+					    <value>mysql.properties</value>
+					#else
+						<value>bdb.properties</value>
+					#end
+				</param>
+			</params>
+			
+		</module>
+
+		<module>
+			<name>migrationModule</name>
+			<class>com.alibaba.doris.dataserver.migrator.MigrationModule</class>
+			<description>Data server migration module.</description>
+		</module>
+		
+		<module>
+			<name>networkModule</name>
+			<class>com.alibaba.doris.dataserver.net.NetworkModule</class>
+			<description>Server net work module.</description>
+			<params>
+				<param>
+					<name>port</name>
+					<value>$!{doris_dataserver_port}</value>
+				</param> 
+				<param>
+					<name>threads</name>
+					<value>$!{doris_dataserver_threads}</value>
+				</param>
+			</params>
+			<filters> 
+ 				<filter> 
+ 					<class>com.alibaba.doris.dataserver.monitor.PrefRequestFilter</class> 
+ 				</filter> 
+				<filter>
+					<class>com.alibaba.doris.dataserver.filter.RouteVersionCheckFilter</class>
+				</filter>
+				<filter>
+					<class>com.alibaba.doris.dataserver.migrator.filter.MigrationFilter</class>
+				</filter>
+				<filter>
+					<class>com.alibaba.doris.dataserver.action.ActionExecutorFilter</class>
+				</filter>
+			</filters>
+		</module>
+		
+		<module> 
+			<name>monitorModule</name>
+ 			<class>com.alibaba.doris.dataserver.monitor.MonitorMudule</class> 
+ 			<description>Data server monitor module.</description>
+ 			<params>
+                <param>
+                    <name>reportIntervalInMinite</name>
+                    <value>$!{doris_dataserver_pref_report_interval}</value>
+                </param> 
+            </params>
+ 		</module> 
+ 		
+ 		<module>
+ 			<name>extraToolModule</name>
+			<class>com.alibaba.doris.dataserver.extratools.ExtraToolsModule</class>
+			<description>Extra tools for dataserver.</description>
+		</module>
+ 		<module>
+			<class>com.alibaba.doris.dataserver.monitor.DragoonMonitorModule</class>
+			<description>Dragoon Monitory Module</description>
+			<params>
+				<param>
+					<name>dragoon_app_name</name>
+					<value>$!{doris_dataserver_monitor_dragoon_appname}</value>
+				</param>
+			</params>
+		</module>
+		
+	</modules>
+</dataserver>

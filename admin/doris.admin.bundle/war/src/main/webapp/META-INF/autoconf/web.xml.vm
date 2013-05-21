@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://java.sun.com/xml/ns/j2ee  http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd
+    ">
+
+    <!-- 初始化日志系统 -->
+    <listener>
+        <listener-class>com.alibaba.citrus.logconfig.LogConfiguratorListener</listener-class>
+    </listener>
+
+    <!-- 装载/WEB-INF/webx.xml, /WEB-INF/webx-*.xml -->
+    <listener>
+        <listener-class>com.alibaba.citrus.webx.context.WebxContextLoaderListener</listener-class>
+    </listener>
+	
+	<!--Dragoon 采集数据的线程 -->
+	<listener>
+	          <listener-class>com.alibaba.dragoon.client.DragoonClientServletContextListener</listener-class>
+	</listener>
+	
+	<!--Dragoon 发送数据的线程 -->       
+	<listener>
+	           <listener-class>com.alibaba.dragoon.patrol.web.PatrolServletContextListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>DorisAdminServlet</servlet-name>
+		<servlet-class>com.alibaba.doris.admin.service.main.DorisAdminServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DorisAdminServlet</servlet-name>
+		<url-pattern>/doris.admin</url-pattern>
+	</servlet-mapping>
+	
+    <filter>
+        <filter-name>mdc</filter-name>
+        <filter-class>com.alibaba.citrus.webx.servlet.SetLoggingContextFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>webx</filter-name>
+        <filter-class>com.alibaba.citrus.webx.servlet.WebxFrameworkFilter</filter-class>
+    </filter>
+    
+    <!--<filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>com.alibaba.doris.admin.web.user.LoginFilter</filter-class>
+    </filter>-->
+
+	
+	<filter-mapping>
+        <filter-name>mdc</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+	<filter-mapping>
+        <filter-name>webx</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+	<!--<filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/*.htm</url-pattern>
+    </filter-mapping>-->
+    
+	<context-param>
+	    <param-name>APP_NUM</param-name> 
+	    <param-value>${doris_admin_dragoon_monitoring_app}</param-value>
+	</context-param>
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>

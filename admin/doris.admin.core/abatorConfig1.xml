@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE abatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Abator for iBATIS Configuration 1.0//EN"
+  "http://ibatis.apache.org/dtd/abator-config_1_0.dtd">
+
+<abatorConfiguration>
+  <abatorContext>   
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://10.20.157.182:3306/doris_config?useUnicode=true&amp;characterEncoding=UTF-8"
+        userId="doris"
+        password="doris">
+      <classPathEntry location="/home/helios/.m2/repository/com/alibaba/external/jdbc.mysql.mysql-connector/5.1.6/jdbc.mysql.mysql-connector-5.1.6.jar" />
+    </jdbcConnection>
+
+    <javaModelGenerator targetPackage="com.alibaba.doris.admin.dao" targetProject="doris.admin.core-0.1.0-SNAPSHOT" />
+    <sqlMapGenerator targetPackage="com.alibaba.doris.admin.dao" targetProject="doris.admin.core-0.1.0-SNAPSHOT" />
+    <daoGenerator type="IBATIS" targetPackage="com.alibaba.doris.admin.dao" targetProject="doris.admin.core-0.1.0-SNAPSHOT" />
+
+    <table schema="doris_config" tableName="PREF_LOG">
+    
+    </table>
+
+  </abatorContext>
+</abatorConfiguration>

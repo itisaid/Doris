@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Maven POM -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>com.alibaba.platform.app</groupId>
+		<artifactId>doris.admin.parent</artifactId>
+		<version>0.1.4</version>
+	    <relativePath>../../pom.xml</relativePath>
+	</parent>	
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.alibaba.platform.app</groupId>
+	<artifactId>doris.admin.bundle.war</artifactId>
+	<name>doris.admin.bundle.war</name>
+	<packaging>war</packaging>
+	
+
+	<properties>
+		<autoconfig-version>1.0.5</autoconfig-version>
+		<springext-plugin-version>1.0</springext-plugin-version>
+		<jetty-version>6.1.22</jetty-version>
+	</properties>
+	
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.alibaba.platform.app</groupId>
+			<artifactId>doris.admin.web.configer</artifactId>
+			<version>${pom.version}</version>
+			<type>jar</type>
+		</dependency>
+		<!-- WebX 3 -核心模块 -->
+		<dependency>
+			<groupId>com.alibaba.platform.shared</groupId>
+			<artifactId>webx3.core</artifactId>
+		</dependency>
+		<!-- WebX 3 -兼容模块 -->
+		<dependency>
+			<groupId>com.alibaba.platform.shared</groupId>
+			<artifactId>webx3.compat</artifactId>
+		</dependency>
+		<!-- WebX 3 -reload -->
+		<dependency>
+			<groupId>com.alibaba.platform.shared</groupId>
+			<artifactId>webx3.extension.reload</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<!-- WebX 3 -单元测试工具模块 -->
+		<dependency>
+			<groupId>com.alibaba.platform.shared</groupId>
+			<artifactId>webx3.test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.platform.app</groupId>
+			<artifactId>doris.admin.service.main</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.platform.app</groupId>
+			<artifactId>doris.admin.web.configer</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.external</groupId>
+			<artifactId>java.servlet</artifactId>
+		</dependency>
+	    <dependency>
+            <groupId>com.alibaba.platform.shared</groupId>
+            <artifactId>dragoon-common</artifactId>
+        </dependency>
+       <dependency>
+            <groupId>com.alibaba.external</groupId>
+            <artifactId>server.jetty.jetty-servlet</artifactId>
+            <version>7.0.1.v20091125</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.external</groupId>
+            <artifactId>server.jetty.jetty-client</artifactId>
+            <version>7.0.1.v20091125</version>
+            <scope>test</scope>
+        </dependency>	
+	</dependencies>
+	
+
+	<build>
+		<plugins>
+            <plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<configuration>
+							<tasks>
+								<echo message="project home:        ${basedir}" />
+								<echo message="java home:           ${java.home}" />
+								<echo message="java source version: ${java.version}" />
+								<echo message="java target version: ${java.version}" />
+								<echo message="java source charset: ${java.encoding}" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<includes>
+						<include>**/*Tests.java</include>
+					</includes>
+					<argLine>-Xmx256m</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+				    <wtpversion>2.0</wtpversion>
+					<classpathContainers>
+						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+					</classpathContainers>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>${jetty-version}</version>
+				<configuration>
+					<contextPath>/</contextPath>
+					<connectors>
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<port>8087</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<requestLog implementation="org.mortbay.jetty.NCSARequestLog">
+						<filename>target/access.log</filename>
+						<retainDays>90</retainDays>
+						<append>false</append>
+						<extended>false</extended>
+						<logTimeZone>GMT+8:00</logTimeZone>
+					</requestLog>
+					<systemProperties>
+						<systemProperty>
+							<name>productionMode</name>
+							<value>false</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+			</plugin>
+			<plugin>
+                <groupId>com.alibaba.maven.plugins</groupId>
+                <artifactId>maven-autoconf-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>config</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>config</goal>
+                        </goals>
+                        <configuration>
+                            <destFiles>
+                                <destFile>src/main/webapp/WEB-INF</destFile>
+                            </destFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+			<plugin>
+				<groupId>com.alibaba.citrus.tool</groupId>
+				<artifactId>maven-springext-plugin</artifactId>
+				<version>${springext-plugin-version}</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>

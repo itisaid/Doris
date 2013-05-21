@@ -1,0 +1,25 @@
+2013-03-29 10:41:12,494 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-29 10:41:12,614 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-29 10:41:12,616 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-29 10:41:12,679 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-29 10:41:13,164 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-03-29 10:41:13,173 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-03-29 10:41:13,205 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-03-29 10:44:18,778 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-29 10:44:18,868 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-29 10:44:18,869 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-29 10:44:18,914 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-29 10:44:19,267 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-03-29 10:44:19,273 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-03-29 10:44:19,294 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-03-29 10:44:37,737 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:8001 time:2266
+2013-03-29 10:44:38,047 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:67
+2013-03-29 11:07:46,748 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-29 11:07:46,832 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-29 11:07:46,833 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-29 11:07:46,889 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-29 11:07:47,236 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.153.85/doris.admin" can be connected? true
+2013-03-29 11:07:47,244 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-03-29 11:07:47,279 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-03-29 11:07:53,004 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:8001 time:831
+2013-03-29 11:07:53,281 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:68

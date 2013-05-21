@@ -1,0 +1,33 @@
+# Load mod_jk module
+LoadModule jk_module ${doris_admin_basic_setting_apachehome}/modules/mod_jk.so
+
+# Where to find workers.properties
+JkWorkersFile ${doris_admin_deploy}/conf/workers.properties
+
+# Where to put jk logs
+ JkLogFile "|${doris_admin_output}/logs/jk_logs/%d/mod_jk.log"
+
+# Set the jk log level [debug/error/info]
+JkLogLevel error
+
+# Select the log format
+JkLogStampFormat "[%a %b %d %H:%M:%S %Y]"
+
+# JkOptions indicates to send SSK KEY SIZE
+JkOptions +ForwardKeySize +ForwardURICompat -ForwardDirectories
+
+# Setting to "On" in old environment
+JkMountCopy All
+
+# JkRequestLogFormat
+JkRequestLogFormat "%w %V %T"
+
+# Mount your applications, according to your need
+JKMount /core/* loadbalancer
+JkMount /*.htm loadbalancer
+JkMount /*.biz loadbalancer
+JkMount /*.vhtml loadbalancer
+JkMount /ok.jsp loadbalancer
+
+# Add shared memory.
+JkShmFile ${doris_admin_output}/logs/jk.shm

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config description="自动配置">
+	<group name="doris dataServer">
+		<property name="doris.dataserver.store.path" defaultValue="./" description="DB存储路径" />
+	</group>
+	<script>
+		<generate template="default_log_storage.properties.vm" destfile="default_log_storage.properties" charset="ISO-8859-1" />
+	</script>
+</config>

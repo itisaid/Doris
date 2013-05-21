@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+    <New id="ServerLog" class="java.io.PrintStream">
+      <Arg>
+        <New class="java.io.FileOutputStream">
+          <Arg>${doris_admin_output}/logs/jetty_stdout.log</Arg>
+        </New>
+      </Arg>
+    </New>
+	
+    <Call class="java.lang.System" name="setErr"><Arg><Ref id="ServerLog"/></Arg></Call>
+    <Call class="java.lang.System" name="setOut"><Arg><Ref id="ServerLog"/></Arg></Call>
+</Configure>

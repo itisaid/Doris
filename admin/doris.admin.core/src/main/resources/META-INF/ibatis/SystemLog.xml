@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="SystemLog">
+	<typeAlias alias="SystemLogDO" type="com.alibaba.doris.admin.dataobject.SystemLogDO" />
+	<resultMap id="SystemLogResult" class="SystemLogDO">
+		<result column="ID" property="id" jdbcType="INTEGER" />
+		<result column="ACTION_NAME" property="actionName" jdbcType="VARCHAR" />
+		<result column="ACTION_TIME" property="actionTime" jdbcType="DATETIME" />
+		<result column="LOG_INFO" property="logInfo" jdbcType="VARCHAR" />
+	    <result column="GMT_CREATE" property="gmtCreate" jdbcType="DATETIME" />
+	    <result column="GMT_MODIFIED" property="gmtModified" jdbcType="DATETIME" />
+	</resultMap>
+
+	<select id="listSystemLogs" resultMap="SystemLogResult" parameterClass="java.util.Map">
+	
+		SELECT ID, ACTION_NAME, ACTION_TIME, LOG_INFO, GMT_CREATE, GMT_MODIFIED 
+		FROM SYSTEM_LOG 
+		<dynamic prepend="where" >
+	      <isNotNull prepend=" and " property="startTime" >
+	        ACTION_TIME >= #startTime:VARCHAR#
+	      </isNotNull>
+	      <isNotNull prepend=" and " property="endTime" >
+	       <![CDATA[ ACTION_TIME <= #endTime:VARCHAR#]]>
+	      </isNotNull>
+	      <isNotNull prepend=" and " property="actionName" >
+	        ACTION_NAME = #actionName:VARCHAR#
+	      </isNotNull>
+      	</dynamic>
+		ORDER BY ACTION_TIME DESC
+		LIMIT #pageSize# OFFSET #startRow# 
+	</select>
+	
+	<select id="queryAllCounts" resultClass="java.lang.Integer" parameterClass="java.util.Map">
+		SELECT count(*) FROM SYSTEM_LOG 
+		<dynamic prepend="where" >
+	      <isNotNull prepend=" and " property="startTime" >
+	        ACTION_TIME >= #startTime:VARCHAR#
+	      </isNotNull>
+	      <isNotNull prepend=" and " property="endTime" >
+	       <![CDATA[ ACTION_TIME <= #endTime:VARCHAR#]]>
+	      </isNotNull>
+	      <isNotNull prepend=" and " property="actionName" >
+	        ACTION_NAME = #actionName:VARCHAR#
+	      </isNotNull>
+      </dynamic>
+	</select>
+	
+	<insert id="addSystemLog" parameterClass="SystemLogDO">  
+    	<![CDATA[insert into SYSTEM_LOG( ACTION_NAME, ACTION_TIME, LOG_INFO, GMT_CREATE, GMT_MODIFIED) 
+    		values
+    		(#actionName:VARCHAR#,#actionTime:DATETIME#,#logInfo:VARCHAR#,NOW(), NOW())]]>   
+	    	<selectKey resultClass="int" keyProperty="id">  
+		        <![CDATA[SELECT LAST_INSERT_ID() AS ID ]]>   
+		        <!-- 该方法LAST_INSERT_ID()与数据库连接绑定，同属统一会话级别。 -->  
+	    	</selectKey>  
+	</insert>
+</sqlMap>

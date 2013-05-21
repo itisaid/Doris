@@ -1,0 +1,20 @@
+#Doris Client Config
+#Alibaba.com, Copyright 2011
+
+doris.config.adminserver.main.url=http://$!{doris_admin_master_ip}:$!{doris_admin_apache_port}/doris.admin
+doris.config.adminserver.backup.url=http://$!{doris_admin_master_ip}:$!{doris_admin_apache_port}/doris.admin
+
+doris.username=doris
+doris.password=doris
+
+doris.config.fetch.retrytimes=3
+doris.config.fetch.interval=3000
+doris.config.connection.timeout=2000
+doris.config.connection.socket.timeout=2000
+
+datasource.class =  com.alibaba.doris.client.DefaultDataSourceImpl
+node.route.virtualRouter.class=com.alibaba.doris.common.router.virtual.VirtualRouterImpl
+node.configer.class = com.alibaba.doris.common.router.service.RouteTableConfigerImpl
+node.route.strategy.class = com.alibaba.doris.common.router.service.RouteStrategyImpl
+
+#route.hash.algorithm = SHA

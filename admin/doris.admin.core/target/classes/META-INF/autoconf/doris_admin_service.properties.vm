@@ -1,0 +1,7 @@
+foreverFailTime=$!{doris_admin_service_forever_fail_time}
+nodeCheckTimeout=$!{doris_admin_service_node_check_timeout}
+nodeCheckRetries=$!{doris_admin_service_node_check_retries}
+nodeReloadInterval=$!{doris_admin_service_node_reload_interval}
+routeConfigScanInterval=$!{doris_admin_service_route_config_scan_interval}
+nodeCheckInterval=$!{doris_admin_service_node_check_interval}
+masterIp=$!{doris_admin_master_ip}

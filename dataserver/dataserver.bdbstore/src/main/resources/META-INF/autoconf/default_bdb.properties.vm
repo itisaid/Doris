@@ -1,0 +1,36 @@
+#BDB storage configure 
+#Alibaba.com, Copyright 2011
+
+#Default is true
+allow.create=true			
+cursor.preload=false
+#Default is application path of runtime.					
+database.directory=$!{doris_dataserver_store_path}		
+#Default is false;			
+#db.sorted.duplicates=false 					
+#0:user default setting.
+db.btree.fanout=512 						
+
+je.env.isTransactional=true
+je.lock.nLockTables=10
+#The maximum size of each individual JE log file, in bytes.  1073741824 (1G) 104857600 100M default is 10M
+#je.log.fileMax=104857600
+#Ask the checkpointer to run every time we write this many bytes to the log. If set, supercedes CHECKPOINTER_WAKEUP_INTERVAL. To use time based checkpointing, set this to 0.
+#Default 20M 
+#je.maxMemory=
+#je.maxMemoryPercent = 70
+#je.tree.minMemory=1024000000
+#default is 20M
+#je.checkpointer.bytesInterval=20000000 
+#je.checkpointer.wakeupInterval=3000000
+#je.maxMemory=
+#je.txn.durability=NO_SYNC,NO_SYNC,SIMPLE_MAJORITY
+je.txn.durability=WRITE_NO_SYNC,NO_SYNC,SIMPLE_MAJORITY
+#db.deferred.write=true
+#开启了写入缓存，大小为32m
+#je.log.bufferSize=134217728 
+#
+#je.log.numBuffers=2
+#je.cleaner.threads=2
+#je.cleaner.minUtilization=90
+#je.env.runCleaner=false

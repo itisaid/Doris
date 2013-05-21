@@ -1,0 +1,123 @@
+ServerRoot ${doris_admin_deploy}
+Pidfile ${doris_admin_output}/logs/httpd.pid
+ScoreBoardFile ${doris_admin_output}/logs/httpd.scoreboard
+
+Timeout 50
+KeepAlive On
+MaxKeepAliveRequests 30
+KeepAliveTimeout 25
+
+StartServers         16
+ServerLimit          1024
+MaxClients           1024
+MinSpareThreads      25
+MaxSpareThreads      75
+ThreadsPerChild      64
+MaxRequestsPerChild  10000
+
+Listen  ${doris_admin_apache_port}
+
+User ${doris_admin_basic_setting_apache_user}
+Group ${doris_admin_basic_setting_apache_group}
+
+ServerAdmin alibaba@alibaba-inc.com
+
+ServerName ${doris_admin_server}
+
+DocumentRoot "${doris_admin_deploy}/htdocs"
+ErrorDocument 404 /error404.html
+
+<Directory />
+    Options FollowSymLinks
+    AllowOverride None
+</Directory>
+
+<Directory "${doris_admin_deploy}/htdocs">
+    Options FollowSymLinks MultiViews
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>
+
+<IfModule mod_dir.c>
+   DirectoryIndex index.htm index.html
+</IfModule>
+
+AccessFileName .htaccess
+
+<Files ~ "^\.ht">
+    Order allow,deny
+    Deny from all
+</Files>
+
+UseCanonicalName On
+
+DefaultType text/plain
+
+HostnameLookups Off
+
+ErrorLog ${doris_admin_output}/logs/error_log
+LogLevel warn
+
+ServerSignature Off
+
+<IfModule mod_mime.c>
+    AddEncoding x-compress Z
+    AddEncoding x-gzip gz tgz
+
+    AddLanguage en .en
+
+    <IfModule mod_negotiation.c>
+        LanguagePriority en
+    </IfModule>
+
+    AddType application/x-tar .tgz
+</IfModule>
+
+<IfModule mod_setenvif.c>
+    BrowserMatch "Mozilla/2" nokeepalive
+    BrowserMatch "MSIE 4\.0b2;" nokeepalive downgrade-1.0 force-response-1.0
+    BrowserMatch "RealPlayer 4\.0" force-response-1.0
+    BrowserMatch "Java/1\.0" force-response-1.0
+    BrowserMatch "JDK/1\.0" force-response-1.0
+</IfModule>
+
+<Location />
+# Insert filter
+SetOutputFilter DEFLATE
+
+# Netscape 4.x has some problems...
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+
+# Netscape 4.06-4.08 have some more problems
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+
+# MSIE masquerades as Netscape, but it is fine
+# BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+# NOTE: Due to a bug in mod_setenvif up to Apache 2.0.48
+# the above regex won't work. You can use the following
+# workaround to get the desired effect:
+BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+
+# Don't compress images
+SetEnvIfNoCase Request_URI \
+\.(?:gif|jpe?g|png|pdf|zip)$ no-gzip dont-vary
+
+SetEnvIf Request_URI /core/monitor/* no-gzip dont-vary
+
+# Make sure proxies don't deliver the wrong content
+Header append Vary User-Agent env=!dont-vary
+</Location>
+
+<Location /server-status>
+    SetHandler server-status
+    Order deny,allow
+    Deny from all
+    Allow from .alibaba.com
+</Location>
+
+Include ${doris_admin_deploy}/conf/virtualhost.conf
+
+Include ${doris_admin_deploy}/conf/mod-proxy.conf
+

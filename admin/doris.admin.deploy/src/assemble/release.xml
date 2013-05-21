@@ -1,0 +1,55 @@
+<assembly>
+   <id>release</id>
+   <formats>
+      <format>tar.gz</format>
+   </formats>
+   <includeBaseDirectory>false</includeBaseDirectory>
+   <fileSets>
+		<!-- for autoconf config from minas -->
+		<fileSet>
+				<directory>META-INF</directory>
+				<outputDirectory>admin-deploy/META-INF</outputDirectory>
+		</fileSet>
+      <fileSet>
+         <directory>bin</directory>
+         <outputDirectory>admin-deploy/bin</outputDirectory>
+         <fileMode>0755</fileMode>
+      </fileSet>
+      <fileSet>
+         <directory>conf</directory>
+         <outputDirectory>admin-deploy/conf</outputDirectory>
+      </fileSet>
+      <fileSet>
+         <directory>autoconf</directory>
+         <outputDirectory>admin-deploy/META-INF/autoconf</outputDirectory>
+      </fileSet>
+      <fileSet>
+			<directory>jetty-conf</directory>
+			<outputDirectory>admin-deploy/jetty-conf</outputDirectory>
+		</fileSet>
+      <fileSet>
+         <directory>templates</directory>
+         <outputDirectory>admin-deploy/templates</outputDirectory>
+      </fileSet>
+      <fileSet>
+         <directory>htdocs</directory>
+         <outputDirectory>admin-deploy/htdocs</outputDirectory>
+         <!-- 如果想排除htdocs子目录debug中的文件可以加上以下配置 -->
+         <excludes>
+            <exclude>debug/**</exclude>
+         </excludes>
+      </fileSet>
+   </fileSets>
+   <dependencySets>
+      <dependencySet>
+         <includes>
+            <include>com.alibaba.platform.app:doris.admin.bundle.war:war</include>
+         </includes>
+         <useTransitiveDependencies>false</useTransitiveDependencies>
+            <outputDirectory>admin-deploy/target/doris-admin.war</outputDirectory>
+            <directoryMode>0755</directoryMode>
+         <!-- 如果希望war包是解开的，可以加上以下配置 -->
+         <unpack>true</unpack>
+      </dependencySet>
+   </dependencySets>
+</assembly>

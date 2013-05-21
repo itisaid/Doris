@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<config description="自动配置：doris-admin-deploy">
+	<group name="alibaba-intl-basic-setting">
+		<property name="doris.admin.basic.setting.javahome" defaultValue="/usr/alibaba/java" description="Java路径" />
+		<property name="doris.admin.basic.setting.jettyhome" defaultValue="/usr/alibaba/jetty" description="Jetty路径" />
+		<property name="doris.admin.basic.setting.apachehome" defaultValue="/usr/alibaba/httpd" description="Apache路径" />
+		<property name="doris.admin.basic.setting.apache.user" defaultValue="admin" description="Apache用户" />
+		<property name="doris.admin.basic.setting.apache.group" defaultValue="systems" description="Apache用户组" />
+		<property name="doris.admin.basic.setting.workdir" defaultValue="/home/admin" description="应用工作路径" />
+		<property name="doris.admin.basic.setting.mode" defaultValue="dev" description="应用的部署状态（run，test，dev）" />
+	</group>
+
+	<group name="doris-admin-deploy">
+		<property name="doris.admin.server" description="App域名" />
+		<property name="doris.admin.output" defaultValue="${doris.admin.basic.setting.workdir}/doris-app/target/admin-deploy" description="App输出目录" />
+		<property name="doris.admin.apache.port" defaultValue="80" description="App应用服务器Apache端口" />
+		<property name="doris.admin.appserver.port" defaultValue="8080" description="App应用服务器JBoss端口" />
+		<property name="doris.admin.debug.port" defaultValue="8090" description="App应用服务器的调试端口" />
+	</group>
+
+	<script>
+		<generate template="env.vm" destfile="bin/env" charset="GBK" />
+		<generate template="httpd.conf.vm" destfile="conf/httpd.conf" charset="GBK" />
+		<generate template="mod-jk.conf.vm" destfile="conf/mod-jk.conf" charset="GBK" />
+		<generate template="mod-proxy.conf.vm" destfile="conf/mod-proxy.conf" charset="GBK" />
+		<generate template="virtualhost.conf.vm" destfile="conf/virtualhost.conf" charset="GBK" />
+		<generate template="jetty-logging.xml.vm" destfile="jetty-conf/conf/jetty-logging.xml" charset="GBK" />
+		<generate template="jetty.xml.vm" destfile="jetty-conf/conf/jetty.xml" charset="GBK" />
+		<generate template="jetty-start.ini.vm" destfile="jetty-conf/conf/jetty-start.ini" charset="GBK" />
+	</script>
+</config>

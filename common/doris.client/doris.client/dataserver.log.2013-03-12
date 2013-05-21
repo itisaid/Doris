@@ -1,0 +1,158 @@
+2013-03-12 21:33:56,008 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-12 21:33:56,084 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-12 21:33:56,085 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-12 21:33:56,129 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-12 21:33:56,773 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.157.185:8080/doris.admin" can be connected? true
+2013-03-12 21:33:56,782 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-03-12 21:33:56,836 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-03-12 21:34:07,862 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.157.186:6001 time:843
+2013-03-12 21:34:12,603 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.157.187:7001 time:96
+2013-03-12 21:34:12,654 [main] [WARN ](impl.LogicFailoverCallbackHandler,130) - Process RouteVersionOutOfDateException: currentDataSource:2.0get new route config from data server:::{"version":598,"storeNodes":[{"uRL":"10.20.153.85:6003","port":6003,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6003","logicId":2},{"uRL":"10.20.153.84:6002","port":6002,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6002","logicId":3},{"uRL":"10.20.153.85:6004","port":6004,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6004","logicId":1},{"uRL":"10.20.153.84:6001","port":6001,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6001","logicId":4},{"uRL":"10.20.153.84:6003","port":6003,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6003","logicId":2},{"uRL":"10.20.153.84:6004","port":6004,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6004","logicId":1},{"uRL":"10.20.153.84:8001","port":8001,"sequence":"TEMP_SEQUENCE","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:8001","logicId":1},{"uRL":"10.20.153.84:6005","port":6005,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6005","logicId":0},{"uRL":"10.20.153.85:8001","port":8001,"sequence":"TEMP_SEQUENCE","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:8001","logicId":0},{"uRL":"10.20.153.85:6001","port":6001,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6001","logicId":4},{"uRL":"10.20.153.85:6005","port":6005,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6005","logicId":0},{"uRL":"10.20.153.85:6002","port":6002,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6002","logicId":3}]}
+2013-03-12 21:34:13,839 [main] [WARN ](impl.LogicFailoverCallbackHandler,144) - Get new route version:598
+2013-03-12 21:34:13,843 [main] [INFO ](impl.LogicFailoverCallbackHandler,156) - find new route by key:2:key1
+2013-03-12 21:34:13,845 [main] [INFO ](impl.LogicFailoverCallbackHandler,160) - new route nodes - [NORMAL_SEQUENCE_1.0, NORMAL_SEQUENCE_2.0]
+2013-03-12 21:34:13,849 [main] [INFO ](impl.LogicFailoverCallbackHandler,165) - old route datasource:[[DataSource :  1.0, ip=10.20.157.186, port=6001], [DataSource :  2.0, ip=10.20.157.187, port=7001]]
+2013-03-12 21:34:13,850 [main] [WARN ](impl.LogicFailoverCallbackHandler,186) - New store node == Old store node, new one is also NORMAL_SEQUENCE_2.0,10.20.153.85:6005. key=2:key1
+2013-03-12 21:34:13,860 [main] [WARN ](impl.LogicFailoverCallbackHandler,193) - Redirect access after route version exception:[DataSource :  2.0, ip=10.20.157.187, port=7001]
+2013-03-12 21:34:15,964 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6005 time:80
+2013-03-12 21:34:23,857 [Release-Datasources-Thread cleanup] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.157.187:7001
+2013-03-12 21:34:23,860 [Release-Datasources-Thread cleanup] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.157.186:6001
+2013-03-12 21:34:45,841 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:23
+2013-03-12 21:34:45,868 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:13
+2013-03-12 21:34:48,872 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6004 time:103
+2013-03-12 21:34:48,972 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6004 time:90
+2013-03-12 21:34:51,065 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6002 time:85
+2013-03-12 21:34:51,174 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:77
+2013-03-12 21:34:57,469 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6001 time:107
+2013-03-12 21:34:57,501 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6001 time:13
+2013-03-12 21:34:58,750 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6005 time:14
+2013-03-12 21:35:14,149 [main] [INFO ](client.DataSourceManagerImpl,127) - Try to close all datasources.
+2013-03-12 21:35:14,150 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6005
+2013-03-12 21:35:14,151 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.0, ip=10.20.153.85, port=6005]
+2013-03-12 21:35:14,153 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6004
+2013-03-12 21:35:14,154 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.1, ip=10.20.153.85, port=6004]
+2013-03-12 21:35:14,155 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6003
+2013-03-12 21:35:14,156 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.2, ip=10.20.153.85, port=6003]
+2013-03-12 21:35:14,157 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6002
+2013-03-12 21:35:14,158 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.3, ip=10.20.153.85, port=6002]
+2013-03-12 21:35:14,159 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6001
+2013-03-12 21:35:14,160 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.4, ip=10.20.153.85, port=6001]
+2013-03-12 21:35:14,161 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6005
+2013-03-12 21:35:14,162 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.0, ip=10.20.153.84, port=6005]
+2013-03-12 21:35:14,164 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6004
+2013-03-12 21:35:14,165 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.1, ip=10.20.153.84, port=6004]
+2013-03-12 21:35:14,166 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6003
+2013-03-12 21:35:14,167 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.2, ip=10.20.153.84, port=6003]
+2013-03-12 21:35:14,168 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6002
+2013-03-12 21:35:14,169 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.3, ip=10.20.153.84, port=6002]
+2013-03-12 21:35:14,170 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6001
+2013-03-12 21:35:14,170 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.4, ip=10.20.153.84, port=6001]
+2013-03-12 21:35:14,171 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  0.0, ip=10.20.153.85, port=8001]
+2013-03-12 21:35:14,176 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  0.1, ip=10.20.153.84, port=8001]
+2013-03-12 21:35:14,177 [main] [INFO ](client.DataSourceManagerImpl,148) - Finish close all datasources. Total count: 12
+2013-03-12 21:36:15,973 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-12 21:36:16,058 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-12 21:36:16,059 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-12 21:36:16,119 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-12 21:36:16,460 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.157.185:8080/doris.admin" can be connected? true
+2013-03-12 21:36:16,467 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-03-12 21:36:16,493 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-03-12 21:36:20,188 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.157.186:6001 time:834
+2013-03-12 21:36:20,507 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.157.187:7001 time:78
+2013-03-12 21:36:20,523 [main] [WARN ](impl.LogicFailoverCallbackHandler,130) - Process RouteVersionOutOfDateException: currentDataSource:2.0get new route config from data server:::{"version":598,"storeNodes":[{"uRL":"10.20.153.85:6003","port":6003,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6003","logicId":2},{"uRL":"10.20.153.84:6002","port":6002,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6002","logicId":3},{"uRL":"10.20.153.85:6004","port":6004,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6004","logicId":1},{"uRL":"10.20.153.84:6001","port":6001,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6001","logicId":4},{"uRL":"10.20.153.84:6003","port":6003,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6003","logicId":2},{"uRL":"10.20.153.84:6004","port":6004,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6004","logicId":1},{"uRL":"10.20.153.84:8001","port":8001,"sequence":"TEMP_SEQUENCE","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:8001","logicId":1},{"uRL":"10.20.153.84:6005","port":6005,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6005","logicId":0},{"uRL":"10.20.153.85:8001","port":8001,"sequence":"TEMP_SEQUENCE","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:8001","logicId":0},{"uRL":"10.20.153.85:6001","port":6001,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6001","logicId":4},{"uRL":"10.20.153.85:6005","port":6005,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6005","logicId":0},{"uRL":"10.20.153.85:6002","port":6002,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6002","logicId":3}]}
+2013-03-12 21:36:22,097 [main] [WARN ](impl.LogicFailoverCallbackHandler,144) - Get new route version:598
+2013-03-12 21:36:22,099 [main] [INFO ](impl.LogicFailoverCallbackHandler,156) - find new route by key:2:key1
+2013-03-12 21:36:22,101 [main] [INFO ](impl.LogicFailoverCallbackHandler,160) - new route nodes - [NORMAL_SEQUENCE_1.0, NORMAL_SEQUENCE_2.0]
+2013-03-12 21:36:22,106 [main] [INFO ](impl.LogicFailoverCallbackHandler,165) - old route datasource:[[DataSource :  1.0, ip=10.20.157.186, port=6001], [DataSource :  2.0, ip=10.20.157.187, port=7001]]
+2013-03-12 21:36:22,109 [main] [WARN ](impl.LogicFailoverCallbackHandler,186) - New store node == Old store node, new one is also NORMAL_SEQUENCE_2.0,10.20.153.85:6005. key=2:key1
+2013-03-12 21:36:22,113 [main] [WARN ](impl.LogicFailoverCallbackHandler,193) - Redirect access after route version exception:[DataSource :  2.0, ip=10.20.157.187, port=7001]
+2013-03-12 21:36:32,107 [Release-Datasources-Thread cleanup] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.157.187:7001
+2013-03-12 21:36:32,109 [Release-Datasources-Thread cleanup] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.157.186:6001
+2013-03-12 21:36:41,728 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6005 time:25
+2013-03-12 21:38:10,326 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-12 21:38:10,409 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-12 21:38:10,410 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-12 21:38:10,465 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-12 21:38:10,801 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.157.185:8080/doris.admin" can be connected? true
+2013-03-12 21:38:10,999 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-03-12 21:38:11,032 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-03-12 21:38:15,966 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.157.186:6001 time:811
+2013-03-12 21:38:16,256 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.157.187:7001 time:67
+2013-03-12 21:38:16,277 [main] [WARN ](impl.LogicFailoverCallbackHandler,130) - Process RouteVersionOutOfDateException: currentDataSource:2.0get new route config from data server:::{"version":598,"storeNodes":[{"uRL":"10.20.153.85:6003","port":6003,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6003","logicId":2},{"uRL":"10.20.153.84:6002","port":6002,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6002","logicId":3},{"uRL":"10.20.153.85:6004","port":6004,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6004","logicId":1},{"uRL":"10.20.153.84:6001","port":6001,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6001","logicId":4},{"uRL":"10.20.153.84:6003","port":6003,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6003","logicId":2},{"uRL":"10.20.153.84:6004","port":6004,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6004","logicId":1},{"uRL":"10.20.153.84:8001","port":8001,"sequence":"TEMP_SEQUENCE","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:8001","logicId":1},{"uRL":"10.20.153.84:6005","port":6005,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6005","logicId":0},{"uRL":"10.20.153.85:8001","port":8001,"sequence":"TEMP_SEQUENCE","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:8001","logicId":0},{"uRL":"10.20.153.85:6001","port":6001,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6001","logicId":4},{"uRL":"10.20.153.85:6005","port":6005,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6005","logicId":0},{"uRL":"10.20.153.85:6002","port":6002,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6002","logicId":3}]}
+2013-03-12 21:38:17,737 [main] [WARN ](impl.LogicFailoverCallbackHandler,144) - Get new route version:598
+2013-03-12 21:38:17,759 [main] [INFO ](impl.LogicFailoverCallbackHandler,156) - find new route by key:2:key1
+2013-03-12 21:38:17,761 [main] [INFO ](impl.LogicFailoverCallbackHandler,160) - new route nodes - [NORMAL_SEQUENCE_1.0, NORMAL_SEQUENCE_2.0]
+2013-03-12 21:38:17,767 [main] [INFO ](impl.LogicFailoverCallbackHandler,165) - old route datasource:[[DataSource :  1.0, ip=10.20.157.186, port=6001], [DataSource :  2.0, ip=10.20.157.187, port=7001]]
+2013-03-12 21:38:17,769 [main] [WARN ](impl.LogicFailoverCallbackHandler,186) - New store node == Old store node, new one is also NORMAL_SEQUENCE_2.0,10.20.153.85:6005. key=2:key1
+2013-03-12 21:38:17,773 [main] [WARN ](impl.LogicFailoverCallbackHandler,193) - Redirect access after route version exception:[DataSource :  2.0, ip=10.20.157.187, port=7001]
+2013-03-12 21:41:12,696 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-12 21:41:12,760 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-12 21:41:14,016 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-12 21:41:14,117 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-12 21:41:14,584 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.157.185:8080/doris.admin" can be connected? true
+2013-03-12 21:41:14,593 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-03-12 21:41:14,624 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-03-12 21:41:18,962 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.157.186:6001 time:672
+2013-03-12 21:41:19,196 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.157.187:7001 time:54
+2013-03-12 21:41:19,211 [main] [WARN ](impl.LogicFailoverCallbackHandler,130) - Process RouteVersionOutOfDateException: currentDataSource:2.0get new route config from data server:::{"version":598,"storeNodes":[{"uRL":"10.20.153.85:6003","port":6003,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6003","logicId":2},{"uRL":"10.20.153.84:6002","port":6002,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6002","logicId":3},{"uRL":"10.20.153.85:6004","port":6004,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6004","logicId":1},{"uRL":"10.20.153.84:6001","port":6001,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6001","logicId":4},{"uRL":"10.20.153.84:6003","port":6003,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6003","logicId":2},{"uRL":"10.20.153.84:6004","port":6004,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6004","logicId":1},{"uRL":"10.20.153.84:8001","port":8001,"sequence":"TEMP_SEQUENCE","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:8001","logicId":1},{"uRL":"10.20.153.84:6005","port":6005,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6005","logicId":0},{"uRL":"10.20.153.85:8001","port":8001,"sequence":"TEMP_SEQUENCE","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:8001","logicId":0},{"uRL":"10.20.153.85:6001","port":6001,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6001","logicId":4},{"uRL":"10.20.153.85:6005","port":6005,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6005","logicId":0},{"uRL":"10.20.153.85:6002","port":6002,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6002","logicId":3}]}
+2013-03-12 21:41:20,232 [main] [WARN ](impl.LogicFailoverCallbackHandler,144) - Get new route version:598
+2013-03-12 21:41:20,234 [main] [INFO ](impl.LogicFailoverCallbackHandler,156) - find new route by key:2:key1
+2013-03-12 21:41:20,236 [main] [INFO ](impl.LogicFailoverCallbackHandler,160) - new route nodes - [NORMAL_SEQUENCE_1.0, NORMAL_SEQUENCE_2.0]
+2013-03-12 21:41:20,240 [main] [INFO ](impl.LogicFailoverCallbackHandler,165) - old route datasource:[[DataSource :  1.0, ip=10.20.157.186, port=6001], [DataSource :  2.0, ip=10.20.157.187, port=7001]]
+2013-03-12 21:41:20,242 [main] [WARN ](impl.LogicFailoverCallbackHandler,186) - New store node == Old store node, new one is also NORMAL_SEQUENCE_2.0,10.20.153.85:6005. key=2:key1
+2013-03-12 21:41:20,245 [main] [WARN ](impl.LogicFailoverCallbackHandler,193) - Redirect access after route version exception:[DataSource :  2.0, ip=10.20.157.187, port=7001]
+2013-03-12 21:41:30,234 [Release-Datasources-Thread cleanup] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.157.187:7001
+2013-03-12 21:41:30,240 [Release-Datasources-Thread cleanup] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.157.186:6001
+2013-03-12 21:41:36,940 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6005 time:21
+2013-03-12 21:42:06,443 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-12 21:42:06,513 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-12 21:42:06,514 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,107) - admin connector initization starts.
+2013-03-12 21:42:06,567 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,172) - admin connector client hostName:ajun-THINK,hostAddress:192.168.56.1
+2013-03-12 21:42:06,851 [main] [INFO ](connenctor.AdminConnector$ConfigFetcher,252) - Admin Server "http://10.20.157.185:8080/doris.admin" can be connected? true
+2013-03-12 21:42:06,857 [main] [INFO ](client.DataStoreFactoryImpl,214) - Doris client auth: username:doris, password:doris
+2013-03-12 21:42:06,966 [main] [INFO ](client.DataStoreFactoryImpl,224) - Returned doris client priviledge: 0
+2013-03-12 21:42:11,176 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.157.186:6001 time:656
+2013-03-12 21:42:11,417 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.157.187:7001 time:51
+2013-03-12 21:42:11,432 [main] [WARN ](impl.LogicFailoverCallbackHandler,130) - Process RouteVersionOutOfDateException: currentDataSource:2.0get new route config from data server:::{"version":598,"storeNodes":[{"uRL":"10.20.153.85:6003","port":6003,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6003","logicId":2},{"uRL":"10.20.153.84:6002","port":6002,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6002","logicId":3},{"uRL":"10.20.153.85:6004","port":6004,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6004","logicId":1},{"uRL":"10.20.153.84:6001","port":6001,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6001","logicId":4},{"uRL":"10.20.153.84:6003","port":6003,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6003","logicId":2},{"uRL":"10.20.153.84:6004","port":6004,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6004","logicId":1},{"uRL":"10.20.153.84:8001","port":8001,"sequence":"TEMP_SEQUENCE","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:8001","logicId":1},{"uRL":"10.20.153.84:6005","port":6005,"sequence":"NORMAL_SEQUENCE_1","status":"OK","ip":"10.20.153.84","phId":"10.20.153.84:6005","logicId":0},{"uRL":"10.20.153.85:8001","port":8001,"sequence":"TEMP_SEQUENCE","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:8001","logicId":0},{"uRL":"10.20.153.85:6001","port":6001,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6001","logicId":4},{"uRL":"10.20.153.85:6005","port":6005,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6005","logicId":0},{"uRL":"10.20.153.85:6002","port":6002,"sequence":"NORMAL_SEQUENCE_2","status":"OK","ip":"10.20.153.85","phId":"10.20.153.85:6002","logicId":3}]}
+2013-03-12 21:42:12,589 [main] [WARN ](impl.LogicFailoverCallbackHandler,144) - Get new route version:598
+2013-03-12 21:42:12,594 [main] [INFO ](impl.LogicFailoverCallbackHandler,156) - find new route by key:2:key1
+2013-03-12 21:42:12,597 [main] [INFO ](impl.LogicFailoverCallbackHandler,160) - new route nodes - [NORMAL_SEQUENCE_1.0, NORMAL_SEQUENCE_2.0]
+2013-03-12 21:42:12,602 [main] [INFO ](impl.LogicFailoverCallbackHandler,165) - old route datasource:[[DataSource :  1.0, ip=10.20.157.186, port=6001], [DataSource :  2.0, ip=10.20.157.187, port=7001]]
+2013-03-12 21:42:12,605 [main] [WARN ](impl.LogicFailoverCallbackHandler,186) - New store node == Old store node, new one is also NORMAL_SEQUENCE_2.0,10.20.153.85:6005. key=2:key1
+2013-03-12 21:42:12,609 [main] [WARN ](impl.LogicFailoverCallbackHandler,193) - Redirect access after route version exception:[DataSource :  2.0, ip=10.20.157.187, port=7001]
+2013-03-12 21:42:14,033 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6005 time:82
+2013-03-12 21:42:15,876 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6005 time:106
+2013-03-12 21:42:22,590 [Release-Datasources-Thread cleanup] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.157.187:7001
+2013-03-12 21:42:22,592 [Release-Datasources-Thread cleanup] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.157.186:6001
+2013-03-12 21:43:10,789 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6003 time:22
+2013-03-12 21:43:10,811 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6003 time:17
+2013-03-12 21:43:10,905 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6004 time:80
+2013-03-12 21:43:10,988 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6004 time:74
+2013-03-12 21:43:11,112 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6002 time:111
+2013-03-12 21:43:11,193 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6002 time:72
+2013-03-12 21:43:11,211 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.85:6001 time:8
+2013-03-12 21:43:11,223 [main] [INFO ](netty.NettyConnectionImpl,58) - open connection success:/10.20.153.84:6001 time:9
+2013-03-12 21:43:13,505 [main] [INFO ](client.DataSourceManagerImpl,127) - Try to close all datasources.
+2013-03-12 21:43:13,508 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6005
+2013-03-12 21:43:13,509 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.0, ip=10.20.153.85, port=6005]
+2013-03-12 21:43:13,511 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6004
+2013-03-12 21:43:13,511 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.1, ip=10.20.153.85, port=6004]
+2013-03-12 21:43:13,512 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6003
+2013-03-12 21:43:13,513 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.2, ip=10.20.153.85, port=6003]
+2013-03-12 21:43:13,514 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6002
+2013-03-12 21:43:13,515 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.3, ip=10.20.153.85, port=6002]
+2013-03-12 21:43:13,516 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.85:6001
+2013-03-12 21:43:13,517 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  2.4, ip=10.20.153.85, port=6001]
+2013-03-12 21:43:13,518 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6005
+2013-03-12 21:43:13,519 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.0, ip=10.20.153.84, port=6005]
+2013-03-12 21:43:13,520 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6004
+2013-03-12 21:43:13,521 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.1, ip=10.20.153.84, port=6004]
+2013-03-12 21:43:13,523 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6003
+2013-03-12 21:43:13,524 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.2, ip=10.20.153.84, port=6003]
+2013-03-12 21:43:13,525 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6002
+2013-03-12 21:43:13,527 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.3, ip=10.20.153.84, port=6002]
+2013-03-12 21:43:13,528 [main] [ERROR](netty.NettyConnectionImpl,42) - close connection success:/10.20.153.84:6001
+2013-03-12 21:43:13,528 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  1.4, ip=10.20.153.84, port=6001]
+2013-03-12 21:43:13,529 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  0.0, ip=10.20.153.85, port=8001]
+2013-03-12 21:43:13,530 [main] [INFO ](client.DataSourceManagerImpl,142) - Close datasource: [DataSource :  0.1, ip=10.20.153.84, port=8001]
+2013-03-12 21:43:13,530 [main] [INFO ](client.DataSourceManagerImpl,148) - Finish close all datasources. Total count: 12

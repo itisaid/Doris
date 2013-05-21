@@ -1,0 +1,24 @@
+[set]
+set
+  To set value into storage.
+[get]
+[delete]
+[help]
+[all]
+-S set
+-S get
+-S delete
+[doris]
+-T Dev Team: Jack.Yuj HeKun LiZhiHui ZhouYI ZhengMao HeMian HuangLuYi
+-T Test Team: YeChenChao LiJing SunChen.
+
+-T @_@ Doris $_$ 
+
+-T DDD     OOO   R R R   III  SSSS
+-T D  D   O   O  R    R   I  S
+-T D   D O     O R    R   I   SS
+-T D   D O     O R R R    I     SS
+-T D  D   O   O  R   R    I      S
+-T DDD     OOO   RR   RR III SSSS
+
+-T Developed by ALIBABA.

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+#set($_v = "1")
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Doris</title>
+<link type="text/css" href="/css/common.css?v=${_v}.css" rel="stylesheet"/>
+<link type="text/css" href="/css/skin.css?v=${_v}.css" rel="stylesheet"/>
+<link type="text/css" href="/css/doris.css?v=${_v}.css" rel="stylesheet"/>
+<script type="text/javascript" src="/js/trcolor.js?v=${_v}.js"></script>
+<script type="text/javascript" src="/js/jquery-1.4.2.min.js?v=${_v}.js"></script> 
+<script type="text/javascript" src="/js/jquery.simplemodal-1.4.js?v=${_v}.js"></script>
+<script type="text/javascript" src="/js/doris.js?v=${_v}.js"></script>
+</head>
+<body>
+
+<div class="head">
+  <div class="header"></div>
+  <div class="head_right">
+    <div class="exit" title="退出"><a href="$!logoutLink"><img src="/images/exit.png" width="14" height="19" /></a></div>
+    <span>用户"$!userDO.name"，欢迎您登录！</span>
+  </div>
+</div>
+
+<div class="nav">
+<ul>
+  <li id="monitorInfoId" class="sub_nav"><a  href="#">监控信息</a>
+      <ul>
+          <li><a href="/monitor/realtime.htm">实时信息</a></li>
+          <li><a href="/monitor/history.htm">历史信息</a></li>
+          <li><a href="/monitor/history_with_name_space.htm?action=stat_action&event_submit_do_stat_with_name_space=1">namespace view</a></li>
+          <li><a href="/monitor/history_with_phy_id.htm?action=stat_action&event_submit_do_stat_with_physical_id=1">phyid view</a></li>
+      </ul>
+  </li>
+  <li id="webConsoleId"><a href="/configer/webconsole.htm">Web控制台</a></li>  
+  <li id="configureManageId" class="sub_nav"><a  href="#">配置管理</a>
+      <ul>
+        ## <li><a href="/configer/nodelist_all.htm">Node List</a></li> ##
+         <li><a href="/configer/node_add.htm" onclick="">新增Node</a></li>
+		 <li><a href="/configer/namespace_add.htm">新增Namespace</a></li>
+		 <li><a href="/configer/node_manage.htm">Node管理</a></li>
+		 <li><a href="/configer/namespace_list.htm">Namespace管理</a></li>
+         
+      </ul>
+  </li>
+  </li>
+  <li id="systemLogId"><a href="/configer/system_log.htm">系统日志</a></li>
+  <li id="consistentReportId"><a href="/configer/consistent_report_list.htm">一致性问题报告</a></li>
+</ul>
+<div class="about"><a href="http://b2b-doc.alibaba-inc.com/display/RC/Doris">About</a></div>
+</div>
+<div class="main">
+    $screen_placeholder
+</div>
+<div class="footer">
+ <span>Copyright&nbsp;@&nbsp;2003-2011&nbsp;&nbsp;alibaba.com&nbsp;&nbsp;版权所有</span>
+</div>
+</body>
+
+</html>

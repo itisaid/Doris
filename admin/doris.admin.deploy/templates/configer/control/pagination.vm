@@ -1,0 +1,47 @@
+<div class="page">
+		#if($pageView.totalPages > 0)
+		共$pageView.totalLines条数据&nbsp;&nbsp;第$pageView.currentPage页/共$pageView.totalPages页&nbsp;&nbsp;
+		#end
+		
+       <a #if ($pageView.currentPage > 1) href="javascript:submitQuery(1)" #end class="prev">首页</a> 
+	   
+       <a  #if ($pageView.currentPage > 1) href="javascript:submitQuery($pageView.currentPage -1)" #end class="prev">上一页</a> 
+	   #set($flag='1')
+	   #foreach($pageNum in $pageView.displayList)
+		#if(($pageNum+5 >= $pageView.currentPage && $pageNum <= $pageView.currentPage +5) || $pageNum+5 >= $pageView.totalPages  )
+       <a  #if($pageView.currentPage == $pageNum) class="num current_num" #else href="javascript:submitQuery($pageNum)"  class="num " #end>$pageNum</a> 
+		#end
+		#if($pageNum > $pageView.currentPage +5 && $!flag=='1')
+			......
+		#set($flag='0')	
+		#end
+	   #end
+	   
+	   
+       <a  #if ($pageView.currentPage < $pageView.totalPages) href="javascript:submitQuery($pageView.currentPage +1)"  #end class="prev">下一页</a>
+	   跳到第
+         <select name="goToPage" id="goToPage">
+			#foreach($pageNum in $pageView.displayList)
+				<option value="$pageNum">$pageNum</option>
+			#end
+         </select>
+         页
+         <span class="go"><a href="javascript:submitQuery(document.getElementById('goToPage').value,$pageView.totalPages)">GO</a></span>
+     </div>
+		
+<script  type="text/javascript">
+	 window.addEvent('domready', function(){
+    
+    	$$('input.DatePicker').each( function(el){
+    		new DatePicker(el);
+    	});
+    
+    });
+    function submitQuery(curPage,totalpages){
+    	if(curPage > totalpages){
+    		curPage = totalpages;
+    	}
+    	document.getElementById('currentpage').value = curPage;
+    	document.getElementById('$!queryForm').submit();
+    }
+</script>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:services="http://www.alibaba.com/schema/services"
+	xmlns:fm-conditions="http://www.alibaba.com/schema/services/form/conditions"
+	xmlns:fm-validators="http://www.alibaba.com/schema/services/form/validators"
+	xmlns="http://www.alibaba.com/schema/services/form/validators"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+        http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
+        http://www.alibaba.com/schema/services/form/conditions http://localhost:8080/schema/services-form-conditions.xsd
+        http://www.alibaba.com/schema/services/form/validators http://localhost:8080/schema/services-form-validators.xsd
+        http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+    ">
+
+	<services:form postOnlyByDefault="true">
+		<!--
+			- =============================================== - 用来检查csrf token。 -
+			===============================================
+		-->
+		<services:group name="csrfCheck">
+			<services:field name="csrfToken">
+				<csrf-validator>
+					<message>提交的数据已过期</message>
+				</csrf-validator>
+			</services:field>
+		</services:group>
+
+		<!--
+			- =============================================== - loginForm form -
+			===============================================
+		-->
+		<services:group name="loginForm" extends="csrfCheck">
+			<services:field name="nameIsNotExsitError">
+				<custom-error id="nameIsNotExsit">
+					<message>该用户名不存在,请重新输入！</message>
+				</custom-error>
+			</services:field>
+			<services:field name="passwdError">
+				<custom-error id="passwdError">
+					<message>密码错误,请重新输入！</message>
+				</custom-error>
+			</services:field>
+			<services:field name="name" displayName="用户名">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+			<services:field name="password" displayName="密码">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+		</services:group>
+	</services:form>
+	
+
+</beans:beans>

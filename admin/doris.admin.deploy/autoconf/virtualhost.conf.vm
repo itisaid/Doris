@@ -1,0 +1,32 @@
+#macro( rewriteLog $mode $deploy)
+    RewriteLog	${deploy}/logs/rewrite.log
+    #if($mode=="run")
+        RewriteLogLevel		2
+    #else
+        RewriteLogLevel		0
+    #end
+#end
+
+NameVirtualHost *:${doris_admin_apache_port}
+
+#set ($tmp_target_url="localhost")
+
+#if(${doris_admin_appserver_port} != "80")
+    #set ($tmp_target_url="localhost:${doris_admin_appserver_port}")
+#end
+
+<VirtualHost *:${doris_admin_apache_port}>
+    #if(${doris_admin_basic_setting_mode} == "run")
+        ServerName fee.alibaba.com
+    #else
+        ServerName ${doris_admin_server}
+    #end
+    ServerAlias ad.alibaba.com 
+    DocumentRoot "${doris_admin_deploy}/htdocs"
+    DirectoryIndex index.html
+    RewriteEngine on
+    ##rewriteLog(${doris_admin_basic_setting_mode} ${doris_admin_output})
+    ##RewriteRule ^/displayad.biz$     http://$tmp_target_url/adDisplay.vhtml?%{query_string} [L,P] 
+    ##RewriteRule ^/visitlog.biz$     http://$tmp_target_url/visitLog.vhtml?%{query_string} [L,P]
+    RewriteRule ^/doris.admin  http://$tmp_target_url/doris.admin [L,P] 
+</VirtualHost>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ConfigInstance">
+	<typeAlias alias="RouterConfigInstanceDO" type="com.alibaba.doris.admin.dataobject.RouterConfigInstanceDO" />
+	
+	<resultMap id="ConfigInstanceResult" class="RouterConfigInstanceDO">
+		<result column="ID" property="id" jdbcType="INTEGER" />
+		<result column="GMT_CREATE" property="gmtCreate" jdbcType="DATETIME" />
+		<result column="CONFIG_CONTENT" property="content" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="readLatestById" resultMap="ConfigInstanceResult">
+		<![CDATA[
+		SELECT ID, GMT_CREATE, CONFIG_CONTENT
+		FROM CONFIG_INSTANCES
+		ORDER BY ID desc limit 1
+		]]>
+	</select>
+	
+	 <insert id="insertConfigInstance" parameterClass="RouterConfigInstanceDO">
+    <![CDATA[ 
+    INSERT INTO CONFIG_INSTANCES(GMT_CREATE, CONFIG_CONTENT)
+      VALUES(now(), #content:VARCHAR#)
+    ]]>
+    <selectKey resultClass="int" keyProperty="id" type="post">
+      SELECT MAX(ID) FROM CONFIG_INSTANCES
+    </selectKey>
+  </insert>
+</sqlMap>

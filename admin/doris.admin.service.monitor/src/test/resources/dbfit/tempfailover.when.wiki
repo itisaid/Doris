@@ -1,0 +1,13 @@
+|connect|
+
+|clean table|physical_nodes|
+
+|insert|physical_nodes|
+|LOGICAL_ID|PHYSICAL_ID|SERIAL_ID|MACHINE_ID|IP|STATUS|GMT_CREATE|GMT_MODIFIED|PORT|
+|1|physical_id_1|1|machineid|127.0.0.1|1|@{datetime}|@{datetime}|4011|
+|2|physical_id_2|1|machineid|127.0.0.1|1|@{datetime}|@{datetime}|4012|
+|3|physical_id_3|1|machineid|127.0.0.1|1|@{datetime}|@{datetime}|4013|
+|4|physical_id_4|1|machineid|127.0.0.1|1|@{datetime}|@{datetime}|4014|
+|5|physical_id_5|1|machineid|127.0.0.1|1|@{datetime}|@{datetime}|4015|
+
+|commit|

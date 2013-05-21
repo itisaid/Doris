@@ -1,0 +1,30 @@
+<form  method="post" name="webconsole" id="webconsoleForm">
+	$csrfToken.hiddenField
+	<div class="exceptionDiv">
+	<table  border="0" cellspacing="0" cellpadding="0" class="list" id="table_t">
+	<tr>
+        <td colspan="3">$!errorResult</td>
+      </tr>
+	<tr>
+        <td>命令00：</td>
+        <td><textarea rows="5" style="width:660;" name="command" ></textarea></td>
+        <td>
+		读:get key:namespace
+		写:set key:namespace 1 long型时间戳 value字节大小
+		value
+		</td>
+      </tr>
+	 <tr>
+        <td>返回：</td>
+        <td  colspan="2">$!result</td>
+      </tr>
+    </table>
+    </div>
+	<input type="hidden" name="action" value="WebconsoleAction"/>
+    <input type="hidden" name="event_submit_do_send_command" value="true" />
+	<div class="btn_add"><div class="btn"><a href="#" onclick="document.getElementById('webconsoleForm').submit()">发送命令</a></div></div>
+	<div class="btn_add">
+	注意：
+	1.
+	</div>
+</form>

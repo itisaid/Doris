@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://toolkit.alibaba-inc.com/dtd/log4j/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <!-- ===================================================================== -->
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <param name="target" value="System.out" />
+        <param name="encoding" value="GBK"/>
+        <layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n" />
+		</layout>
+    </appender>
+    <appender name="STDERR" class="org.apache.log4j.ConsoleAppender">
+        <param name="target" value="System.err" />
+        <param name="encoding" value="GBK"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p](%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>
+    
+      <appender name="DataServerLog" class="org.apache.log4j.DailyRollingFileAppender">
+         <param name="file" value="${logRoot}/dataserver.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="debug"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p] (%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="DataServerMigrationLog" class="org.apache.log4j.DailyRollingFileAppender">
+         <param name="file" value="${logRoot}/dataserver.migration.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="debug"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p] (%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="DataServerErrorLog" class="org.apache.log4j.DailyRollingFileAppender">
+         <param name="file" value="${logRoot}/dataserver.error.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="error"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p] (%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="DataServerNetLog" class="org.apache.log4j.DailyRollingFileAppender">
+         <param name="file" value="${logRoot}/dataserver.net.log"/>
+         <param name="append" value="true"/> 
+         <param name="encoding" value="GBK"/>
+         <param name="threshold" value="error"/>
+         <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d [%t] [%-5p] (%C{2},%L) - %m%n"/>
+        </layout>
+    </appender>
+    
+    <appender name="DragoonErrorLog" class="com.alibaba.dragoon.patrol.log4j.PatrolLog4jAppender">
+	   <param name="Threshold" value="ERROR"/>
+	</appender>
+	
+    <!-- ===================================================================== -->
+    <logger name="com.alibaba.doris.dataserver">
+    	<level value="${logLevel}" />
+        <appender-ref ref="DataServerLog" />
+        <appender-ref ref="DragoonErrorLog" />
+    </logger>
+    
+    <logger name="com.alibaba.doris.dataserver.net">
+    	<level value="${logLevel}" />
+        <appender-ref ref="DataServerNetLog" />
+    </logger>
+    
+    <logger name="com.alibaba.doris.common.adminservice.connenctor">
+        <level value="INFO" />
+        <appender-ref ref="DataServerLog" />
+        <appender-ref ref="DragoonErrorLog" />
+    </logger>
+    
+    <logger name="com.alibaba.doris.dataserver.migrator" additivity="true">
+        <level value="${logLevel}" />
+        <appender-ref ref="DataServerMigrationLog" />
+        <appender-ref ref="DragoonErrorLog" />
+    </logger>
+    
+    <logger name="org.apache">
+        <level value="ERROR" />
+         <appender-ref ref="DataServerErrorLog" />
+    </logger>
+    
+    <!-- ===================================================================== -->
+    <root>
+        <level value="ERROR"/>
+        <appender-ref ref="DataServerErrorLog" />
+        <appender-ref ref="DragoonErrorLog" />
+    </root>
+</log4j:configuration>

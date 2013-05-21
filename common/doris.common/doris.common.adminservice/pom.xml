@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.alibaba.platform.shared</groupId>
+        <artifactId>doris.shared.parent</artifactId>
+        <version>0.1.6.2</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+	<groupId>com.alibaba.platform.shared</groupId>
+	<artifactId>doris.common.adminservice</artifactId>
+	<packaging>jar</packaging>
+	<name>doris.common.adminservice</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.alibaba.platform.shared</groupId>
+			<artifactId>doris.common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+    	<dependency>
+	         <groupId>com.alibaba.platform.shared</groupId>
+	         <artifactId>fastjson</artifactId>
+     	 </dependency>
+     	 
+		<dependency>
+			<groupId>com.alibaba.external</groupId>
+			<artifactId>jakarta.commons.httpclient</artifactId>
+			<version>3.0</version>
+		</dependency> 
+		
+			
+	    <dependency>
+			<groupId>com.alibaba.external</groupId>
+			<artifactId>java.servlet</artifactId>
+			 <scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>com.alibaba.external</groupId>
+            <artifactId>server.jetty.jetty-client</artifactId>
+            <version>7.0.1.v20091125</version>
+            <scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>com.alibaba.platform.shared</groupId>
+			<artifactId>webx3.test</artifactId>
+			<scope>test</scope>
+		</dependency>        
+	</dependencies>
+</project>

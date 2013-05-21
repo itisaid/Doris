@@ -1,0 +1,179 @@
+<script type="text/javascript">
+	function doReview(){
+		document.getElementById('event_submit_do_preview').value='true';
+		document.getElementById('NewAddedNode').submit();
+	}
+	function doResolveTempErr(nodeId,physicalId){
+		document.getElementById('errorNodeId').value=nodeId;
+		document.getElementById('errorNodePhysicalId').value=physicalId;
+		document.getElementById('event_submit_do_replace_temp_error_node').value='true';
+		document.getElementById('NewAddedNode').submit();
+	}
+	function doResolveForeverErr(nodeId,physicalId){
+		document.getElementById('errorNodeId').value=nodeId;
+		document.getElementById('errorNodePhysicalId').value=physicalId;
+		document.getElementById('event_submit_do_replace_forever_error_node').value='true';
+		document.getElementById('NewAddedNode').submit();
+	} 
+	function doRemoveNode(removeSequence,removeNodePhysicalId){
+		if(confirm("确认要删除吗？")){
+    		document.getElementById('removeNodePhysicalId').value=removeNodePhysicalId;
+    		document.getElementById('removeSequence').value=removeSequence;
+    		document.getElementById('event_submit_do_remove_node').value='true';
+    		document.getElementById('NewAddedNode').submit();
+		}
+	}
+	
+	function doEditNode(editNodeId) {
+	    document.getElementById('editNodeId').value=editNodeId;
+		document.getElementById('event_submit_do_edit').value='true';
+	    document.getElementById('NewAddedNode').submit();
+	}
+	
+	function doReMigrate(reMigrateSequence){
+		document.getElementById('reMigrateSequence').value=reMigrateSequence;
+		document.getElementById('event_submit_do_re_migrate').value='true';
+		document.getElementById('NewAddedNode').submit();
+	}
+</script>
+<form id="NewAddedNode" name="NewAddedNode" method="post">
+<div class="title"><h2>配置管理&nbsp;>&nbsp;Node管理列表</h2></div>
+   ##<div class="crumbs">配置管理&nbsp;>&nbsp;Node管理列表 </div>  
+	$csrfToken.hiddenField
+	#if($isMasterAdmin!="true" || $!errorResult || $!previewError)
+	<div class="setting_box">
+	<div style="color:red">$!errorResult</div>
+	<div style="color:red">$!previewError</div>
+    #if($isMasterAdmin!="true")
+			<div style="color:red">此Admin为备用机，不提供新增扩容、失效恢复以及删除节点服务，请等待主Admin服务恢复正常后再行操作</div>
+	#end
+    </div>
+	#end
+    #foreach($key in $nodemap.keySet()) 
+		#set($sequenceView = $!nodemap.get($key))
+		#set($nodelist = $!sequenceView.getNodeViewList())
+		#set ($group = $form.NewAddedNode.defaultInstance)
+	<div class="num_o">
+     <a href="javascript:;"  onclick ="showExceptionDiv(this)" class="title_o">
+		#if($nodelist.size()>0) 
+			#if($!key==-1) 
+				待用序列 
+			#elseif($!key==0) 临时序列 
+			#else $!allSequences.get($!key)
+			#end 
+		#end 
+	 </a> 
+	#if($isMasterAdmin=="true" && $nodelist.size()>0  && $!key!=9 && $!sequenceView.isSequenceMigrating()) 
+		<input type="button" name="Re-Migrate" value="重新扩容迁移" onclick="javascript:doReMigrate('$!key')"> 
+	#end
+     <div class="exceptionDiv">
+		
+	<table  border="0" cellspacing="0" cellpadding="0" class="list" name="table_o">
+      <tr>
+		#if( $!key >0)
+        <th >逻辑ID</th>
+		#end
+        <th >物理ID</th>
+		#if( $!key >0)
+        <th >序列</th>
+		#end
+        <th >机器ID</th>
+        <th >IP</th>
+		<th >端口</th>
+        #if($isMasterAdmin=="true") <th >健康状态</th> #end
+		#if($!key > -1 && $!key!=9)
+		<th >路由状态</th>
+		#end
+		#if($isMasterAdmin=="true")
+	       <th >迁移状态(进度)</th>
+			<th >操作</th>
+		#end
+      </tr>
+	  #foreach($node in $nodelist)
+      <tr>
+		#if( $node.serialId >0)
+        <td > $node.logicalId </td>
+		#end
+        <td >$node.physicalId</td>
+		#if( $node.serialId >0)
+        <td >#if($node.serialId!=-1) $node.serialId  #end</td>
+		#end
+        <td >$node.machineId</td>
+		<td >$node.ip</td>
+		<td >$node.port</td>
+		#if($isMasterAdmin=="true")<td >$node.healthStatus</td>#end
+		#if($node.serialId > -1 && $!key!=9)
+		<td >$node.routeStatus</td>
+		#end
+		#if($isMasterAdmin=="true")
+        <td title="$!node.migrationStatusDetail">
+			#if($!node.migrationStatus)
+    			$!node.migrationStatus 
+    			#if($!node.migrateProgress)
+    				#set($bfh='%')($!node.migrateProgress $bfh) 
+    			#else 
+    				(0%) 
+				#end
+			#end
+		</td>
+        <td >#if($node.serialId == -1 && $node.healthStatus =='OK')添加到
+        <select name="newNode" id="newNode">
+			<option value="">--</option>
+			#foreach($skey in $noMigrateSequences.keySet())
+				<option value="$node.physicalId#$skey#$node.ip">$noMigrateSequences.get($skey)</option>
+			#end
+        </select>
+		#end
+		    #if($node.serialId != -1 && $node.serialId != 9 && $node.serialId != 0)
+		       #if( $node.routeStatus != 'OK' && $node.healthStatus =='OK') 
+		        <a href="#" onclick="javascript:doResolveTempErr('$node.getId()','$node.physicalId')">
+					<img src="images/ico_cl.png" width="12" height="12" />
+					<span class="ico_font">临时失效恢复</span>
+				</a>
+				<span class="ico_line">|</span>
+				#end
+				
+				#if( $node.routeStatus != 'OK') 
+		            <a href="#" onclick="javascript:doResolveForeverErr('$node.getId()','$node.physicalId')">
+						<img src="images/ico_cl.png" width="12" height="12" />
+						<span class="ico_font">永久失效恢复</span>
+					</a>
+				#end
+		    #end
+			
+		#if(($node.serialId == -1 || $node.serialId == 0 || $node.serialId == 9))
+			<a href="#" class="fontlink" onclick="javascript:doRemoveNode('$node.serialId','$node.physicalId')">删除</a>
+		#else
+		    <a href="#" class="fontlink" onclick="javascript:doEditNode('$node.getId()')">编辑</a>
+		#end
+		</td>
+		#end
+      </tr>
+	  #end
+    </table>
+	</div>
+	</div>
+	#if($isMasterAdmin=="true" && $nodelist.size()>0 && $!key == -1)
+        <div class="btn"><a href="#" onclick="javascript:doReview()">添加预览</a></div>#end 
+	#end  
+	<input type="hidden" name="errorNodeId" id="errorNodeId"/>
+	<input type="hidden" name="reMigrateSequence" id="reMigrateSequence"/>
+	<input type="hidden" name="removeNodePhysicalId" id="removeNodePhysicalId"/>
+	<input type="hidden" name="editNodeId" id="editNodeId"/>
+	<input type="hidden" name="removeSequence" id="removeSequence"/>
+	<input type="hidden" name="errorNodePhysicalId" id="errorNodePhysicalId"/>
+	<input type="hidden" name="$group.newNodes.key" value="0"/>
+	<input type="hidden" name="isPreview" value="0"/>
+	<input type="hidden" name="action" id="action" value="NodeManageAction"/>
+	<input type="hidden" name="event_submit_do_replace_temp_error_node" id="event_submit_do_replace_temp_error_node" value=""  />
+	<input type="hidden" name="event_submit_do_replace_forever_error_node" id="event_submit_do_replace_forever_error_node" value=""  />
+    <input type="hidden" name="event_submit_do_preview" id="event_submit_do_preview" value=""  />
+    <input type="hidden" name="event_submit_do_edit" id="event_submit_do_edit" value=""  />
+	<input type="hidden" name="event_submit_do_remove_node" id="event_submit_do_remove_node" value=""  />
+	<input type="hidden" name="event_submit_do_re_migrate" id="event_submit_do_re_migrate" value=""  />
+</form>
+<script>
+function showExceptionDiv(t){
+ 	$(t).parent().find('.exceptionDiv').slideToggle();
+}
+</script>

@@ -1,0 +1,37 @@
+   <div class="title"><h2>监控信息&nbsp;>&nbsp;性能汇总(按phyid查看各个操作的性能数据 最近12小时)</h2></div>
+ 
+   
+   ##<div class="crumbs">监控信息&nbsp;>&nbsp;性能汇总(按phyid查看各个操作的性能数据 最近12小时) </div>
+ 
+     <table cellpadding="0" cellspacing="0" class="list list_system" name="table_o">
+       <tr>
+         <th>操作</th>
+         <th>总操作数</th>
+         <th>physical id</th>
+         <th>ops</th>
+         <th>bps</th>
+         <th>avg</th>
+         <th>min</th>
+         <th>max</th>
+         <th>80th</th>
+         <th>95th</th>
+         <th>99th</th>
+         <th>最大并发</th>
+       </tr>
+#foreach($pref in $stats)
+       <tr>
+         <td>${pref.actionName}</td>
+         <td>${pref.totalOperations}</td>
+         <td>${pref.physicalId}</td>
+         <td>$prefMathTool.format(${pref.ops})</td>
+         <td>$prefMathTool.format(${pref.bps})</td>
+         <td>$prefMathTool.format(${pref.avgLatency})</td>
+         <td>${pref.minLatency}</td>
+         <td>${pref.maxLatency}</td>
+         <td>${pref.the80thLatency}</td>
+         <td>${pref.the95thLatency}</td>
+         <td>${pref.the99thLatency}</td>
+         <td>${pref.maxConcurrencyLevel}</td>
+       </tr>
+#end
+     </table>

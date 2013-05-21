@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:services="http://www.alibaba.com/schema/services"
+	xmlns:fm-conditions="http://www.alibaba.com/schema/services/form/conditions"
+	xmlns:fm-validators="http://www.alibaba.com/schema/services/form/validators"
+	xmlns="http://www.alibaba.com/schema/services/form/validators"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+        http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
+        http://www.alibaba.com/schema/services/form/conditions http://localhost:8080/schema/services-form-conditions.xsd
+        http://www.alibaba.com/schema/services/form/validators http://localhost:8080/schema/services-form-validators.xsd
+        http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+    ">
+
+	<services:form postOnlyByDefault="true">
+		<!--
+			- =============================================== - 用来检查csrf token。 -
+			===============================================
+		-->
+		<services:group name="csrfCheck">
+		    <!--
+			<services:field name="csrfToken">
+				<csrf-validator>
+					<message>提交的数据已过期</message>
+				</csrf-validator>
+			</services:field>
+			-->
+		</services:group>
+ 
+		<!--
+			- =============================================== - Preview Added Node form -
+			===============================================
+		-->
+		<services:group name="NewAddedNode" extends="csrfCheck">
+			<services:field name="newNodes" displayName="序列">
+				<required-validator>
+					<message>必须选择一个${displayName}</message>
+				</required-validator>
+			</services:field>
+		</services:group>
+		<!--
+			- =============================================== - Node Add form | -
+			===============================================
+		-->
+		<services:group name="physicalNode" extends="csrfCheck">
+			<services:field name="physicalIdError">
+				<custom-error id="physicalIdRepeated">
+					<message>主机标识ID（PhysicalId）已经存在,请重新输入</message>
+				</custom-error>
+			</services:field>
+			<services:field name="ipAndPortError">
+				<custom-error id="ipAndPortRepeated">
+					<message>IP和PORT的组合已经存在,请重新输入</message>
+				</custom-error>
+			</services:field>
+			<services:field name="physicalId" displayName="主机标识ID">
+			</services:field>
+			<services:field name="ip" displayName="IP">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+			<services:field name="port" displayName="PORT">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+				<number-validator>
+					<message>${displayName} 必须是数字</message>
+				</number-validator>
+			</services:field>
+			<services:field name="serialId" displayName="serialId">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+			<services:field name="machineId" displayName="MachineId">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+		</services:group>
+
+		<!--
+			- =============================================== - Namespace form -
+			===============================================
+		-->
+		<services:group name="namespaceForm" extends="csrfCheck">
+			<services:field name="nameRepeatedError">
+				<custom-error id="nameRepeated">
+					<message>Namespace名称已经存在,请重新输入</message>
+				</custom-error>
+			</services:field>
+			<services:field name="name" displayName="Namespace">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+			<services:field name="className" displayName="ClassName">
+			</services:field>
+			<services:field name="copyCount" displayName="需要保存的份数">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+				<number-validator>
+					<message>${displayName} 必须是数字</message>
+				</number-validator>
+			</services:field>
+			<services:field name="firstOwner" displayName="第一负责人">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+			<services:field name="secondOwner" displayName="第二负责人">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+			<services:field name="compressMode" displayName="压缩模式">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+			<services:field name="compressThreshold" displayName="压缩阀值大小">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+				<number-validator>
+					<message>${displayName} 必须是数字，且最大值为2147483647</message>
+				</number-validator>
+			</services:field>
+			<services:field name="serializeMode" displayName="序列化方式">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+			<services:field name="multiRead" displayName="是否要求多读">
+				<required-validator>
+					<message>必须填写 ${displayName}</message>
+				</required-validator>
+			</services:field>
+			<services:field name="remark" displayName="备注">
+			</services:field>
+		</services:group>
+	</services:form>
+	
+
+</beans:beans>

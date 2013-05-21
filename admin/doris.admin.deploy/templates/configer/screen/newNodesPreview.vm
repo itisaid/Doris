@@ -1,0 +1,55 @@
+
+<form id="NewAddedNode" name="NewAddedNode" method="post">
+	$csrfToken.hiddenField
+ 	<div style="color:red">$!errorResult</div>
+	<div style="color:red">$!previewError</div>
+    #foreach($key in $nodemap.keySet()) 
+		#set($nodelist = $!nodemap.get($key))
+	<div class="num_t">
+     <a href="javascript:;" onclick ="showExceptionDiv(this)" class="title_o">#if($nodelist.size()>0) #if($!nodelist.get(0).serialId==-1) 待用序列 #else $!allSequences.get($!nodelist.get(0).serialId)#end #end </a>
+     <div class="exceptionDiv">
+	<table  border="0" cellspacing="0" cellpadding="0" class="list" id="table_t">
+      <tr>
+        <th scope="col">LogicalId</th>
+        <th scope="col">PhysicalId</th>
+        <th scope="col">Sequence</th>
+        <th scope="col">MachineId</th>
+        <th scope="col">IP</th>
+		<th scope="col">Port</th>
+        <th scope="col">Health Status</th>
+		#if(!$node.serialId == -1)
+		<th scope="col">Route Status</th>
+		#end
+		<th scope="col">Migrate Status</th>
+      </tr>
+	  #foreach($node in $nodelist)
+      <tr>
+        <td >$!node.logicalId</td>
+        <td >$!node.physicalId</td>
+        <td >$!node.serialId</td>
+        <td >$!node.machineId</td>
+		<td >$!node.ip</td>
+		<td >$!node.port</td>
+		<td >$!node.healthStatus</td>
+		#if(!$!node.serialId == -1)
+		<td >$!node.routeStatus</td>
+		#end
+        <td title="$!node.migrationStatusDetail">$!node.migrationStatus</td>
+      </tr>
+	  #end
+    </table>
+	</div>
+	</div>
+        #end 
+	<div class="btn_add">
+		<input type="hidden" name="isPreview" value="1"/>
+	<input type="hidden" name="nodes" value="$nodes"/>
+	<input type="hidden" name="action" value="NodeManageAction"/>
+    <input type="hidden" name="event_submit_do_add" value="true"  />
+	    #if(!$!{hasNodeNG})
+    		<div class="btn"><a href="#" onclick="document.getElementById('NewAddedNode').submit()">确认添加</a></div>
+		#end
+		<div class="btn"><a href="/configer/node_manage.htm" onclick="">返回</a></div>
+	</div>
+	
+</form>

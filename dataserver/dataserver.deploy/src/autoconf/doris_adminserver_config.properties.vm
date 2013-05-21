@@ -1,0 +1,6 @@
+doris.config.adminserver.main.url=$!{doris_config_adminserver_main_url}
+doris.config.adminserver.backup.url=$!{doris_config_adminserver_backup_url}
+doris.config.fetch.retrytimes=3
+doris.config.fetch.interval=3000
+doris.config.connection.timeout=2000
+doris.config.connection.socket.timeout=2000

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="User">
+	<typeAlias alias="UserDO" type="com.alibaba.doris.admin.dataobject.UserDO" />
+	
+	<resultMap id="UserResult" class="UserDO">
+		<result column="ID" property="id" jdbcType="INTEGER" />
+		<result column="PRIVILEGE_LEVEL" property="privilege" jdbcType="INTEGER" />
+		<result column="USER_NAME" property="name" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="GMT_CREATE" property="gmtCreate" jdbcType="DATETIME" />
+	    <result column="GMT_MODIFIED" property="gmtModified" jdbcType="DATETIME" />
+	</resultMap>
+
+	<select id="getUserByName" resultMap="UserResult" parameterClass="java.lang.String">
+		<![CDATA[
+			SELECT
+			ID, USER_NAME,PASSWORD,PRIVILEGE_LEVEL,
+			GMT_CREATE,GMT_MODIFIED FROM DORIS_USER 
+			WHERE  USER_NAME = #name:VARCHAR#;
+		]]>
+	</select>
+</sqlMap>

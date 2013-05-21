@@ -1,0 +1,106 @@
+<SCRIPT type=text/javascript>
+window.addEvent('domready', function(){
+
+	$$('input.DatePicker').each( function(el){
+		new DatePicker(el);
+	});
+
+});
+function submitQuery(curPage,totalpages){
+	if(curPage > totalpages){
+		curPage = totalpages;
+	}
+	document.getElementById('currentpage').value = curPage;
+	document.getElementById('systemlogForm').submit();
+}
+
+function resetForm(){
+	document.getElementById('startTime').value='';
+	document.getElementById('endTime').value='';
+	document.getElementById('actionName').value='';
+}
+</SCRIPT>
+
+   <div class="title"><h2>系统日志</h2></div>
+    <div class="setting_box">    
+   <div class="search_list">
+     <form id="systemlogForm" name="systemlogForm" method="post">
+     <input type="hidden" name="action" value="SystemLogAction"/>
+     <input type="hidden" name="event_submit_do_query" value="true" /> 
+	 <input type="hidden" name="currentpage" id="currentpage"/>
+	 <table cellpadding="0" cellspacing="0">
+       <tr>
+         <th>开始时间:</th><td><input class="DatePicker"  tabIndex="1" id="startTime" name="startTime" value="$!startTime" type="text" /></td>
+        <th>结束时间:</th><td><input class="DatePicker"  tabIndex="1" id="endTime" name="endTime" value="$!endTime" type="text" /></td>
+      
+		<th>模块名称:</th>
+		<td><select   name="actionName" id="actionName" >
+				<option value="">All</option>
+				<option #if($actionName == 'Router') SELECTED #end value="Router">Router</option>
+				<option #if($actionName == 'Admin') SELECTED #end value="Admin">Admin</option>
+				<option #if($actionName == 'Migration') SELECTED #end value="Migration">Migration</option>
+				<option #if($actionName == 'NodeHealth') SELECTED #end value="NodeHealth">NodeHealth</option>
+        </select>
+			
+		</td>
+		 <td><div class="btn"><a href="#"  onclick="javascript:resetForm()">清空</a></div><div class="btn"><a href="#"  onclick="javascript:document.getElementById('systemlogForm').submit()">提交查询</a></div></td>
+       </tr>
+     </table>
+     </form>
+   </div>   
+     <table cellpadding="0" cellspacing="0" class="list list_system" name="table_o">
+       <tr>
+		 <th>序号</th>
+		 <th>模块</th>
+         <th>时间</th>
+         <th>监控信息</th>
+       </tr>
+#foreach($log in $logList)
+       <tr>
+		<td>  ${velocityCount}</td>
+		 <td> ${log.actionName}</td>
+         <td> ${log.actionTime}</td>
+         <td> ${log.logInfo}</td>
+       </tr>
+#end
+     </table>
+    </div>
+	<div class="page">
+		#if($pageView.totalPages > 0)
+		共$pageView.totalLines条数据&nbsp;&nbsp;第$pageView.currentPage页/共$pageView.totalPages页&nbsp;&nbsp;
+		#end
+		
+       <a #if ($pageView.currentPage > 1) href="javascript:submitQuery(1)" #end class="prev">首页</a> 
+	   
+       <a  #if ($pageView.currentPage > 1) href="javascript:submitQuery($pageView.currentPage -1)" #end class="prev">上一页</a> 
+	   #set($flag='1')
+	   #foreach($pageNum in $pageView.displayList)
+		#if(($pageNum+5 >= $pageView.currentPage && $pageNum <= $pageView.currentPage +5) || $pageNum+5 >= $pageView.totalPages  )
+       <a  #if($pageView.currentPage == $pageNum) class="num current_num" #else href="javascript:submitQuery($pageNum)"  class="num " #end>$pageNum</a> 
+		#end
+		#if($pageNum > $pageView.currentPage +5 && $!flag=='1')
+			......
+		#set($flag='0')	
+		#end
+	   #end
+	   
+	   
+       <a  #if ($pageView.currentPage < $pageView.totalPages) href="javascript:submitQuery($pageView.currentPage +1)"  #end class="prev">下一页</a>
+	   跳到第
+         <select name="goToPage" id="goToPage">
+			#foreach($pageNum in $pageView.displayList)
+				<option value="$pageNum">$pageNum</option>
+			#end
+         </select>
+         页
+         <span class="go"><a href="javascript:submitQuery(document.getElementById('goToPage').value,$pageView.totalPages)">GO</a></span>
+     </div>     
+</div>	
+	
+	
+	
+<SCRIPT type=text/javascript>
+try {
+var pageTracker = _gat._getTracker("UA-1609580-11");
+pageTracker._trackPageview();
+} catch(err) {}</SCRIPT>

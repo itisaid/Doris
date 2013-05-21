@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:services="http://www.alibaba.com/schema/services"
+    xmlns:res-filters="http://www.alibaba.com/schema/services/resource-loading/filters"
+    xmlns:res-loaders="http://www.alibaba.com/schema/services/resource-loading/loaders"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="
+        http://www.alibaba.com/schema/services http://localhost:8080/schema/services.xsd
+        http://www.alibaba.com/schema/services/resource-loading/filters http://localhost:8080/schema/services-resource-loading-filters.xsd
+        http://www.alibaba.com/schema/services/resource-loading/loaders http://localhost:8080/schema/services-resource-loading-loaders.xsd
+        http://www.springframework.org/schema/beans http://localhost:8080/schema/www.springframework.org/schema/beans/spring-beans.xsd
+    ">
+
+    <services:resource-loading xmlns="http://www.alibaba.com/schema/services">
+
+        <resource-alias pattern="/" name="/webroot" />
+        
+        <resource pattern="/templates">
+        	<res-loaders:file-loader basedir="${doris_admin_templates}"/>
+        </resource>
+        
+        <resource-alias pattern="/templates/*/global" name="/templates/common" />
+        
+        
+		<!-- 查找layout配置文目录：/templates/layout                             -->
+		<!-- ================================================================ -->
+		<resource pattern="/templates/*/layout">
+		   <res-loaders:file-loader basedir="${doris_admin_templates}">
+		     <res-loaders:path>/$1/layout</res-loaders:path> 
+           </res-loaders:file-loader>
+		   <res-loaders:file-loader basedir="${doris_admin_templates}">
+		     <res-loaders:path>/common/layout</res-loaders:path> 
+           </res-loaders:file-loader>
+		</resource>
+        
+        <!-- 配置文件根目录：/conf -->
+        <resource-alias pattern="/conf" name="/webroot/WEB-INF" />
+
+        <!-- 内部资源 -->
+        <resource pattern="/webroot" internal="true">
+            <res-loaders:webapp-loader />
+        </resource>
+        <resource pattern="/classpath" internal="true">
+            <res-loaders:classpath-loader />
+        </resource>
+
+    </services:resource-loading>
+
+</beans:beans>

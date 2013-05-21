@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<group name="doris-admin-deploy">
+		<property name="doris.admin.templates" defaultValue="${doris.admin.deploy}/templates"  />
+		<property name="doris.admin.deploy" defaultValue="${doris.admin.basic.setting.workdir}/doris-app/target/admin-deploy" description="App布署目录" />
+		<property name="doris.admin.dragoon.monitoring.app" defaultValue="pt_us_doris_admin" description="Dragoon 监控应用名" />
+	</group>
+	
+    <script>
+  	  <generate template="log4j.xml.vm" destfile="WEB-INF/log4j.xml"/>
+  	  <generate template="web.xml.vm" destfile="WEB-INF/web.xml"/>
+  	  <generate template="common/resources.xml.vm" destfile="WEB-INF/common/resources.xml"/>
+    </script>
+    
+</config>
