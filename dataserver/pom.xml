@@ -70,12 +70,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.alibaba.external</groupId>
-      <artifactId>java.j2ee</artifactId>
-      <version>1.4</version>
-      <scope>provided</scope>
-    </dependency>
   </dependencies>
   <build>
     <resources>
@@ -98,8 +92,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <junitArtifactName>com.alibaba.external:test.junit.junit-all</junitArtifactName>
-          <testNGArtifactName>com.alibaba.external:test.testng</testNGArtifactName>
+          <junitArtifactName>junit:junit</junitArtifactName>
         </configuration>
       </plugin>
       <plugin>
