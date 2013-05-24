@@ -1,81 +1,59 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.alibaba.platform.app</groupId>
-		<artifactId>doris.admin.parent</artifactId>
-		<version>0.1.4</version>
-	    <relativePath>../pom.xml</relativePath>
-	</parent>	
-
+  <parent>
+    <groupId>com.alibaba.platform.app</groupId>
+    <artifactId>doris.admin.parent</artifactId>
+    <version>0.1.4</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
   <groupId>com.alibaba.platform.app</groupId>
   <artifactId>doris.admin.web.configer</artifactId>
- 
   <packaging>jar</packaging>
-
   <name>doris.admin.web.configer</name>
-
-
-    <dependencies>
-       <dependency>
-         <groupId>com.alibaba.platform.app</groupId>
-         <artifactId>doris.admin.core</artifactId>
-         <version>${project.version}</version>
-       </dependency>
-       <dependency>
-         <groupId>com.alibaba.platform.app</groupId>
-         <artifactId>doris.admin.service.expansion</artifactId>
-         <version>${project.version}</version>
-       </dependency>
-       <dependency>
-         <groupId>com.alibaba.platform.app</groupId>
-         <artifactId>doris.admin.service.common</artifactId>
-         <version>${project.version}</version>
-       </dependency>
-       <dependency>
-         <groupId>com.alibaba.platform.app</groupId>
-         <artifactId>doris.admin.service.failover</artifactId>
-         <version>${project.version}</version>
-       </dependency>
-       <dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.admin.service.routeconfig</artifactId>
-			<version>${project.version}</version>
-	   </dependency> 
-	   <dependency>
-            <groupId>com.alibaba.platform.shared</groupId>
-            <artifactId>doris.client.net</artifactId>
-            <version>${doris_common_version}</version>
-        </dependency>
-        <dependency>
-         <groupId>com.alibaba.platform.shared</groupId>
-         <artifactId>doris.client</artifactId>
-         <version>${doris_common_version}</version>
-       </dependency>
-        
-		<!-- WebX 3 -核心模块 -->
-        <dependency>
-            <groupId>com.alibaba.platform.shared</groupId>
-            <artifactId>webx3.core</artifactId>
-        </dependency>
-		<!-- WebX 3 -兼容模块 -->
-        <dependency>
-            <groupId>com.alibaba.platform.shared</groupId>
-            <artifactId>webx3.compat</artifactId>
-        </dependency>
-		<!-- WebX 3 -单元测试工具模块 -->
-        <dependency>
-            <groupId>com.alibaba.platform.shared</groupId>
-            <artifactId>webx3.test</artifactId>
-            <scope>test</scope>
-        </dependency>  
-        <dependency>
-            <groupId>com.alibaba.external</groupId>
-            <artifactId>java.servlet</artifactId>
-            <version>${java-servlet-version}</version>
-        </dependency>
-          
-   </dependencies>
- 
-
+  <dependencies>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.admin.core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.admin.service.expansion</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.admin.service.common</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.admin.service.failover</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.admin.service.routeconfig</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.client.net</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.client</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.citrus</groupId>
+      <artifactId>citrus-webx-all</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+    </dependency>
+  </dependencies>
 </project>

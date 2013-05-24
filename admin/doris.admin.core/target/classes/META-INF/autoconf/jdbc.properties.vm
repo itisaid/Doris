@@ -1,9 +1,0 @@
-# Properties file with JDBC-related settings.
-# Applied by PropertyPlaceholderConfigurer from "dataAccessContext-local.xml".
-# Targeted at system administrators, to avoid touching the context XML files.
-
-jdbc.driverClassName=com.mysql.jdbc.Driver
-
-jdbc.main.url=jdbc:mysql://$!{doris_database_server_ip}:$!{doris_database_server_port}/$!{doris_database_server_schema}?useUnicode=true&characterEncoding=UTF-8
-jdbc.main.username=$!{doris_database_server_username}
-jdbc.main.password=$!{doris_database_server_password}
