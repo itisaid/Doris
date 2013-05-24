@@ -1,68 +1,54 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.alibaba.platform.app</groupId>
-		<artifactId>doris.dataserver.parent</artifactId>		
-		<version>0.1.4</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
-
-	<groupId>com.alibaba.platform.app</groupId>
-	<artifactId>doris.dataserver.migrator</artifactId>
-
-	<packaging>jar</packaging>
-
-	<name>doris.dataserver.migrator</name>
-	<url>http://maven.apache.org</url>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
-	<dependencies>
-		<dependency>
-			<groupId>com.alibaba.platform.shared</groupId>
-			<artifactId>doris.algorithm</artifactId>
-			<version>${doris_common_version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.platform.shared</groupId>
-			<artifactId>doris.common</artifactId>
-			<version>${doris_common_version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.platform.shared</groupId>
-			<artifactId>doris.common.config</artifactId>
-			<version>${doris_common_version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.dataserver.core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-
-		<dependency>
-			<groupId>com.alibaba.platform.shared</groupId>
-			<artifactId>doris.common.route</artifactId>
-			<version>${doris_common_version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.platform.shared</groupId>
-			<artifactId>doris.common.adminservice</artifactId>
-			<version>${doris_common_version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>test.jmock</artifactId>
-			<version>${jmock_version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+<project 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.alibaba.platform.app</groupId>
+    <artifactId>doris.dataserver.parent</artifactId>
+    <version>0.1.4</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <groupId>com.alibaba.platform.app</groupId>
+  <artifactId>doris.dataserver.migrator</artifactId>
+  <packaging>jar</packaging>
+  <name>doris.dataserver.migrator</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.algorithm</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.common</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.common.config</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.dataserver.core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.common.route</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.common.adminservice</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jmock</groupId>
+      <artifactId>jmock</artifactId>
+    </dependency>
+  </dependencies>
 </project>

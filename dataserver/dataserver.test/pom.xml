@@ -1,35 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.alibaba.platform.app</groupId>
-		<artifactId>doris.dataserver.parent</artifactId>		
-		<version>0.1.4</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
-
+  <parent>
+    <groupId>com.alibaba.platform.app</groupId>
+    <artifactId>doris.dataserver.parent</artifactId>
+    <version>0.1.4</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
   <groupId>com.alibaba.platform.app</groupId>
   <artifactId>doris.dataserver.test</artifactId>
-
   <packaging>jar</packaging>
-
   <name>doris.dataserver.test</name>
   <url>http://maven.apache.org</url>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
   <dependencies>
-		<dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.dataserver.core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>test.junit</artifactId>
-			<version>4.8.1</version>
-		</dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.dataserver.core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 </project>

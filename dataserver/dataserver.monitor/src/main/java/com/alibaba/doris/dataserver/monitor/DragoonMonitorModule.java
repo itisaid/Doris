@@ -25,7 +25,7 @@ import com.alibaba.doris.dataserver.Module;
 import com.alibaba.doris.dataserver.ModuleContext;
 import com.alibaba.doris.dataserver.config.ModuleConstances;
 import com.alibaba.doris.dataserver.config.data.ModuleConfigure;
-import com.alibaba.dragoon.client.DragoonClient;
+// import com.alibaba.dragoon.client.DragoonClient;
 
 /**
  * @author mian.hem
@@ -45,10 +45,10 @@ public class DragoonMonitorModule  extends BaseModule {
 
         init();
 
-        DragoonClient.setJdbcStatEnable(false);
-        DragoonClient.setSpringStatEnable(false);
-        DragoonClient.setUriStatEnable(false);
-        DragoonClient.setLog4jStatEnable(true);
+//         DragoonClient.setJdbcStatEnable(false);
+//         DragoonClient.setSpringStatEnable(false);
+//         DragoonClient.setUriStatEnable(false);
+//         DragoonClient.setLog4jStatEnable(true);
 
         String appName = conf.getParam("dragoon_app_name");
         logger.info("Dragoon app name:" + appName + ", and port is: " + serverPort);
@@ -58,7 +58,7 @@ public class DragoonMonitorModule  extends BaseModule {
         } catch (Exception e ) {
             logger.error("fail to get ip address", e);
         }
-        DragoonClient.start(appName, ipaddress + ":" + serverPort);
+//        DragoonClient.start(appName, ipaddress + ":" + serverPort);
 
         logger.info("Dragoon monitor completed for port:" + serverPort);
     }
