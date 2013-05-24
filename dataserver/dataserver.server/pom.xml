@@ -1,94 +1,82 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.alibaba.platform.app</groupId>
-		<artifactId>doris.dataserver.parent</artifactId>		
-		<version>0.1.4</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
-
+  <parent>
+    <groupId>com.alibaba.platform.app</groupId>
+    <artifactId>doris.dataserver.parent</artifactId>
+    <version>0.1.4</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
   <groupId>com.alibaba.platform.app</groupId>
   <artifactId>doris.dataserver.server</artifactId>
   <packaging>jar</packaging>
-
   <name>doris.dataserver.server</name>
   <url>http://maven.apache.org</url>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
   <dependencies>
-		<dependency>
-			<groupId>com.alibaba.platform.shared</groupId>
-			<artifactId>doris.aop</artifactId>
-			<version>${doris_common_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.platform.shared</groupId>
-			<artifactId>doris.common</artifactId>
-			<version>${doris_common_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.platform.shared</groupId>
-			<artifactId>doris.common.model</artifactId>
-			<version>${doris_common_version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.dataserver.core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.dataserver.migrator</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.dataserver.monitor</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.dataserver.bdbstore</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.dataserver.logstore</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.dataserver.mysql</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<!--dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.dataserver.innodb</artifactId>
-			<version>${project.version}</version>
-		</dependency-->
-		<dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.dataserver.extratools</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>jakarta.commons.logging</artifactId>
-	  	</dependency>
-	  	 <dependency>
-	  			<groupId>com.alibaba.external</groupId>
-         		<artifactId>jboss.jboss-netty</artifactId>
-	  	</dependency>
-	  	<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>xml.dom4j</artifactId>
-	  	</dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.aop</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.common</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.common.model</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.dataserver.core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.dataserver.migrator</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.dataserver.monitor</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.dataserver.bdbstore</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.dataserver.logstore</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.dataserver.mysql</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.dataserver.extratools</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.netty</groupId>
+      <artifactId>netty</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+    </dependency>
   </dependencies>
 </project>

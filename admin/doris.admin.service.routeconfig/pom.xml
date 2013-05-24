@@ -1,100 +1,75 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.alibaba.platform.app</groupId>
-		<artifactId>doris.admin.parent</artifactId>
-		<version>0.1.4</version>
-	    <relativePath>../pom.xml</relativePath>
-	</parent>	
+  <parent>
+    <groupId>com.alibaba.platform.app</groupId>
+    <artifactId>doris.admin.parent</artifactId>
+    <version>0.1.4</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
   <groupId>com.alibaba.platform.app</groupId>
   <artifactId>doris.admin.service.routeconfig</artifactId>
- 
   <packaging>jar</packaging>
-
   <name>doris.admin.service.routeconfig</name>
   <url>http://maven.apache.org</url>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
   <dependencies>
-	  <dependency>
-	      <groupId>com.alibaba.platform.app</groupId>
-		  <artifactId>doris.admin.service.common</artifactId>
-		  <version>${project.version}</version>
-	   </dependency>		
-		<dependency>
-			<groupId>com.alibaba.platform.shared</groupId>
-			<artifactId>doris.common.route</artifactId>
-			<version>${doris_common_version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.alibaba.platform.app</groupId>
-			<artifactId>doris.admin.core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>java.servlet</artifactId>
-			 <scope>test</scope>
-		</dependency>
-       <dependency>
-            <groupId>com.alibaba.external</groupId>
-            <artifactId>server.jetty.jetty-servlet</artifactId>
-            <version>7.0.1.v20091125</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba.external</groupId>
-            <artifactId>server.jetty.jetty-client</artifactId>
-            <version>7.0.1.v20091125</version>
-            <scope>test</scope>
-        </dependency>	
-        					
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>sourceforge.spring</artifactId>
-		</dependency>	
-
-      
-      <dependency>
-			<groupId>com.alibaba.shared</groupId>
-			<artifactId>toolkit.sandbox.jtester</artifactId>
-			<version>1.0.8</version>
-			<type>jar</type>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>jakarta.commons.dbcp</artifactId>
-			<version>1.4</version>
-			<type>jar</type>
-			<scope>test</scope>
-		</dependency>	
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.admin.service.common</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.shared</groupId>
+      <artifactId>doris.common.route</artifactId>
+      <version>${doris_common_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.platform.app</groupId>
+      <artifactId>doris.admin.core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-servlet</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty</groupId>
+      <artifactId>jetty-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+      <version>1.4</version>
+    </dependency>
   </dependencies>
-  
-  	<build>
-		<finalName>doris.config.server</finalName>
-
-		<plugins>
-			<plugin>
-				<groupId>com.alibaba.maven.plugins</groupId>
-				<artifactId>maven-autoconf-plugin</artifactId>
-				<version>0.2</version>
-				<executions>
-					<execution>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>config</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+  <build>
+    <finalName>doris.config.server</finalName>
+    <plugins>
+      <plugin>
+        <groupId>com.alibaba.maven.plugins</groupId>
+        <artifactId>maven-autoconf-plugin</artifactId>
+        <version>0.2</version>
+        <executions>
+          <execution>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>config</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

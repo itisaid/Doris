@@ -1,314 +1,122 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.alibaba</groupId>
-		<artifactId>pampas</artifactId>
-		<version>4</version>
-	</parent>
-	<groupId>com.alibaba.platform.app</groupId>
-	<artifactId>doris.admin.parent</artifactId>
-	<version>0.1.4</version>
-	<packaging>pom</packaging>
-
-	<name>doris.admin.parent</name>
-	<modules>
-		<module>doris.admin.core</module>
-		<module>doris.admin.deploy</module>
-		<module>doris.admin.bundle/war</module>
-		<module>doris.admin.web.configer</module>
-		<module>doris.admin.service.common</module>
-		<module>doris.admin.service.expansion</module>
-		<module>doris.admin.service.failover</module>
-		<module>doris.admin.service.routeconfig</module>
-		<module>doris.admin.service.main</module>
-		<module>doris.admin.service.monitor</module>
-	</modules>
-	<properties>
-		<project_url>http://b2b-req.alibaba-inc.com/browse/DORIS</project_url>
-		<project_scm_url>http://svn.alibaba-inc.com/repos/ali_platform/doris/app/admin/trunk</project_scm_url>
-		<project_scm_connection>scm:svn:http://svn.alibaba-inc.com/repos/ali_platform/doris/app/admin/trunk</project_scm_connection>
-		<project_issue_url>http://b2b-req.alibaba-inc.com/browse/DORIS</project_issue_url>
-		<project_site_url>http://repo.alibaba-inc.com/mvn/internal/releases/sites/doris</project_site_url>
-
-		<alibaba_doris_version>${project.version}</alibaba_doris_version>
-
-		<velocity_version>1.6.1</velocity_version>
-		<slf4j_version>1.5.6</slf4j_version>
-		<log4j_version>1.2.16</log4j_version>
-
-		<common_lang_version>2.4</common_lang_version>
-		<commons_logging_version>1.1.1</commons_logging_version>
-		<commons_collections_version>3.2.1</commons_collections_version>
-
-		<dom4j_version>1.6.1</dom4j_version>
-		<cglib_version>nodep-2.1_3</cglib_version>
-		<junit_version>4.4</junit_version>
-		<jmock_version>2.5.1</jmock_version>
-		<jetty_version>6.1.25</jetty_version>
-		<netty_version>3.2.2.Final</netty_version>
-		<webx-version>3.0.4</webx-version>
-		<maven-staging-plugin-version>1.0</maven-staging-plugin-version>
-		<fastjson-version>1.0.5</fastjson-version>
-		<spring-version>2.5.6</spring-version>
-		<xml-xstream-version>1.3</xml-xstream-version>
-		<java-servlet-version>2.4</java-servlet-version>
-		<berkeleydb_version>4.0.71</berkeleydb_version>
-		<dragoon_common_version>2.5.5</dragoon_common_version>
-		<commons_dbcp_version>1.4</commons_dbcp_version>
-		<commons_pool_version>1.5.4</commons_pool_version>
-		<jdbc_mysql_connector>5.1.6</jdbc_mysql_connector>
-		<doris_common_version>0.1.6</doris_common_version>
-	</properties>
-	<url>${project_url}</url>
-	<scm>
-		<connection>scm:svn:http://svn.alibaba-inc.com/repos/ali_platform/doris/app/admin/trunk/
-		</connection>
-		<developerConnection>scm:svn:http://svn.alibaba-inc.com/repos/ali_platform/doris/app/admin/trunk/
-		</developerConnection>
-		<url>http://svn.alibaba-inc.com/repos/ali_platform/doris/app/admin/trunk</url>
-	</scm>
-
-	<issueManagement>
-		<system>Jira</system>
-		<url>${project_issue_url}</url>
-	</issueManagement>
-
-	<dependencyManagement>
-		<dependencies>
-
-			<dependency>
-				<groupId>com.alibaba.platform.shared</groupId>
-				<artifactId>dragoon-common</artifactId>
-				<version>${dragoon_common_version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>test.jmock</artifactId>
-				<version>${jmock_version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>jboss.jboss-netty</artifactId>
-				<version>${netty_version}</version>
-			</dependency>
-			<!-- apache utils -->
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>jakarta.commons.lang</artifactId>
-				<version>${common_lang_version}</version>
-			</dependency>
-			<!-- log -->
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>org.slf4j.slf4j-api</artifactId>
-				<version>${slf4j_version}</version>
-			</dependency>
-			<!-- ======================================== -->
-			<!-- WEBX依赖 -->
-			<!-- ======================================== -->
-
-			<!-- WebX 3 -核心模块 -->
-			<dependency>
-				<groupId>com.alibaba.platform.shared</groupId>
-				<artifactId>webx3.core</artifactId>
-				<version>${webx-version}</version>
-			</dependency>
-			<!-- WebX 3 -兼容模块 -->
-			<dependency>
-				<groupId>com.alibaba.platform.shared</groupId>
-				<artifactId>webx3.compat</artifactId>
-				<version>${webx-version}</version>
-			</dependency>
-			<!-- WebX 3 -单元测试工具模块 -->
-			<dependency>
-				<groupId>com.alibaba.platform.shared</groupId>
-				<artifactId>webx3.test</artifactId>
-				<version>${webx-version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>org.slf4j.slf4j-log4j12</artifactId>
-				<version>${slf4j_version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>org.slf4j.jcl-over-slf4j</artifactId>
-				<version>${slf4j_version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>jakarta.log4j</artifactId>
-				<version>${log4j_version}</version>
-				<scope>runtime</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>jakarta.commons.logging</artifactId>
-				<version>${commons_logging_version}</version>
-			</dependency>
-			<!-- Jackson json -->
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>codehaus.jackson.mapper</artifactId>
-				<version>${jackson_version}</version>
-			</dependency>
-
-			<!-- FastJSON -->
-			<dependency>
-				<groupId>com.alibaba.platform.shared</groupId>
-				<artifactId>fastjson</artifactId>
-				<version>${fastjson-version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>sourceforge.spring</artifactId>
-				<version>${spring-version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>test.junit.junit-all</artifactId>
-				<version>${junit_version}</version>
-				<scope>test</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>xml.dom4j</artifactId>
-				<version>${dom4j_version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>sourceforge.cglib</artifactId>
-				<version>${cglib_version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>oracle.berkeleydb</artifactId>
-				<version>${berkeleydb_version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>java.servlet</artifactId>
-				<version>${java-servlet-version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>xml.xstream</artifactId>
-				<version>${xml-xstream-version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>jakarta.commons.collections</artifactId>
-				<version>${commons_collections_version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>jakarta.commons.dbcp</artifactId>
-				<version>${commons_dbcp_version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>jakarta.commons.pool</artifactId>
-				<version>${commons_pool_version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba.external</groupId>
-				<artifactId>jdbc.mysql.mysql-connector</artifactId>
-				<version>${jdbc_mysql_connector}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<dependencies>
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>jakarta.commons.lang</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>jakarta.log4j</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>org.slf4j.slf4j-log4j12</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>org.slf4j.jcl-over-slf4j</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>jakarta.commons.logging</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>test.junit.junit-all</artifactId>
-			<version>${junit_version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.external</groupId>
-			<artifactId>java.j2ee</artifactId>
-			<version>1.4</version>
-			<scope>provided</scope>
-		</dependency>
-
-	</dependencies>
-
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
-		</resources>
-
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-
-			<!-- Unit Test Runner Plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<junitArtifactName>com.alibaba.external:test.junit.junit-all</junitArtifactName>
-					<testNGArtifactName>com.alibaba.external:test.testng</testNGArtifactName>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>com.alibaba.maven.plugins</groupId>
-				<artifactId>maven-staging-plugin</artifactId>
-				<version>${maven-staging-plugin-version}</version>
-				<executions>
-					<execution>
-						<id>staging-repository</id>
-						<goals>
-							<goal>staging-repository</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+<project 
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.alibaba.platform.shared</groupId>
+    <artifactId>doris.parent</artifactId>
+    <version>0.1.6.2</version>
+  </parent>
+  <groupId>com.alibaba.platform.app</groupId>
+  <artifactId>doris.admin.parent</artifactId>
+  <version>0.1.4</version>
+  <packaging>pom</packaging>
+  <name>doris.admin.parent</name>
+  <modules>
+    <module>doris.admin.core</module>
+    <!--
+    <module>doris.admin.deploy</module>
+    -->
+    <module>doris.admin.bundle/war</module>
+    <module>doris.admin.web.configer</module>
+    <module>doris.admin.service.common</module>
+    <module>doris.admin.service.expansion</module>
+    <module>doris.admin.service.failover</module>
+    <module>doris.admin.service.routeconfig</module>
+    <module>doris.admin.service.main</module>
+    <module>doris.admin.service.monitor</module>
+  </modules>
+  <properties>
+    <project_url>http://b2b-req.alibaba-inc.com/browse/DORIS</project_url>
+    <project_scm_url>http://svn.alibaba-inc.com/repos/ali_platform/doris/app/admin/trunk</project_scm_url>
+    <project_scm_connection>
+      scm:svn:http://svn.alibaba-inc.com/repos/ali_platform/doris/app/admin/trunk
+    </project_scm_connection>
+    <project_issue_url>http://b2b-req.alibaba-inc.com/browse/DORIS</project_issue_url>
+    <project_site_url>http://repo.alibaba-inc.com/mvn/internal/releases/sites/doris</project_site_url>
+    <alibaba_doris_version>${project.version}</alibaba_doris_version>
+    <doris_common_version>0.1.6.2</doris_common_version>
+  </properties>
+  <url>${project_url}</url>
+  <scm>
+    <connection>scm:svn:http://svn.alibaba-inc.com/repos/ali_platform/doris/app/admin/trunk/ </connection>
+    <developerConnection>scm:svn:http://svn.alibaba-inc.com/repos/ali_platform/doris/app/admin/trunk/ </developerConnection>
+    <url>http://svn.alibaba-inc.com/repos/ali_platform/doris/app/admin/trunk</url>
+  </scm>
+  <issueManagement>
+    <system>Jira</system>
+    <url>${project_issue_url}</url>
+  </issueManagement>
+  <dependencies>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit_version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba.external</groupId>
+      <artifactId>java.j2ee</artifactId>
+      <version>1.4</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+          <encoding>UTF-8</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <junitArtifactName>com.alibaba.external:test.junit.junit-all</junitArtifactName>
+          <testNGArtifactName>com.alibaba.external:test.testng</testNGArtifactName>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.alibaba.maven.plugins</groupId>
+        <artifactId>maven-staging-plugin</artifactId>
+        <version>${maven-staging-plugin-version}</version>
+        <executions>
+          <execution>
+            <id>staging-repository</id>
+            <goals>
+              <goal>staging-repository</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>

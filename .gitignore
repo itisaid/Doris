@@ -1,0 +1,13 @@
+.classpath
+.settings
+.project
+target
+antx.properties
+*.old
+META-INF
+admin/doris.admin.deploy/bin/apachectl
+admin/doris.admin.deploy/bin/jbossctl
+admin/doris.admin.deploy/bin/jettyctl
+admin/doris.admin.deploy/bin/killws
+admin/doris.admin.deploy/bin/startws
+
