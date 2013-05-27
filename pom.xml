@@ -29,7 +29,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <jetty_version>6.1.25</jetty_version>
     <netty_version>3.2.2.Final</netty_version>
     <webx-version>3.0.10</webx-version>
-    <maven-staging-plugin-version>1.0</maven-staging-plugin-version>
     <fastjson-version>1.1.31</fastjson-version>
     <spring-version>2.5.6.SEC03</spring-version>
     <xml-xstream-version>1.4.4</xml-xstream-version>
