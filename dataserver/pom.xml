@@ -95,19 +95,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
           <junitArtifactName>junit:junit</junitArtifactName>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>com.alibaba.maven.plugins</groupId>
-        <artifactId>maven-staging-plugin</artifactId>
-        <version>${maven-staging-plugin-version}</version>
-        <executions>
-          <execution>
-            <id>staging-repository</id>
-            <goals>
-              <goal>staging-repository</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
 </project>
