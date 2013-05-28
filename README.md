@@ -3,7 +3,6 @@
 
 - Release date: 2013/5/21
 - Doris is one of Alibaba technology products
-- The version can't be installed, because it is dependent on Alibaba's internal repository. But it's not necessory, if you have interesting on it, contact me(itisaid@gmail.com)
 
 ## Doris's Features ##
 - Scalable like HBase. Support large scale data storage and visit with scalable server deployment.
