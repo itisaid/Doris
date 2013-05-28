@@ -12,7 +12,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
   <name>doris.admin.bundle.war</name>
   <packaging>war</packaging>
   <properties>
-    <autoconfig-version>1.0.5</autoconfig-version>
     <springext-plugin-version>1.0</springext-plugin-version>
     <jetty-version>6.1.22</jetty-version>
   </properties>
@@ -130,24 +129,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
             </systemProperty>
           </systemProperties>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>com.alibaba.maven.plugins</groupId>
-        <artifactId>maven-autoconf-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>config</id>
-            <phase>compile</phase>
-            <goals>
-              <goal>config</goal>
-            </goals>
-            <configuration>
-              <destFiles>
-                <destFile>src/main/webapp/WEB-INF</destFile>
-              </destFiles>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>com.alibaba.citrus.tool</groupId>
