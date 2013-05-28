@@ -75,26 +75,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
               <outputDirectory>${project.build.directory}</outputDirectory>
             </configuration>
           </plugin>
-          <plugin>
-            <groupId>com.alibaba.maven.plugins</groupId>
-            <artifactId>maven-autoconf-plugin</artifactId>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>config</goal>
-                </goals>
-                <phase>pre-integration-test</phase>
-              </execution>
-            </executions>
-            <configuration>
-              <destFiles>
-                <destFile>${project.build.directory}/${project.artifactId}</destFile>
-              </destFiles>
-              <includePackagePatterns>
-                <includePackagePattern>lib/*.jar</includePackagePattern>
-              </includePackagePatterns>
-            </configuration>
-          </plugin>
         </plugins>
       </build>
     </profile>
