@@ -16,7 +16,7 @@
 
 
 ## Extensibility
-<img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris2.jpg" width="80%" height="80%"/>
+<img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris2.jpg" width="70%" height="70%"/>
 
 
 ### CAP of Doris
