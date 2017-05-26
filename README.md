@@ -12,9 +12,25 @@
 - Optimized consistence hash algorithm. More balance on distributed data than traditional consistence hash algorithm.
 
 Doris architecture
-![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris1.jpg)
+![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris1.jpg )
 
 
 Doris extensibility
 ![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris2.jpg)
 
+
+![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris3.jpg)
+
+
+
+![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris4.jpg)
+
+
+![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris5.jpg)
+
+![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris6.jpg)
+
+![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris7.jpg)
+
+
+![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris8.jpg)
