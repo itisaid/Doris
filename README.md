@@ -12,26 +12,28 @@
 - Optimized consistence hash algorithm. More balance on distributed data than traditional consistence hash algorithm.
 
 ## Doris architecture
-![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris1.jpg )
+<img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris1.jpg" width="70%" height="70%"/>
 
 
 ## Extensibility
-![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris2.jpg)
+<img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris2.jpg" width="80%" height="80%"/>
+
 
 ### CAP of Doris
 ### 1  High Availability
-![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris3.jpg)
+<img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris3.jpg" width="70%" height="70%"/>
 
 
-
-![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris4.jpg)
+<img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris4.jpg" width="70%" height="70%"/>
 
 ### 2 Consistency
-![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris5.jpg)
+<img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris5.jpg" width="60%" height="60%"/>
 
-![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris6.jpg)
+<img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris6.jpg" width="60%" height="60%"/>
 
 ### 3 Failover and fault tolerant
-![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris7.jpg)
+<img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris7.jpg" width="60%" height="60%"/>
 
-![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris8.jpeg)
+<img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris8.jpeg" width="75%" height="75%"/>
+
+
