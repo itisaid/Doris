@@ -1,5 +1,5 @@
 # Doris #
-## A large scale distributed KV storage system ##
+## A large scale distributed KV storage system from Alibaba. ##
 
 - Release date: 2013/5/21
 - Doris is one of Alibaba technology products
@@ -12,14 +12,26 @@
 - Optimized consistence hash algorithm. More balance on distributed data than traditional consistence hash algorithm.
 
 ## Doris architecture
+
+### High Performance
+   Doris provides high performance KV access with low latency and high throughput.    
+
+### Scalability
+   Doris is designed to supported large scale cluster up to 2000+ machine node.
 <img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris1.jpg" width="70%" height="70%"/>
 
-
 ## Extensibility
+   Doris provides a set of uniform KV API and extensible architecture. You can implement specific adapter to construct a cluster for some KV database. 
+ 
 <img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris2.jpg" width="70%" height="70%"/>
 
+  Now Doris has provieded adapters for the most common KV databases by default , such as 
+ - KV cache, such as Redis, Memcached etc. 
+ - KV storage, such as Berkley DB, Mysql KV, KyotoCabinet etc.
+ 
+ 
 
-### CAP of Doris
+# CAP of Doris
 ### 1  High Availability
 <img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris3.jpg" width="70%" height="70%"/>
 
