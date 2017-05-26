@@ -11,3 +11,10 @@
 - Easy operation. Auto failover and data recover when server is crashed. Easy add servers to Doris cluster with web interface.
 - Optimized consistence hash algorithm. More balance on distributed data than traditional consistence hash algorithm.
 
+Doris architecture
+![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris1.jpg)
+
+
+Doris extensibility
+![](https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris2.jpg)
+
