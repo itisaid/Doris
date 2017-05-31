@@ -14,17 +14,17 @@
 
 ## Doris architecture
 
-## Multi-tenant kv storage cloud 
-   Doris provides an uniform storage cloud for multiple tenants. It uses namespace to provide excluisve space for every cloud user.  
-  <img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris10.jpg" width="70%" height="70%"/> 
-  
 ### High Performance
-   Doris provides high performance KV access with low latency and high throughput.    
+   Doris provides high performance KV access with low latency and high throughput. Less 4 ms for commonly data access.   
 
 ### Scalability
    Doris is designed to support large scale cluster up to 2000+ node.
 <img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris1.jpg" width="70%" height="70%"/>
 
+## Multi-tenant kv storage cloud 
+   Doris provides an uniform storage cloud for multiple tenants. It uses namespace to provide excluisve space for every cloud user.  
+  <img src="https://raw.githubusercontent.com/wiki/itisaid/Doris/images/doris10.jpg" width="70%" height="70%"/> 
+  
 ## Extensibility
    Doris provides a set of uniform KV API and extensible architecture. You can implement specific adapter to construct a cluster for specific KV database. 
  
